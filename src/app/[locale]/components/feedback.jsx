@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import { useTranslations } from "next-intl";
 import bg from '@/../public/feedback_bg.jpg';
-import Button from "@/app/[locale]/components/ui/button";
 
 const Feedback = () => {
     const t = useTranslations();
@@ -83,9 +82,11 @@ const Feedback = () => {
                         />
 
                         <div className="w-full max-w-full box-border">
-                        <button className={`bg-black w-full max-w-[700px] cursor-pointer font-oswald py-4 text-center text-white text-[18px] lg:text-4xl`}>
+                        <button className={`bg-black w-full max-w-[700px] cursor-pointer font-oswald py-4 text-center
+                         text-white text-[18px] lg:text-4xl
+                         uppercase hover:bg-blue hover:text-black transition-colors duration-300`}>
                             {t('Feedback.form.submit')}
-                        </button>
+                        </button> {/*!TODO Винести у UI KIT(та оформити його) !!!*/}
                         </div>
                     </form>
                 </div>

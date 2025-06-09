@@ -3,6 +3,7 @@ import Footer from "@/app/[locale]/components/footer";
 
 export default function Home() {
   return <>
+    <About/>
     <Footer/>
   </>;
 }

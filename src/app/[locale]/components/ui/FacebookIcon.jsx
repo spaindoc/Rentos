@@ -10,21 +10,21 @@ const FacebookIcon = () => {
             href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-full h-full group"
+            className="flex items-center justify-center group"
         >
             <Image
                 src={facebook}
                 alt="Facebook icon"
-                className="block group-hover:hidden"
-                width={44}
-                height={44}
+                className="block group-hover:hidden  w-[44px] h-[44px] lg:w-[64px] lg:h-[64px] object-contain"
+                width={64}
+                height={64}
             />
             <Image
                 src={facebook_hover}
                 alt="Facebook icon hover"
-                className="hidden group-hover:block"
-                width={44}
-                height={44}
+                className="hidden group-hover:block w-[44px] h-[44px] lg:w-[64px] lg:h-[64px] object-contain"
+                width={64}
+                height={64}
             />
         </Link>
     );

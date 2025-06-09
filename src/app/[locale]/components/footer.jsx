@@ -12,9 +12,9 @@ const Footer = () => {
 
   return (
       <footer className="w-full bg-[#000] py-6 uppercase font-normal"> {/*? З юай кіту не метчиться бекграунд з лого(*/}
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 lg:px-2">
               <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between lg:h-[433px]">
-                  <div className="flex flex-col lg:h-full mb-8 lg:mb-0">
+                  <div className="flex flex-col lg:h-full mb-8 lg:mb-0 items-center lg:items-start">
                       <Image
                           src={logo}
                           alt="Rentos Group"
@@ -23,7 +23,7 @@ const Footer = () => {
                           className="w-[180px] lg:w-[260px] h-auto"
                       />
                       <a
-                          className="underline text-flink text-xl normal-case hidden lg:block mt-auto"
+                          className="underline text-flink text-xl normal-case hidden lg:block mt-auto w-[260px] text-center" // тут трохи хардкоду але нічого не придумав(
                           href=""
                       >
                           {t('Footer.links.privacyPolicy')}
@@ -64,7 +64,7 @@ const Footer = () => {
                                   <p>+380 99 116 85 18</p>
                                   <p>rentos.ua@gmail.com</p>
                               </div>
-                              <div className="flex gap-4 justify-start lg:justify-between lg:mt-auto">
+                              <div className="flex justify-start lg:justify-between lg:mt-auto gap-4 lg:gap-0">
                                   <InstagramIcon/>
                                   <FacebookIcon/>
                               </div>
@@ -77,7 +77,7 @@ const Footer = () => {
                   <a className="underline text-flink text-base normal-case" href="">
                       {t('Footer.links.websiteDevelopment')}
                   </a>
-                  <a className="underline text-flink text-base normal-case w-[260px]" href=""> {/*тут трохи хардкоду але нічого не придумав(*/}
+                  <a className="underline text-flink text-base normal-case" href=""> {/*тут трохи хардкоду але нічого не придумав(*/}
                       {t('Footer.links.privacyPolicy')}
                   </a>
               </div>

@@ -10,24 +10,24 @@ const InstagramIcon = () => {
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-full h-full group max-w-[44px] max-h-[44px] lg:max-w-[64px] lg:max-h-[64px]"
+            className="flex items-center justify-center group "
         >
             <Image
-                className="block group-hover:hidden"
+                className="group-hover:hidden w-[44px] h-[44px] lg:w-[64px] lg:h-[64px] object-contain"
                 src={IGIcon}
                 alt="Instagram Icon"
-                width={44}
-                height={44}
+                width={64}
+                height={64}
             />
             <Image
-                className="hidden group-hover:block max-w-[44px] max-h-[44px] lg:max-w-[64px] lg:max-h-[64px]"
+                className="hidden group-hover:block w-[44px] h-[44px] lg:w-[64px] lg:h-[64px] object-contain"
                 src={IGIconHover}
                 alt="Instagram Icon Hover"
-                width={44}
-                height={44}
+                width={64}
+                height={64}
             />
         </Link>
     );
 };
 
-export default InstagramIcon
+export default InstagramIcon;

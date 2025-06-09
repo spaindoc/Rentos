@@ -25,11 +25,13 @@ export const metadata = {
 
 export default async function LocaleLayout({children, params}) {
     const {locale} = await params;
+    // console.log(locale) // перевірочка
     if(!hasLocale(routing.locales, locale)) {
         notFound()
     }
 
     const messages = await getMessages({locale});
+    // console.log(messages) // перевірочка
 
     return (
         <html lang={locale}>

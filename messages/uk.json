@@ -12,5 +12,23 @@
       "consulting": "консалтинг",
       "investment": "інвестиції"
     }
+  },
+  "Footer": {
+    "navigation": "Навігація",
+    "navigationLinks": {
+      "about": "Про нас",
+      "services": "Послуги",
+      "projects": "Проєкти",
+      "news": "Новини",
+      "contacts": "Контакти"
+    },
+    "contacts": "Контакти",
+    "contactInfo": {
+      "address": "м. Рівне, вул. Кавказька, 9а"
+    },
+    "links": {
+      "privacyPolicy": "Політика конфіденційності",
+      "websiteDevelopment": "Розробка сайту"
+    }
   }
 }

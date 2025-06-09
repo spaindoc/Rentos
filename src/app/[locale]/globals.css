@@ -1,15 +1,40 @@
 @import "tailwindcss";
 
+@layer base {
+  body {
+    @apply container mx-auto; /* ! Потім приберу якщо потрібно, просто тест */
+  }
+  h2 {
+    @apply text-4xl  md:text-5xl lg:text-7xl;
+  }
+  p {
+    @apply text-base md:text-[22px];
+  }
+}
+
 :root {
   --background: #ffffff;
   --foreground: #ffff;
+  --gray: #3F3F3F;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-paragraph: var(--gray);
   --font-oswald: var(--font-oswald);
   --font-roboto: var(--font-roboto);
+}
+
+
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: var(--font-oswald), sans-serif;
+  color: black;
+}
+
+p,span,li,a {
+  font-family: var(--font-roboto), sans-serif;
 }
 
 /*@media (prefers-color-scheme: dark) {*/
@@ -22,5 +47,4 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }

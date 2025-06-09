@@ -15,14 +15,14 @@ const FacebookIcon = () => {
             <Image
                 src={facebook}
                 alt="Facebook icon"
-                className="block group-hover:hidden  w-[44px] h-[44px] lg:w-[64px] lg:h-[64px] object-contain"
+                className="block group-hover:hidden  w-[44px] h-[44px] lg:w-[64px] lg:h-[64px] "
                 width={64}
                 height={64}
             />
             <Image
                 src={facebook_hover}
                 alt="Facebook icon hover"
-                className="hidden group-hover:block w-[44px] h-[44px] lg:w-[64px] lg:h-[64px] object-contain"
+                className="hidden group-hover:block w-[44px] h-[44px] lg:w-[64px] lg:h-[64px] "
                 width={64}
                 height={64}
             />

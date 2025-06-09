@@ -30,5 +30,13 @@
       "privacyPolicy": "Privaci Policy",
       "websiteDevelopment": "Website Development"
     }
+  },
+  "Feedback": {
+    "title": "Feedback",
+    "form": {
+      "name": "How can we contact you?",
+      "question": "Your question",
+      "submit": "Submit"
+    }
   }
 }

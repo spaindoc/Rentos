@@ -32,9 +32,9 @@ const Footer = () => {
 
                   <div className="flex flex-row justify-between lg:justify-around w-full lg:gap-16 h-full">
                       <div className="flex flex-col lg:h-full">
-                          <h3 className="text-white text-lg lg:text-4xl mb-6 lg:mb-11">
+                          <h4 className="text-white text-lg lg:text-4xl mb-6 lg:mb-11">
                               {t('Footer.navigation')}
-                          </h3>
+                          </h4>
                           <nav className="flex-1">
                               <ul className="flex flex-col gap-4 lg:gap-5 text-white text-base lg:text-xl">
                                   <li><a href="">{t('Footer.navigationLinks.about')}</a></li>
@@ -53,9 +53,9 @@ const Footer = () => {
                       </div>
 
                       <div className="flex flex-col lg:h-full">
-                          <h3 className="text-white text-lg lg:text-4xl mb-6 lg:mb-11">
+                          <h4 className="text-white text-lg lg:text-4xl mb-6 lg:mb-11">
                               {t('Footer.contacts')}
-                          </h3>
+                          </h4>
                           <div className="flex flex-col flex-1">
                               <div className="flex flex-col gap-6 lg:gap-[57px] text-base lg:text-xl text-white mb-6 lg:flex-1">
                                   <p className="max-w-[120px] lg:max-w-none">

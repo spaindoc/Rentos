@@ -25,7 +25,7 @@ const Footer = () => {
             />
             <a
               href=""
-              className="hidden lg:block mt-auto w-[260px] text-center underline"
+              className="hidden lg:block mt-auto w-[300px] text-center underline text-[18px] lg:text-[22px] text-light-blue"
             >
               {t('Footer.links.privacyPolicy')}
             </a>
@@ -47,7 +47,7 @@ const Footer = () => {
               </nav>
               <a
                 href=""
-                className="hidden lg:block mt-auto underline"
+                className="hidden lg:block mt-auto underline text-[18px] lg:text-[22px] text-light-blue"
               >
                 {t('Footer.links.websiteDevelopment')}
               </a>
@@ -74,11 +74,11 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 lg:hidden mt-8">
-          <a href="" className="text-base underline">
+        <div className="flex flex-col gap-4 lg:hidden mt-8 text-[18px] lg:text-[22px]">
+          <a href="" className="text-[18px] underline text-light-blue">
             {t('Footer.links.websiteDevelopment')}
           </a>
-          <a href="" className="text-base underline">
+          <a href="" className=" underline text-[18px] text-light-blue">
             {t('Footer.links.privacyPolicy')}
           </a>
         </div>

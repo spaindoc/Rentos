@@ -1,12 +1,31 @@
-import React from 'react';
+import { forwardRef } from 'react';
+import {cn} from "@/app/[locale]/lib/utils"
 
-const Button = (onClick, title, className) => {
-    return (
-        <button className={`bg-black, py-4 lg:py-3  uppercase text-white text-base lg:text-3xl font-oswald ${className}`}
-        onClick={onClick}>
-            {title}
-        </button>
-    );
+
+const sizes = {
+  sm: 'px-4 py-2 text-sm',
+  md: 'px-6 py-3 text-base',
+  lg: 'px-8 py-4 text-lg',
 };
 
-export default Button;
+export const Button = forwardRef(({
+  children,
+  size = 'md',
+  className,
+  ...props
+}, ref) => {
+  return (
+    <button
+      ref={ref}
+      className={cn(
+        'font-roboto font-normal bg-black text-white hover:bg-blue hover:text-black transition-colors cursor-pointer',
+        sizes[size],
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+});
+Button.displayName = 'Button';

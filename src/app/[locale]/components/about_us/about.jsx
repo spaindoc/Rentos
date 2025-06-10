@@ -35,7 +35,7 @@ const About = () => {
               </ul>
             </div>
 
-            <div className="block lg:hidden mx-auto w-full max-w-[340px]">
+            <div className="block lg:hidden mx-auto w-full max-w-[340px] md:max-w-[450px]">
               <Image
                 src={aboutImage}
                 alt="about_us"

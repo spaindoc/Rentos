@@ -31,8 +31,6 @@
   --font-roboto: var(--font-roboto);
 }
 
-
-
 h1,h2,h4,h4,h5,h6 {
   font-family: var(--font-oswald), sans-serif;
 }
@@ -51,4 +49,23 @@ p,span,li,a {
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+
+/* Embla Carousel Styles */
+.embla {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.embla__slide {
+  position: relative;
+  min-width: 200px;
+  flex: 0 0 100%;
 }

@@ -1,0 +1,42 @@
+{
+  "AboutSection": {
+    "title": "About Us",
+    "description": {
+        "part1": "Rentos Group is an investment and development company. Its key areas of activity are:",
+        "part2": "Today, the company owns and manages a diversified portfolio of properties covering over 40,000 sq.m.",
+        "objects": "Among them: ZLATA PLAZA shopping mall and Pokrovskyi shopping center, FORT logistics complex, as well as office properties and street retail facilities in Rivne and the Slon shopping center in Lutsk."
+    },
+    "list": {
+        "management": "management",
+        "development": "development",
+        "consulting": "consulting",
+        "investment": "investment"
+    }
+  },
+  "Footer": {
+    "navigation": "Navigation",
+    "navigationLinks": {
+      "about": "About Us",
+      "services": "Services",
+      "projects": "Projects",
+      "news": "News",
+      "contacts": "Contacts"
+    },
+    "contacts": "Contacts",
+    "contactInfo": {
+      "address": "Rivne city 9a Kavkazka St."
+    },
+    "links": {
+      "privacyPolicy": "Privaci Policy",
+      "websiteDevelopment": "Website Development"
+    }
+  },
+  "Feedback": {
+    "title": "Feedback",
+    "form": {
+      "name": "How can we contact you?",
+      "question": "Your question",
+      "submit": "Submit"
+    }
+  }
+}

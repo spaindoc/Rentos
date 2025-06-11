@@ -1,3 +1,11 @@
+import About from "@/app/[locale]/components/about_us/about";
+import Footer from "@/app/[locale]/components/footer";
+import Feedback from "@/app/[locale]/components/feedback";
+
 export default function Home() {
-  return <></>;
+  return <>
+    <About/>
+    <Feedback/>
+    <Footer/>
+  </>;
 }

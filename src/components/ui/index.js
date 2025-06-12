@@ -1,6 +1,6 @@
 export * from './typography';
 export * from './containers';
-export * from './button';
+export * from './buttons/button';
 export * from './input';
 export * from './textarea';
 export * from './list';

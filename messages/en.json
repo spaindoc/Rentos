@@ -58,5 +58,44 @@
         "item_3": "Care for people and environment",
         "item_4": "Innovation"
       }
+  },
+  "nav": {
+    "about": "ABOUT US",
+    "services": "SERVICES",
+    "projects": "PROJECTS",
+    "news": "NEWS",
+    "contacts": "CONTACTS",
+    "contact_button": "CONTACT US",
+    "language": "УКР"
+  },
+  "hero": {
+    "title": "RENTOS GROUP – YOUR PARTNER IN BUSINESS DEVELOPMENT",
+    "subtitle": "We combine experience, reputation and efficiency for the long-term success of our projects",
+    "cta_button": "CONTACT US"
+  },
+  "stats": {
+    "years": "years",
+    "visitors": "visitors",
+    "projects": "projects",
+    "years_desc": "Market experience – stability and quality, proven over time",
+    "visitors_desc": "Daily they choose us, trusting our experience",
+    "projects_desc": "Successfully implemented – our clients return because they get results"
+  },
+
+  "services": {
+    "title": "SERVICES",
+    "investments": {
+      "title": "INVESTMENTS",
+      "text": "We welcome investment proposals and analyze the market for promising opportunities."
+    },
+    "management": {
+      "title": "MANAGEMENT",
+      "text": "Our management team possesses deep insights into local market nuances and applies effective solutions for tenant relations, process analysis, cost optimization, and financial & technical management."
+    },
+    "development": {
+      "title": "DEVELOPMENT",
+      "text": "We execute projects from analyzing the commercial viability of land plots to the full launch of commercialized properties. Redevelopment and reconstruction are among our core competencies, transforming projects into modern commercial spaces based on current demands."
+    },
+    "contact": "CONTACT"
   }
 }

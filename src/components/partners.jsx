@@ -11,12 +11,12 @@ import logo_5 from "@/../public/logo_5.png";
 
 const partners = [
   logo_1, logo_2, logo_3, logo_4, logo_5
-]; // потім зробимо з 
+]; // потім зробимо з
 
 const Partners = () => {
   const t = useTranslations();
 
-  const renderPartner = (partner, index) => ( // Наші спонсори які будуть рендеритися
+  const renderPartner = (partner, index) => (
     <Image
       src={partner}
       alt={`logo`}

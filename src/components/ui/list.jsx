@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { cn } from "@/app/[locale]/lib/utils"
+import {cn} from '@/lib/utils'
 
 export const ListItem = forwardRef(({ children, className, ...props }, ref) => (
   <li

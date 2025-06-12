@@ -14,7 +14,7 @@ export const InfiniteSlider = ({
   gap = 10
 }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const duplicatedItems = [...items, ...items]; // Для того щоб слайдер нормально працював
+  const duplicatedItems = [...items, ...items, ...items]; // Для того щоб слайдер нормально працював
 
   return (
     <div 

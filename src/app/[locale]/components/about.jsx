@@ -3,13 +3,13 @@ import React from 'react';
 import Image from "next/image";
 import aboutImage from "../../../../public/About_img.jpg";
 import { useTranslations } from "next-intl";
-import { Heading2, Paragraph, Container, List, ListItem } from './ui';
+import { Heading2, Paragraph, Container, List, ListItem, Section } from './ui';
 
 const About = () => {
   const t = useTranslations('AboutSection');
 
   return (
-    <section className="bg-white text-black py-10 lg:py-20">
+    <Section className="bg-white text-black">
       <Container>
         <div className="flex flex-col lg:flex-row items-start lg:items-center gap-10">
           <div className="hidden lg:block flex-shrink-0 w-[334px] xl:w-[496px]">
@@ -55,7 +55,7 @@ const About = () => {
           </div>
         </div>
       </Container>
-    </section>
+    </Section>
   );
 };
 

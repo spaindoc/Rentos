@@ -32,12 +32,6 @@
   --font-roboto: var(--font-roboto);
 }
 
-@layer components {
-  .container {
-    max-width: var(--container-8xl);
-  }
-}
-
 h1,h2,h4,h4,h5,h6 {
   font-family: var(--font-oswald), sans-serif;
 }

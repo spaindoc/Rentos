@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from "next-intl";
-import { Container, Heading2, InfiniteSlider } from './ui';
+import { Container, Heading2, InfiniteSlider, Section } from './ui';
 import Image from 'next/image';
 import logo_1 from "@/../public/logo_1.png";
 import logo_2 from "@/../public/logo_2.png";
@@ -26,9 +26,9 @@ const Partners = () => {
   );
 
   return (
-    <section className="py-10 bg-light-blue">
+    <Section className="bg-light-blue ">
       <Container>
-        <div className="flex flex-col items-start gap-8">
+        <div className="flex flex-col items-start gap-4 lg:gap-8">
           <Heading2 className="text-black w-full text-center">
             {t('Partners.title')}
           </Heading2>
@@ -41,7 +41,7 @@ const Partners = () => {
           </div>
         </div>
       </Container>
-    </section>
+    </Section>
   );
 };
 

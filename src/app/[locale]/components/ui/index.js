@@ -1,5 +1,5 @@
 export * from './typography';
-export * from './container';
+export * from './containers';
 export * from './button';
 export * from './input';
 export * from './textarea';

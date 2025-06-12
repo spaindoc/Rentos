@@ -6,13 +6,21 @@ import { Heading2, Input, Textarea, Button, Container } from './ui';
 
 const Feedback = () => {
     const t = useTranslations();
+    const [form, setForm] = useState({
+        name: '',
+        phone: '',
+        message: ''
+    });
 
-    const [name, setName] = useState('');
-    const [phone, setPhone] = useState('');
-    const [message, setMessage] = useState('');
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setForm(prev => ({ ...prev, [name]: value }));
+    };
 
-    const onFetch = async (name, phone, message) => {
-        //! Напиши будь ласка апішечку, бо я хз які ендпоінти(
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        // TODO: Implement API call
+        console.log('Form data:', form);
     };
 
     return (
@@ -27,39 +35,38 @@ const Feedback = () => {
 
                 <form
                     className="w-full max-w-[700px] mx-auto space-y-4 mt-4 box-border text-black"
-                    onSubmit={(e) => {
-                        e.preventDefault();
-                        onFetch(name, phone, message);
-                    }}
+                    onSubmit={handleSubmit}
                 >
                     <Input
+                        name="name"
                         type="text"
                         placeholder={t('Feedback.form.name')}
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        value={form.name}
+                        onChange={handleChange}
                         className="mb-6"
                     />
 
                     <Input
+                        name="phone"
                         type="tel"
                         placeholder="+380"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
+                        value={form.phone}
+                        onChange={handleChange}
                         className="mb-6"
                     />
 
                     <Textarea
+                        name="message"
                         placeholder={t('Feedback.form.question')}
                         rows={4}
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
+                        value={form.message}
+                        onChange={handleChange}
                         className="mb-14"
                     />
 
                     <Button
                         type="submit"
                         className="w-full max-w-[700px] uppercase text-[18px] lg:text-4xl"
-                        variant="primary"
                     >
                         {t('Feedback.form.submit')}
                     </Button>

@@ -3,6 +3,7 @@ import Feedback from "@/components/feedback";
 import Hero from "@/components/Hero";
 import Footer from "@/components/layout/footer";
 import Navbar from "@/components/layout/Navbar";
+import Partners from "@/components/partners";
 import ProjectsCarousel from "@/components/Projects";
 import Services from "@/components/Services";
 
@@ -14,7 +15,7 @@ export default function HomePage() {
       <About />
       <Services />
       <ProjectsCarousel />
-      {/* <Partners/> */}
+      <Partners />
       <Feedback />
       <Footer />
     </main>

@@ -5,4 +5,4 @@ const withNextIntl = createNextIntlPlugin()
 /** @type {import('next').NextConfig} */
 const nextConfig = withNextIntl({});
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

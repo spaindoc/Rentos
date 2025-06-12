@@ -1,13 +1,22 @@
-import About from "@/app/[locale]/components/about";
-import Footer from "@/app/[locale]/components/footer";
-import Feedback from "@/app/[locale]/components/feedback";
-import Partners from "./components/partners";
+import About from "@/components/about";
+import Feedback from "@/components/feedback";
+import Hero from "@/components/Hero";
+import Footer from "@/components/layout/footer";
+import Navbar from "@/components/layout/Navbar";
+import ProjectsCarousel from "@/components/Projects";
+import Services from "@/components/Services";
 
-export default function Home() {
-  return <>
-    <Partners/>
-    <About/>
-    <Feedback/>
-    <Footer/>
-  </>;
+export default function HomePage() {
+  return (
+    <main>
+      <Navbar />
+      <Hero />
+      <About />
+      <Services />
+      <ProjectsCarousel />
+      {/* <Partners/> */}
+      <Feedback />
+      <Footer />
+    </main>
+  );
 }

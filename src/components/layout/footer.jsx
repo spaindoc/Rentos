@@ -3,9 +3,10 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import logo from '@/../public/logo.png';
-import InstagramIcon from "@/app/[locale]/components/ui/InstagramIcon";
-import FacebookIcon from "@/app/[locale]/components/ui/FacebookIcon";
-import {Container, Heading4, Paragraph} from '@/app/[locale]/components/ui'
+
+
+
+import { Container, FacebookIcon, Heading4, InstagramIcon, Paragraph } from "../ui";
 
 
 const Footer = () => {

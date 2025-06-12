@@ -17,7 +17,7 @@ const Feedback = () => {
 
     return (
         <section
-            className="bg-auto box-border min-h-screen py-[10vh] bg-[position:50%_55%] lg:bg-[position:50%_65%] bg-no-repeat relative overflow-x-hidden min-w-full"
+            className="bg-auto box-border min-h-80 lg:min-h-screen py-[10vh] bg-[position:50%_55%] lg:bg-[position:50%_65%] bg-no-repeat relative overflow-x-hidden min-w-full"
             style={{ backgroundImage: `url(${bg.src})` }}
         >
             <Container>
@@ -53,7 +53,7 @@ const Feedback = () => {
                         rows={4}
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
-                        className="mb-12"
+                        className="mb-14"
                     />
 
                     <Button

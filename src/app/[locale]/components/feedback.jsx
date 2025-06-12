@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useTranslations } from "next-intl";
 import bg from '@/../public/feedback_bg.jpg';
-import { Heading3, Input, Textarea, Button, Container } from './ui';
+import { Heading2, Input, Textarea, Button, Container } from './ui';
 
 const Feedback = () => {
     const t = useTranslations();
@@ -22,7 +22,7 @@ const Feedback = () => {
         >
             <Container>
                 <div className="w-full max-w-[700px] mx-auto text-black bg-white border p-2.5 lg:py-2.5 lg:px-5 lg:border-2 border-black uppercase">
-                    <Heading3>{t('Feedback.title')}</Heading3>
+                    <Heading2>{t('Feedback.title')}</Heading2>
                 </div>
 
                 <form

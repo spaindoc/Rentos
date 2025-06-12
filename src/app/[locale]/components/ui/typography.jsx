@@ -5,7 +5,7 @@ export const Heading1 = forwardRef(({ children, className, ...props }, ref) => (
   <h1
     ref={ref}
     className={cn(
-      'text-4xl md:text-5xl lg:text-7xl font-oswald',
+      'text-[38px] md:text-[55px] lg:text-[77px] font-oswald',
       className
     )}
     {...props}
@@ -19,7 +19,7 @@ export const Heading2 = forwardRef(({ children, className, ...props }, ref) => (
   <h2
     ref={ref}
     className={cn(
-      'text-3xl md:text-4xl lg:text-6xl font-oswald',
+      'text-[32px] md:text-[48px] lg:text-[62px] font-oswald',
       className
     )}
     {...props}
@@ -33,7 +33,7 @@ export const Heading3 = forwardRef(({ children, className, ...props }, ref) => (
   <h3
     ref={ref}
     className={cn(
-      'text-2xl md:text-3xl lg:text-5xl font-oswald',
+      'text-[32px] lg:text-[34px] font-oswald',
       className
     )}
     {...props}
@@ -43,23 +43,12 @@ export const Heading3 = forwardRef(({ children, className, ...props }, ref) => (
 ));
 Heading3.displayName = 'Heading3';
 
-export const Heading4 = forwardRef(({children, className, ...props}, ref) => (
-  <h4
-    ref={ref}
-    className={cn(
-      'text-[22px] lg:text-[38px] text-white font-oswald', className
-    )}
-    {...props}
-  >
-    {children}
-  </h4>
-))
 
 export const Paragraph = forwardRef(({ children, className, ...props }, ref) => (
   <p
     ref={ref}
     className={cn(
-      'text-base md:text-[20px] xl:text-[22px] font-roboto',
+      'text-base md:text-[20px] lg:text-[22px] font-roboto',
       className
     )}
     {...props}
@@ -68,18 +57,3 @@ export const Paragraph = forwardRef(({ children, className, ...props }, ref) => 
   </p>
 ));
 Paragraph.displayName = 'Paragraph';
-
-// export const Link = forwardRef(({ children, href, className, ...props }, ref) => (
-//   <a
-//     ref={ref}
-//     href={href}
-//     className={cn(
-//       'text-base md:text-[22px] font-roboto text-gray hover:text-black transition-colors',
-//       className
-//     )}
-//     {...props}
-//   >
-//     {children}
-//   </a>
-// ));
-// Link.displayName = 'Link';  //? Потрібно ?

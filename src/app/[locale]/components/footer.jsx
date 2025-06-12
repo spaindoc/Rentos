@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import logo from '@/../public/logo.png';
 import InstagramIcon from "@/app/[locale]/components/ui/InstagramIcon";
 import FacebookIcon from "@/app/[locale]/components/ui/FacebookIcon";
-import {Container, Heading4, Paragraph} from '@/app/[locale]/components/ui'
+import {Container, Heading3, Paragraph} from '@/app/[locale]/components/ui'
 
 
 const Footer = () => {
@@ -33,9 +33,9 @@ const Footer = () => {
 
           <div className="flex flex-row justify-between lg:justify-around w-full lg:gap-16 h-full">
             <div className="flex flex-col lg:h-full">
-              <Heading4 className="text-white mb-6 lg:mb-11">
+              <Heading3 className="text-white mb-6 lg:mb-11">
                 {t('Footer.navigation')}
-              </Heading4>
+              </Heading3>
               <nav className="flex-1">
                 <ul className="flex flex-col gap-4 lg:gap-5 text-white text-base lg:text-xl">
                   <li><a href="">{t('Footer.navigationLinks.about')}</a></li>
@@ -54,9 +54,9 @@ const Footer = () => {
             </div>
 
             <div className="flex flex-col lg:h-full">
-              <Heading4 className="text-white mb-6 lg:mb-11">
+              <Heading3 className="text-white mb-6 lg:mb-11">
                 {t('Footer.contacts')}
-              </Heading4>
+              </Heading3>
               <div className="flex flex-col flex-1">
                 <div className="flex flex-col gap-6 lg:gap-[57px] text-base lg:text-xl text-white mb-6 lg:flex-1">
                   <Paragraph className="max-w-[120px] lg:max-w-none">

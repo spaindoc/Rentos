@@ -17,6 +17,7 @@
   --light-blue: #EFF4F7;
   --gray: #3F3F3F;
   --black: #0D0D0D;
+  --container-8xl: 97.5rem;
 }
 
 @theme inline {
@@ -29,6 +30,12 @@
   --color-light-blue: var(--light-blue);
   --font-oswald: var(--font-oswald);
   --font-roboto: var(--font-roboto);
+}
+
+@layer components {
+  .container {
+    max-width: var(--container-8xl);
+  }
 }
 
 h1,h2,h4,h4,h5,h6 {

@@ -43,6 +43,19 @@ export const Heading3 = forwardRef(({ children, className, ...props }, ref) => (
 ));
 Heading3.displayName = 'Heading3';
 
+export const Heading4 = forwardRef(({ children, className, ...props }, ref) => (
+  <h4
+    ref={ref}
+    className={cn(
+      'text-[24px] lg:text-[34px] font-oswald',
+      className
+    )}
+    {...props}
+  >
+    {children}
+  </h4>
+));
+Heading4.displayName = 'Heading4';
 
 export const Paragraph = forwardRef(({ children, className, ...props }, ref) => (
   <p

@@ -17,11 +17,11 @@ const Feedback = () => {
 
     return (
         <section
-            className="bg-auto pt-[5vh] pb-[10vh] bg-center bg-no-repeat relative overflow-x-hidden min-w-full"
+            className="bg-auto box-border min-h-screen py-[10vh] bg-[position:50%_55%] lg:bg-[position:50%_65%] bg-no-repeat relative overflow-x-hidden min-w-full"
             style={{ backgroundImage: `url(${bg.src})` }}
         >
             <Container>
-                <div className="w-full max-w-[700px] mx-auto text-black bg-white border p-2.5 lg:py-2.5 lg:px-5 lg:border-2 border-black uppercase">
+                <div className="w-full max-w-[700px] mb-14 mx-auto text-black bg-white border-2 py-3.5 px-2.5 border-black uppercase">
                     <Heading2>{t('Feedback.title')}</Heading2>
                 </div>
 
@@ -37,6 +37,7 @@ const Feedback = () => {
                         placeholder={t('Feedback.form.name')}
                         value={name}
                         onChange={(e) => setName(e.target.value)}
+                        className="mb-6"
                     />
 
                     <Input
@@ -44,6 +45,7 @@ const Feedback = () => {
                         placeholder="+380"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
+                        className="mb-6"
                     />
 
                     <Textarea
@@ -51,6 +53,7 @@ const Feedback = () => {
                         rows={4}
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
+                        className="mb-12"
                     />
 
                     <Button

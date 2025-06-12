@@ -8,8 +8,14 @@ import CompanyPhilosophy from "./components/companyPhilosophy";
 export default function Home() {
   return <>
     <Partners/>
-    <CompanyPhilosophy/>
-    <About/>
+    <div className="hidden lg:block"> {/*Дивись, тут хз як краще, можу просто в інший компонент це засунути або хай залишається так ? */}
+      <About/>
+      <CompanyPhilosophy/>
+    </div>
+    <div className="lg:hidden block">
+      <CompanyPhilosophy/>
+      <About/>
+    </div>
     <Feedback/>
     <Footer/>
   </>;

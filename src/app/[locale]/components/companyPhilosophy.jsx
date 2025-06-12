@@ -7,7 +7,7 @@ const companyPhilosophy = () => {
     const t = useTranslations();
 
     return ( 
-        <Section className="lg:bg-light-blue">
+        <Section size="small" className="lg:bg-light-blue lg:mb-20">
             <Container className="flex flex-col lg:flex-row gap-6 lg:gap-10 justify-between text-black">
                 {/*! TODO: Потім винести у окремий компонент */}
                 <div className="flex-1 bg-light-blue lg:bg-none p-2 mx-auto w-full ">

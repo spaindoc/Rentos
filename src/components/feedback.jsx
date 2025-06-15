@@ -2,61 +2,71 @@
 import { useState } from 'react';
 import { useTranslations } from "next-intl";
 import bg from '@/../public/feedback_bg.jpg';
-import { Heading3, Input, Textarea, Button, Container } from './ui';
+import { Heading2, Input, Textarea, Button, Container } from './ui';
 
 const Feedback = () => {
     const t = useTranslations();
+    const [form, setForm] = useState({
+        name: '',
+        phone: '',
+        message: ''
+    });
 
-    const [name, setName] = useState('');
-    const [phone, setPhone] = useState('');
-    const [message, setMessage] = useState('');
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setForm(prev => ({ ...prev, [name]: value }));
+    };
 
-    const onFetch = async (name, phone, message) => {
-        //! Напиши будь ласка апішечку, бо я хз які ендпоінти(
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        // TODO: Implement API call
+        console.log('Form data:', form);
     };
 
     return (
         <section
-            className="bg-auto pt-[5vh] pb-[10vh] bg-center bg-no-repeat relative overflow-x-hidden min-w-full"
+            className="bg-auto box-border min-h-80 lg:min-h-screen py-[10vh] bg-[position:50%_55%] lg:bg-[position:50%_65%] bg-no-repeat relative overflow-x-hidden min-w-full"
             style={{ backgroundImage: `url(${bg.src})` }}
         >
             <Container>
-                <div className="w-full max-w-[700px] mx-auto text-black bg-white border p-2.5 lg:py-2.5 lg:px-5 lg:border-2 border-black uppercase">
-                    <Heading3>{t('Feedback.title')}</Heading3>
+                <div className="w-full max-w-[700px] mb-14 mx-auto text-black bg-white border-2 py-3.5 px-2.5 border-black uppercase">
+                    <Heading2>{t('Feedback.title')}</Heading2>
                 </div>
 
                 <form
                     className="w-full max-w-[700px] mx-auto space-y-4 mt-4 box-border text-black"
-                    onSubmit={(e) => {
-                        e.preventDefault();
-                        onFetch(name, phone, message);
-                    }}
+                    onSubmit={handleSubmit}
                 >
                     <Input
+                        name="name"
                         type="text"
                         placeholder={t('Feedback.form.name')}
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        value={form.name}
+                        onChange={handleChange}
+                        className="mb-6"
                     />
 
                     <Input
+                        name="phone"
                         type="tel"
                         placeholder="+380"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
+                        value={form.phone}
+                        onChange={handleChange}
+                        className="mb-6"
                     />
 
                     <Textarea
+                        name="message"
                         placeholder={t('Feedback.form.question')}
                         rows={4}
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
+                        value={form.message}
+                        onChange={handleChange}
+                        className="mb-14"
                     />
 
                     <Button
                         type="submit"
                         className="w-full max-w-[700px] uppercase text-[18px] lg:text-4xl"
-                        variant="primary"
                     >
                         {t('Feedback.form.submit')}
                     </Button>

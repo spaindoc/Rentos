@@ -12,6 +12,12 @@
 :root {
   --background: #fdfdfd;
   --foreground: #ffff;
+  --blue: #CCE4F0;
+  --footer-links: #D9D9D9;
+  --light-blue: #EFF4F7;
+  --gray: #3F3F3F;
+  --black: #0D0D0D;
+  --container-8xl: 97.5rem;
   --blue: #cce4f0;
   --footer-links: #d9d9d9;
   --light-blue: #eff4f7;
@@ -39,6 +45,23 @@ h5,
 h6 {
   font-family: var(--font-oswald), sans-serif;
 }
+
+p,span,li,a {
+  font-family: var(--font-roboto), sans-serif;
+}
+
+/*@media (prefers-color-scheme: dark) {*/
+/*  :root {*/
+/*    --background: #0a0a0a;*/
+/*    --foreground: #ededed;*/
+/*  }*/
+/*}*/
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
 
 /* Embla Carousel Styles */
 .embla {

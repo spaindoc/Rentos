@@ -42,9 +42,26 @@
   "Partners": {
     "title": "Partners"
   },
+  "Philosophy": {
+      "block_1": {
+        "title": "Vision",
+        "subtitle": "To be a leader in investment and development, setting standards for transparency, sustainability, and strategic thinking"
+      },
+      "block_2": {
+        "title": "Mission",
+        "subtitle": "To create modern and comfortable spaces for successful partner activities based on professionalism, responsibility, and sustainable development"
+      },
+      "block_3": {
+        "title": "Values",
+        "item_1": "Responsibility",
+        "item_2": "Effectiveness",
+        "item_3": "Care for people and environment",
+        "item_4": "Innovation"
+      }
+  },
   "nav": {
     "about": "ABOUT US",
-    "services": "SERVICES", 
+    "services": "SERVICES",
     "projects": "PROJECTS",
     "news": "NEWS",
     "contacts": "CONTACTS",
@@ -58,7 +75,7 @@
   },
   "stats": {
     "years": "years",
-    "visitors": "visitors", 
+    "visitors": "visitors",
     "projects": "projects",
     "years_desc": "Market experience – stability and quality, proven over time",
     "visitors_desc": "Daily they choose us, trusting our experience",

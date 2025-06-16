@@ -2,13 +2,14 @@
 
 import React from "react";
 
+// Обратите внимание: svg теперь шириной/высотой 100%
 export default function ArrowLeftButton(props) {
   return (
     <>
-      <button {...props} className='arrow-button'>
+      <button {...props} className={`${props.className ?? ""} arrow-button`}>
         <svg
-          width='73'
-          height='73'
+          width='100%'
+          height='100%'
           viewBox='0 0 73 73'
           fill='none'
           xmlns='http://www.w3.org/2000/svg'
@@ -48,7 +49,6 @@ export default function ArrowLeftButton(props) {
           display: inline-block;
           transition: transform 0.1s ease, filter 0.2s ease;
         }
-        /* при ховере меняем цвета rect и path */
         .arrow-button:hover svg rect {
           fill: #0d0d0d;
           stroke: #fdfdfd;
@@ -56,7 +56,6 @@ export default function ArrowLeftButton(props) {
         .arrow-button:hover svg path {
           stroke: #fdfdfd;
         }
-        /* при нажатии слегка уменьшаем */
         .arrow-button:active {
           transform: scale(0.95);
         }

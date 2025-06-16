@@ -31,7 +31,7 @@
   --black: #0d0d0d;
   --container-8xl: 97.5rem;
 
-  --color-background: var(--background);
+  --color-white: var(--background);
   --color-foreground: var(--foreground);
   --color-paragraph: var(--gray);
   --color-black: var(--black);

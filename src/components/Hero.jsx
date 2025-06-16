@@ -17,10 +17,10 @@ function StatBlock({ value, suffix, title, description, className }) {
         <span>{value}</span>
         {suffix && <span className='ml-1'>{suffix}</span>}
       </div>
-      <p className='text-base md:text-2xl font-medium text-[var(--black)] tracking-wide mb-2 md:mb-6 text-left'>
+      <p className='text-base font-roboto md:text-2xl font-medium text-[var(--black)] tracking-wide mb-2 md:mb-6 text-left'>
         {title}
       </p>
-      <p className='text-[var(--gray)] text-base md:text-xl leading-relaxed text-left'>
+      <p className='font-roboto text-[var(--gray)] text-base md:text-xl leading-relaxed text-left'>
         {description}
       </p>
     </div>
@@ -43,7 +43,7 @@ export default function Hero() {
                 {t("title")}
               </h1>
             </div>
-            <p className='text-lg md:text-xl text-gray max-w-md leading-relaxed mb-8 md:hidden bg-white'>
+            <p className='text-lg md:text-xl text-gray max-w-md leading-relaxed mb-8 md:hidden bg-white font-roboto'>
               {t("subtitle")}
             </p>
             <Button className='ml-auto translate-x-0.5 sm:translate-x-0 sm:ml-0'>

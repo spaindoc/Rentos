@@ -34,7 +34,7 @@ export default function ScrollToTop() {
           aria-label='Scroll to top'
         >
           <svg
-            className='w-5 h-5'
+            className='w-7 h-7'
             fill='none'
             stroke='currentColor'
             viewBox='0 0 24 24'

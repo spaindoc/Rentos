@@ -1,0 +1,28 @@
+.viewport {
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  gap: 37px;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.slide {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .slide {
+    padding: 1rem;
+  }
+}
+@media (min-width: 1024px) {
+  .slide {
+    flex: 0 0 calc((100% - 74px) / 3);
+    max-width: calc((100% - 74px) / 3);
+  }
+}

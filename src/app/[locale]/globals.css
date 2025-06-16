@@ -1,69 +1,45 @@
 @import "tailwindcss";
 
 @layer base {
-  h2 {
-    @apply text-4xl  md:text-5xl lg:text-7xl;
+  .font-roboto {
+    font-family: var(--font-roboto), sans-serif;
   }
+
+  .font-oswald {
+    font-family: var(--font-oswald), sans-serif;
+  }
+
+  h2 {
+    @apply text-4xl md:text-5xl lg:text-7xl;
+  }
+
   p {
     @apply text-base md:text-[22px];
+  }
+
+  body {
+    background: var(--background);
   }
 }
 
 :root {
   --background: #fdfdfd;
-  --foreground: #ffff;
-  --blue: #CCE4F0;
-  --footer-links: #D9D9D9;
-  --light-blue: #EFF4F7;
-  --gray: #3F3F3F;
-  --black: #0D0D0D;
-  --container-8xl: 97.5rem;
   --blue: #cce4f0;
   --footer-links: #d9d9d9;
   --light-blue: #eff4f7;
   --gray: #3f3f3f;
   --black: #0d0d0d;
-}
+  --container-8xl: 97.5rem;
 
-@theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-paragraph: var(--gray);
   --color-black: var(--black);
   --color-blue: var(--blue);
-  --color-flink: var(--footer-links); /*! Подумати над назвою */
+  --color-flink: var(--footer-links);
   --color-light-blue: var(--light-blue);
-  --font-oswald: var(--font-oswald);
-  --font-roboto: var(--font-roboto);
 }
 
-h1,
-h2,
-h4,
-h4,
-h5,
-h6 {
-  font-family: var(--font-oswald), sans-serif;
-}
-
-p,span,li,a {
-  font-family: var(--font-roboto), sans-serif;
-}
-
-/*@media (prefers-color-scheme: dark) {*/
-/*  :root {*/
-/*    --background: #0a0a0a;*/
-/*    --foreground: #ededed;*/
-/*  }*/
-/*}*/
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-}
-
-
-/* Embla Carousel Styles */
 .embla {
   overflow: hidden;
 }

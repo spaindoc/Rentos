@@ -4,7 +4,10 @@ import { cn } from "@/lib/utils";
 export const Heading1 = forwardRef(({ children, className, ...props }, ref) => (
   <h1
     ref={ref}
-    className={cn("text-4xl md:text-5xl lg:text-7xl font-oswald", className)}
+    className={cn(
+      "text-4xl md:text-5xl lg:text-7xl font-oswald text-black",
+      className
+    )}
     {...props}
   >
     {children}
@@ -15,7 +18,10 @@ Heading1.displayName = "Heading1";
 export const Heading2 = forwardRef(({ children, className, ...props }, ref) => (
   <h2
     ref={ref}
-    className={cn("text-3xl md:text-4xl lg:text-6xl font-oswald", className)}
+    className={cn(
+      "text-3xl md:text-4xl lg:text-6xl font-oswald text-black",
+      className
+    )}
     {...props}
   >
     {children}
@@ -26,7 +32,10 @@ Heading2.displayName = "Heading2";
 export const Heading3 = forwardRef(({ children, className, ...props }, ref) => (
   <h3
     ref={ref}
-    className={cn("text-2xl md:text-3xl lg:text-5xl font-oswald", className)}
+    className={cn(
+      "text-2xl md:text-3xl lg:text-5xl font-oswald text-black",
+      className
+    )}
     {...props}
   >
     {children}
@@ -38,7 +47,7 @@ export const Heading4 = forwardRef(({ children, className, ...props }, ref) => (
   <h4
     ref={ref}
     className={cn(
-      "text-[22px] lg:text-[38px] text-white font-oswald",
+      "text-[22px] lg:text-[38px] text-white font-oswald ",
       className
     )}
     {...props}

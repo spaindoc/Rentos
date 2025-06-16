@@ -12,15 +12,15 @@ function StatBlock({ value, suffix, title, description, className }) {
       className={`${className} text-center md:text-left max-w-[180px] md:max-w-md relative`}
     >
       <div
-        className={`flex items-baseline text-[32px] md:text-[77px] justify-start text-black ${oswald.className} leading-normal`}
+        className={`flex items-baseline text-[32px] md:text-[77px] justify-start text-[var(--black)] font-oswald leading-normal`}
       >
         <span>{value}</span>
         {suffix && <span className='ml-1'>{suffix}</span>}
       </div>
-      <p className='text-base md:text-2xl font-medium text-black tracking-wide mb-2 md:mb-6 text-left'>
+      <p className='text-base md:text-2xl font-medium text-[var(--black)] tracking-wide mb-2 md:mb-6 text-left'>
         {title}
       </p>
-      <p className='text-[gray] text-base md:text-xl leading-relaxed text-left'>
+      <p className='text-[var(--gray)] text-base md:text-xl leading-relaxed text-left'>
         {description}
       </p>
     </div>
@@ -39,9 +39,7 @@ export default function Hero() {
         <div className='flex flex-col md:flex-row justify-between items-start md:items-center'>
           <div className='relative z-10 w-full md:w-auto md:mb-0 flex flex-col items-start'>
             <div className='relative scroll -ml-1'>
-              <h1
-                className={`${oswald.className} uppercase text-[38px] md:text-7xl bg-white mb-4 md:mb-9 max-w-4xl leading-[1.2] py-1`}
-              >
+              <h1 className='font-oswald uppercase text-[38px] md:text-7xl bg-white text-[var(--black)] mb-4 md:mb-9 max-w-4xl leading-[1.2] py-1'>
                 {t("title")}
               </h1>
             </div>
@@ -54,7 +52,7 @@ export default function Hero() {
           </div>
 
           <div className='relative bg-white w-full max-w-lg pl-1 hidden md:block'>
-            <p className='text-xl text-gray max-w-md leading-relaxed'>
+            <p className='text-xl text-gray max-w-md leading-relaxed text-[var(--gray)]'>
               {t("subtitle")}
             </p>
           </div>

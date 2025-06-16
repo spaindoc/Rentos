@@ -9,7 +9,7 @@ const About = () => {
   const t = useTranslations("AboutSection");
 
   return (
-    <section className='max-w-[1600px] w-full mx-auto bg-white text-black py-10 lg:py-20'>
+    <section className='max-w-[1600px] w-full mx-auto bg-white text-[var(--gray)] py-10 lg:py-32'>
       <div className='mx-auto flex flex-col lg:flex-row items-start gap-10'>
         <div className='hidden lg:block flex-shrink-0 w-[334px] xl:w-[496px]'>
           <Image

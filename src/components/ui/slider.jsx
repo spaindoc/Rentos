@@ -1,52 +1,59 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { motion, useAnimationFrame } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
 
-export const InfiniteSlider = ({ 
-  items, 
+export const Slider = ({
+  items,
   renderItem,
-  className,
-  containerClassName,
-  itemClassName,
-  speed = 20,
+  className = '',
+  containerClassName = '',
+  itemClassName = '',
+  speed = 50, // px per second
   hoverScale = 1.05,
-  gap = 10
 }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const duplicatedItems = [...items, ...items, ...items]; // Для того щоб слайдер нормально працював
+  const containerRef = useRef(null);
+  const [width, setWidth] = useState(0);
+  const [x, setX] = useState(0);
+
+  const duplicatedItems = [...items, ...items];
+
+  useEffect(() => {
+    if (containerRef.current) {
+      setWidth(containerRef.current.scrollWidth / 2);
+    }
+  }, [items]);
+
+  useAnimationFrame((t, delta) => {
+    setX((prev) => {
+      let next = prev - (speed * delta) / 1000;
+      if (Math.abs(next) >= width) return 0;
+      return next;
+    });
+  });
 
   return (
-    <div 
-      className={`w-full mx-auto overflow-hidden ${containerClassName || ''}`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+    <div
+      className={`w-full overflow-hidden ${containerClassName}`}
     >
-      <motion.div
-        className={`flex gap-${gap} w-fit ${className || ''}`}
-        animate={{
-          x: [0, -1000],
-        }}
-        transition={{
-          x: {
-            repeat: Infinity,
-            repeatType: "loop",
-            duration: speed,
-            ease: "linear",
-          },
+      <div
+        className={`flex w-fit gap-[64px] lg:gap-[110px]  ${className}`}
+        ref={containerRef}
+        style={{
+          transform: `translateX(${x}px)`,
         }}
       >
         {duplicatedItems.map((item, index) => (
           <motion.div
             key={index}
-            className={`shrink-0 ${itemClassName || ''}`}
+            className={`shrink-0 ${itemClassName}`}
             whileHover={{ scale: hoverScale }}
             transition={{ duration: 0.2 }}
           >
-            {renderItem(item, index)} {/* Елемент який буде відображатися  */}
+            {renderItem(item, index % items.length)}
           </motion.div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
-}; 
+};

@@ -25,16 +25,16 @@ const Feedback = () => {
 
     return (
         <section
-            className="bg-auto box-border min-h-80 lg:min-h-screen py-[10vh] bg-[position:50%_55%] lg:bg-[position:50%_65%] bg-no-repeat relative overflow-x-hidden min-w-full"
+            className="bg-auto box-border min-h-80 lg:min-h-screen py-15 bg-[position:50%_50%] lg:bg-[position:50%_66%] lg:bg-size-[112%] bg-no-repeat relative overflow-x-hidden min-w-full"
             style={{ backgroundImage: `url(${bg.src})` }}
         >
             <Container>
-                <div className="w-full max-w-[700px] mb-14 mx-auto text-black bg-white border-2 py-3.5 px-2.5 border-black uppercase">
+                <div className="w-full max-w-[510px] mb-14 mx-auto text-black bg-white border-2 py-3.5 px-2.5 border-black uppercase">
                     <Heading2>{t('Feedback.title')}</Heading2>
                 </div>
 
                 <form
-                    className="w-full max-w-[700px] mx-auto space-y-4 mt-4 box-border text-black"
+                    className="w-full max-w-[510px] mx-auto space-y-4 mt-4 box-border text-black"
                     onSubmit={handleSubmit}
                 >
                     <Input
@@ -49,7 +49,7 @@ const Feedback = () => {
                     <Input
                         name="phone"
                         type="tel"
-                        placeholder="+380"
+                        placeholder="+380 00 000 00 00"
                         value={form.phone}
                         onChange={handleChange}
                         className="mb-6"
@@ -66,7 +66,7 @@ const Feedback = () => {
 
                     <Button
                         type="submit"
-                        className="w-full max-w-[700px] uppercase text-[18px] lg:text-4xl"
+                        className="w-full max-w-[510px] uppercase text-[18px] lg:text-4xl"
                     >
                         {t('Feedback.form.submit')}
                     </Button>

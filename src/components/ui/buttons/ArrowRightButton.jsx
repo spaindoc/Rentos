@@ -2,9 +2,9 @@
 
 import React from "react";
 
-export default function ArrowRightButton({ onClick }) {
+export default function ArrowRightButton(props) {
   return (
-    <button onClick={onClick} aria-label='Arrow right'>
+    <button {...props}>
       <svg
         width='73'
         height='73'

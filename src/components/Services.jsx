@@ -72,14 +72,11 @@ export default function Services() {
                   // onClick={handleContact}
                   tabIndex={0}
                   aria-label={t("contact")}
-                  // onKeyDown={(e) => {
-                  //   if (e.key === "Enter") handleContact();
-                  // }}
                 >
                   {t("contact")}
                 </Button>
               </div>
-              <p className='text-base md:text-lg leading-relaxed text-[var-(gray)]'>
+              <p className='text-base font-roboto md:text-lg leading-relaxed text-[var-(gray)]'>
                 {item.text}
               </p>
             </motion.div>

@@ -29,7 +29,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className='bg-white relative z-20'>
+    <nav className='bg-white relative z-20 '>
       <div className='max-w-[1600px] mx-auto h-16 lg:h-20 px-4 lg:px-0 my-3 lg:grid lg:grid-cols-12 lg:items-center'>
         <div className='hidden col-span-2 sm:flex items-center'>
           <Link href='/' className='flex items-center'>

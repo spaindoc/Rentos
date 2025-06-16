@@ -90,26 +90,17 @@ export default function ProjectsCarousel() {
     <section className='py-16 max-w-[1600px] mx-auto'>
       {/* Mobile header with title and navigation arrows */}
       <div className='flex items-center justify-between px-4 mb-6 lg:hidden'>
-        <h2 className='text-4xl font-oswald'>ПРОЄКТИ</h2>
+        <h2 className='text-[62px] font-oswald'>ПРОЄКТИ</h2>
         <div className='flex gap-2'>
           <ArrowLeftButton
             onClick={handleScrollPrev}
-            disabled={selectedIndex === 0}
-            className={cn(
-              "transition-opacity",
-              selectedIndex === 0 && "opacity-50 cursor-not-allowed"
-            )}
-            aria-label='Попередній проєкт'
+            className='transition-opacity w-11 h-11 md:w-18 md:h-18'
+            aria-label='Попередня новина'
           />
           <ArrowRightButton
             onClick={handleScrollNext}
-            disabled={selectedIndex === projects.length - 1}
-            className={cn(
-              "transition-opacity",
-              selectedIndex === projects.length - 1 &&
-                "opacity-50 cursor-not-allowed"
-            )}
-            aria-label='Наступний проєкт'
+            className='transition-opacity w-11 h-11 md:w-18 md:h-18'
+            aria-label='Наступна новина'
           />
         </div>
       </div>
@@ -277,25 +268,16 @@ export default function ProjectsCarousel() {
 
           {/* Navigation and next preview (Right Side) */}
           <div className='flex-shrink-0 flex flex-col items-center lg:items-end gap-20'>
-            <div className='flex gap-4 mb-8'>
+            <div className='flex gap-4 md:gap-10 mb-8'>
               <ArrowLeftButton
                 onClick={handleScrollPrev}
-                disabled={selectedIndex === 0}
-                className={cn(
-                  "transition-opacity",
-                  selectedIndex === 0 && "opacity-50 cursor-not-allowed"
-                )}
-                aria-label='Попередній проєкт'
+                className='transition-opacity w-11 h-11 md:w-18 md:h-18'
+                aria-label='Попередня новина'
               />
               <ArrowRightButton
                 onClick={handleScrollNext}
-                disabled={selectedIndex === projects.length - 1}
-                className={cn(
-                  "transition-opacity",
-                  selectedIndex === projects.length - 1 &&
-                    "opacity-50 cursor-not-allowed"
-                )}
-                aria-label='Наступний проєкт'
+                className='transition-opacity w-11 h-11 md:w-18 md:h-18'
+                aria-label='Наступна новина'
               />
             </div>
             {nextProject && (

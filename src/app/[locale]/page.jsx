@@ -8,10 +8,11 @@ import ProjectsCarousel from "@/components/Projects";
 import Feedback from "@/components/feedback";
 import Footer from "@/components/layout/footer";
 import NewsCarousel from "@/components/news-section/NewsCarousel";
+import ContactsSection from "@/components/ContactsSection";
 
 export default function HomePage() {
   return (
-    <main>
+    <main className='font-roboto'>
       <Navbar />
       <Hero />
       <div className='hidden lg:block'>
@@ -27,6 +28,7 @@ export default function HomePage() {
       <Services />
       <ProjectsCarousel />
       <NewsCarousel />
+      <ContactsSection />
       <Partners />
       <Feedback />
       <Footer />

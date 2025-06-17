@@ -16,7 +16,6 @@ const CorporateResponsibility = () => {
                     </Heading2>
                 </div>
 
-                {/* Stats Items */}
                 <div className="col-span-3 lg:col-span-1">
                     <div className="space-y-6">
                         <div className="text-center">
@@ -47,7 +46,6 @@ const CorporateResponsibility = () => {
                     </div>
                 </div>
 
-                {/* Main Content */}
                 <div className="col-span-3 lg:col-span-1">
                     <div className="space-y-6">
                         <Paragraph className="text-lg">

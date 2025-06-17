@@ -43,7 +43,7 @@ export default function Navbar() {
               key={item.key}
               href={item.href}
               className='
-                text-xl font-medium text-black uppercase
+                text-xl  text-black uppercase
                 px-2 py-1 
                 outline outline-transparent outline-offset-2 
                 transition-all duration-200 tracking-tight 
@@ -59,7 +59,7 @@ export default function Navbar() {
           <button
             onClick={handleLanguageSwitch}
             className='
-              flex items-center gap-1.5 text-xl font-medium text-black 
+              flex items-center gap-1.5 text-xl  text-black 
               px-2 py-1 
               outline outline-transparent outline-offset-2 
               transition-all duration-200 
@@ -97,7 +97,7 @@ export default function Navbar() {
                 />
               </svg>
             ) : (
-              <Image src='/burger.svg' width={40} height={40} />
+              <Image src='/burger.svg' width={40} height={40} alt='menu' />
             )}
           </button>
         </div>
@@ -115,7 +115,7 @@ export default function Navbar() {
           >
             <div className='flex items-center justify-between px-4 py-7'>
               <Link href='/' className='flex items-center'>
-                <Image src='/logo.svg' alt='Logo' width={60} height={60} />
+                <Image src='/logo.png' alt='Logo' width={60} height={60} />
               </Link>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}

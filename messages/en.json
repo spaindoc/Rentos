@@ -98,6 +98,20 @@
     },
     "contact": "CONTACT"
   },
+  "News": {
+    "title": "NEWS",
+    "description": "Stay updated with our latest news and events.",
+    "detailsButton": "DETAILS",
+    "mainButton": "ALL NEWS",
+    "mainButtonLabel": "View all news"
+  },
+  "Projects": {
+    "title": "PROJECTS",
+    "description": "Explore our diverse portfolio of completed projects.",
+    "visitWebsiteButton": "VISIT WEBSITE",
+    "mainButton": "ALL PROJECTS",
+    "mainButtonLabel": "View all projects"
+  },
   "corporateResponsibility": {
     "title": "Corporate Responsibility",
     "sub_1": {

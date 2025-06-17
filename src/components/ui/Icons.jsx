@@ -100,7 +100,7 @@ export const FacebookIcon = ({ className, ...props }) => (
   >
     <path
       d='M26.8056 1.5957H19.8207C16.7332 1.5957 13.7721 2.82221 11.5889 5.00541C9.40573 7.18861 8.17922 10.1497 8.17922 13.2372V20.2221H1.19434V29.5353H8.17922V48.1616H17.4924V29.5353H24.4773L26.8056 20.2221H17.4924V13.2372C17.4924 12.6197 17.7377 12.0275 18.1744 11.5908C18.611 11.1542 19.2032 10.9089 19.8207 10.9089H26.8056V1.5957Z'
-      stroke='currentColor'
+      stroke={cn(className)}
       strokeWidth='2'
       strokeLinecap='round'
       strokeLinejoin='round'
@@ -137,16 +137,14 @@ export const InstagramSimpleIcon = ({ className, ...props }) => (
 /** градиентная иконка Instagram (появится на hover) */
 export const InstagramGradientIcon = ({ className, ...props }) => (
   <svg
+    xmlns='http://www.w3.org/2000/svg'
     viewBox='0 0 512 512'
     role='img'
     aria-label='Instagram'
-    xmlns='http://www.w3.org/2000/svg'
-    xmlnsXlink='http://www.w3.org/1999/xlink'
-    className={cn(className)}
+    className={cn("block", className)}
     {...props}
   >
     <defs>
-      <rect id='insta-bg' width='512' height='512' rx='15%' />
       <radialGradient id='instaRad' cx='0.4' cy='1' r='1'>
         <stop offset='0.1' stopColor='#fd5' />
         <stop offset='0.5' stopColor='#ff543e' />
@@ -157,14 +155,16 @@ export const InstagramGradientIcon = ({ className, ...props }) => (
         <stop offset='0.5' stopColor='#60f' stopOpacity='0' />
       </linearGradient>
     </defs>
-    {/* фон */}
-    <use fill='url(#instaRad)' xlinkHref='#insta-bg' />
-    <use fill='url(#instaLin)' xlinkHref='#insta-bg' />
-    {/* белые элементы */}
-    <g fill='none' stroke='#fff' strokeWidth={30}>
-      <rect width={308} height={308} x={102} y={102} rx={81} />
-      <circle cx={256} cy={256} r={72} />
-      <circle cx={347} cy={165} r={6} />
+
+    {/* Прямо рисуем фоновые прямоугольники с градиентами */}
+    <rect width='512' height='512' rx='15%' fill='url(#instaRad)' />
+    <rect width='512' height='512' rx='15%' fill='url(#instaLin)' />
+
+    {/* Белые контуры сверху */}
+    <g fill='none' stroke='#fff' strokeWidth='30'>
+      <rect width='308' height='308' x='102' y='102' rx='81' />
+      <circle cx='256' cy='256' r='72' />
+      <circle cx='347' cy='165' r='6' />
     </g>
   </svg>
 );

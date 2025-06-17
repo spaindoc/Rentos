@@ -14,6 +14,7 @@ import {
   getNewsData,
   getProjectsData,
 } from "@/lib/sanity-queries";
+import CorporateResponsibility from "@/components/CorporateResponsibility";
 
 export default async function HomePage({ params }) {
   const locale = await params.locale;

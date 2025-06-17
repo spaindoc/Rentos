@@ -3,9 +3,9 @@ import React from "react";
 import Image from "next/image";
 
 import { useTranslations } from "next-intl";
-import { Heading2, Paragraph } from "./ui";
+import { Heading2, Paragraph } from "../ui";
 
-const About = () => {
+const About_temp = () => {
   const t = useTranslations("AboutSection");
 
   return (
@@ -61,4 +61,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default About_temp;

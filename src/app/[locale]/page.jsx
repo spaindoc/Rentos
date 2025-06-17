@@ -1,8 +1,8 @@
 import Partners from "@/components/partners";
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/Hero";
-import About from "@/components/about";
-import CompanyPhilosophy from "@/components/companyPhilosophy";
+import About_temp from "@/components/about/about_temp";
+import CompanyPhilosophy from "@/components/about/companyPhilosophy";
 import Services from "@/components/Services";
 import ProjectsCarousel from "@/components/Projects";
 import Feedback from "@/components/feedback";
@@ -15,6 +15,7 @@ import {
   getProjectsData,
 } from "@/lib/sanity-queries";
 import CorporateResponsibility from "@/components/CorporateResponsibility";
+import About from "@/components/about/about";
 
 export default async function HomePage({ params }) {
   const locale = await params.locale;
@@ -26,22 +27,13 @@ export default async function HomePage({ params }) {
     <main className='font-roboto'>
       <Navbar />
       <Hero data={heroData} locale={locale} />
-      <div className='hidden lg:block'>
-        {" "}
-        {/*Дивись, тут хз як краще, можу просто в інший компонент це засунути або хай залишається так ? */}
-        <About />
-        <CompanyPhilosophy />
-      </div>
-      <div className='lg:hidden block'>
-        <CompanyPhilosophy />
-        <About />
-      </div>
+      <About/>
       <Services />
       <ProjectsCarousel projects={projectsData} locale={locale} />
-      <NewsCarousel newsItems={newsData} locale={locale} />
-      <ContactsSection />
       <Partners />
       <CorporateResponsibility/>
+      <NewsCarousel newsItems={newsData} locale={locale} />
+      <ContactsSection />
       <Feedback />
       <Footer />
     </main>

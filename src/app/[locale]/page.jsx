@@ -9,6 +9,7 @@ import Feedback from "@/components/feedback";
 import Footer from "@/components/layout/footer";
 import NewsCarousel from "@/components/news-section/NewsCarousel";
 import ContactsSection from "@/components/ContactsSection";
+import CorporateResponsibility from "@/components/CorporateResponsibility";
 
 export default function HomePage() {
   return (
@@ -30,6 +31,7 @@ export default function HomePage() {
       <NewsCarousel />
       <ContactsSection />
       <Partners />
+      <CorporateResponsibility/>
       <Feedback />
       <Footer />
     </main>

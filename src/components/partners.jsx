@@ -41,7 +41,7 @@ const Partners = () => {
     <Section className="bg-light-blue">
       <Container>
         <div className="flex flex-col items-start gap-4 lg:gap-8">
-          <Heading2 className="text-black w-full text-center">
+          <Heading2 className="text-black w-full text-center mb-8 lg:mb-[72px]">
             {t('Partners.title')}
           </Heading2>
           <div className="flex-1 overflow-hidden flex justify-center items-center w-full">

@@ -22,6 +22,26 @@
   }
 }
 
+@theme {
+  --font-roboto: var(--font-roboto);
+  --font-oswald: var(--font-oswald);
+  --background: #fdfdfd;
+  --blue: #cce4f0;
+  --footer-links: #d9d9d9;
+  --light-blue: #eff4f7;
+  --color-gray: #3f3f3f;
+  --container-8xl: 1560px;
+  --color-white: var(--background);
+  --color-paragraph: var(--gray);
+  --color-black: var(--black);
+  --color-blue: var(--blue);
+  --color-flink: var(--footer-links);
+  --color-light-blue: var(--light-blue);
+
+  --breakpoint-3xl: 117rem; /*це жесть хардкод для фідбеку, щоб на 1880 були максимальні інпути, а на трохи меньшій були інші*/
+  --breakpoint-xs: 23rem;
+} /* Для доступу у тейлванді*/
+
 :root {
   --background: #fdfdfd;
   --blue: #cce4f0;

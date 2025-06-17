@@ -13,7 +13,7 @@ export const Button = forwardRef(
       <button
         ref={ref}
         className={cn(
-          "font-roboto font-normal bg-black text-white hover:bg-[var-(--blue)] hover:text-black transition-colors cursor-pointer",
+          "font-roboto font-normal text-[18px] md:text-[30px] bg-black text-white hover:bg-blue hover:border-2 hover:text-black transition-colors cursor-pointer",
           sizes[size],
           className
         )}

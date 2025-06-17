@@ -97,5 +97,19 @@
       "text": "We execute projects from analyzing the commercial viability of land plots to the full launch of commercialized properties. Redevelopment and reconstruction are among our core competencies, transforming projects into modern commercial spaces based on current demands."
     },
     "contact": "CONTACT"
+  },
+  "News": {
+    "title": "NEWS",
+    "description": "Stay updated with our latest news and events.",
+    "detailsButton": "DETAILS",
+    "mainButton": "ALL NEWS",
+    "mainButtonLabel": "View all news"
+  },
+  "Projects": {
+    "title": "PROJECTS",
+    "description": "Explore our diverse portfolio of completed projects.",
+    "visitWebsiteButton": "VISIT WEBSITE",
+    "mainButton": "ALL PROJECTS",
+    "mainButtonLabel": "View all projects"
   }
 }

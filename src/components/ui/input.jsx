@@ -8,8 +8,8 @@ export const Input = forwardRef(({ className, type, ...props }, ref) => {
       className={cn(
         "w-full max-w-full min-w-0 box-border",
         "border p-2.5 lg:py-2.5 lg:px-5 lg:border-2 border-black",
-        "text-base leading-tight focus:outline-none",
-        "bg-white text-[18px] lg:text-[22px] lg:leading-tight",
+        "text-base md:text-[22px] leading-tight focus:outline-none",
+        "bg-white text-base lg:leading-tight placeholder-gray",
         className
       )}
       ref={ref}

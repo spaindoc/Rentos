@@ -25,16 +25,23 @@ const Feedback = () => {
 
     return (
         <section
-            className="bg-auto box-border min-h-80 lg:min-h-screen py-[10vh] bg-[position:50%_55%] lg:bg-[position:50%_65%] bg-no-repeat relative overflow-x-hidden min-w-full"
+        // Нахардкожено але працює )
+            className="min-w-full overflow-x-hidden bg-auto bg-no-repeat box-border py-10 md:py-15
+                       bg-[position:51%_50%] md:bg-[position:50%_50%] lg:bg-[position:50%_66%]
+                       md:bg-size-[300%] lg:bg-size-[180%] xl:bg-size-[130%] 3xl:bg-size-[110%]
+                       lg:min-h-screen"
             style={{ backgroundImage: `url(${bg.src})` }}
         >
             <Container>
-                <div className="w-full max-w-[700px] mb-14 mx-auto text-black bg-white border-2 py-3.5 px-2.5 border-black uppercase">
+                <div className="w-full mx-auto mb-14 py-3.5 px-2.5
+                               xs:max-w-none xs:w-full sm:w-[70%] max-w-[510px] lg:max-w-[400px] xl:max-w-[410px] 2xl:max-w-[490px] 3xl:max-w-[510px]
+                               text-black bg-white border-2 border-black uppercase">
                     <Heading2>{t('Feedback.title')}</Heading2>
                 </div>
 
                 <form
-                    className="w-full max-w-[700px] mx-auto space-y-4 mt-4 box-border text-black"
+                    className="w-full mx-auto mt-4 space-y-4 box-border xs:max-w-none xs:w-full
+                              max-w-[510px] sm:w-[70%] lg:max-w-[400px] xl:max-w-[410px] 2xl:max-w-[490px] 3xl:max-w-[510px]"
                     onSubmit={handleSubmit}
                 >
                     <Input
@@ -49,10 +56,10 @@ const Feedback = () => {
                     <Input
                         name="phone"
                         type="tel"
-                        placeholder="+380"
+                        placeholder="+380 00 000 00 00"
                         value={form.phone}
                         onChange={handleChange}
-                        className="mb-6"
+                        className="mb-3 xl:mb-6"
                     />
 
                     <Textarea
@@ -61,12 +68,12 @@ const Feedback = () => {
                         rows={4}
                         value={form.message}
                         onChange={handleChange}
-                        className="mb-14"
+                        className="mb-2 md:mb-4 2xl:mb-14"
                     />
 
                     <Button
                         type="submit"
-                        className="w-full max-w-[700px] uppercase text-[18px] lg:text-4xl"
+                        className="uppercase  max-w-[510px] xs:max-w-none w-full"
                     >
                         {t('Feedback.form.submit')}
                     </Button>

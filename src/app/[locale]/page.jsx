@@ -9,6 +9,7 @@ import Feedback from "@/components/feedback";
 import Footer from "@/components/layout/footer";
 import NewsCarousel from "@/components/news-section/NewsCarousel";
 import ContactsSection from "@/components/ContactsSection";
+import CorporateResponsibility from "@/components/CorporateResponsibility";
 import {
   getHeroData,
   getNewsData,
@@ -40,6 +41,7 @@ export default async function HomePage({ params }) {
       <NewsCarousel newsItems={newsData} locale={locale} />
       <ContactsSection />
       <Partners />
+      <CorporateResponsibility/>
       <Feedback />
       <Footer />
     </main>

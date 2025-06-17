@@ -98,6 +98,17 @@
     },
     "contact": "CONTACT"
   },
+  "corporateResponsibility": {
+    "title": "Corporate Responsibility",
+    "sub_1": {
+      "item_1": "Rentos Group voluntarily expands the impact of its activities and its responsibility in social and environmental spheres.",
+      "item_2": "Our team has identified responsibility and care for people and the environment as the company’s core values."
+    },
+    "sub_2": {
+      "item_1": "We support environmental projects, youth and sports, culture and education, as well as charitable foundations aimed at treating children and addressing other social challenges, including inclusivity and accessibility.",
+      "item_2": "We are convinced that by joining forces, we can achieve more!"
+    },
+  },
   "News": {
     "title": "NEWS",
     "description": "Stay updated with our latest news and events.",

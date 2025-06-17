@@ -36,7 +36,7 @@ export default function Services() {
   return (
     <section
       className="
-        bg-[url('/service-bg.png')]
+        bg-[url('/service_bg.png')]
         bg-cover md:bg-center bg-no-repeat 
       "
     >

@@ -4,37 +4,42 @@ import { useTranslations } from "next-intl";
 import Button from "./ui/buttons/MainButton";
 import PatternBackground from "./PatternBackground";
 import Image from "next/image";
-import { oswald } from "@/lib/font";
+import NumberFlow, { continuous } from "@number-flow/react";
 
-function StatBlock({ value, suffix, title, description, className }) {
+function StatBlock({ value, suffix, title, description, className = "" }) {
   return (
     <div
-      className={`${className} text-center md:text-left max-w-[180px] md:max-w-md relative`}
+      className={`${className} text-center md:text-left max-w-[180px] md:max-w-md relative bg-white`}
     >
-      <div
-        className={`flex items-baseline text-[32px] md:text-[77px] justify-start text-[var(--black)] font-oswald leading-normal`}
-      >
-        <span>{value}</span>
-        {suffix && <span className='ml-1'>{suffix}</span>}
+      <div className='flex items-baseline text-[32px] md:text-[77px] justify-start text-[var(--black)] font-oswald leading-normal'>
+        <span className='flex items-baseline'>
+          <NumberFlow value={value} />
+          {suffix && <span className='ml-1'>{suffix}</span>}
+        </span>
       </div>
       <p className='text-base font-roboto md:text-2xl font-medium text-[var(--black)] tracking-wide mb-2 md:mb-6 text-left'>
         {title}
       </p>
-      <p className='font-roboto text-[var(--gray)] text-base md:text-xl leading-relaxed text-left'>
-        {description}
-      </p>
+      {description && (
+        <p className='font-roboto text-[var(--gray)] text-base md:text-xl leading-relaxed text-left'>
+          {description}
+        </p>
+      )}
     </div>
   );
 }
 
-export default function Hero() {
+export default function Hero({ data, locale }) {
   const t = useTranslations("hero");
   const tStats = useTranslations("stats");
+
+  const keys = ["years", "visitors", "projects"];
+  const suffix = { years: "+", visitors: "+", projects: "" };
+  const blocks = data?.statBlocks || [];
 
   return (
     <section className='relative bg-white overflow-hidden'>
       <PatternBackground />
-
       <div className='max-w-[1600px] px-4 md:px-0 mx-auto pt-14 md:pb-7'>
         <div className='flex flex-col md:flex-row justify-between items-start md:items-center'>
           <div className='relative z-10 w-full md:w-auto md:mb-0 flex flex-col items-start'>
@@ -50,9 +55,8 @@ export default function Hero() {
               {t("cta_button")}
             </Button>
           </div>
-
           <div className='relative bg-white w-full max-w-lg pl-1 hidden md:block'>
-            <p className='text-xl text-gray max-w-md leading-relaxed text-[var(--gray)]'>
+            <p className='text-xl max-w-md leading-relaxed text-[var(--gray)]'>
               {t("subtitle")}
             </p>
           </div>
@@ -70,29 +74,21 @@ export default function Hero() {
       </div>
 
       <div className='max-w-[1600px] mx-auto py-16'>
-        <div className='grid grid-cols-2 md:grid-cols-3 px-4 md:px-0  lg:gap-12 bg-white relative'>
-          <StatBlock
-            value='15'
-            suffix='+'
-            title={tStats("years")}
-            description={tStats("years_desc")}
-          />
-          <StatBlock
-            value='30 000'
-            suffix='+'
-            title={tStats("visitors")}
-            description={tStats("visitors_desc")}
-          />
+        <div className='grid grid-cols-2 md:grid-cols-3 px-4 md:px-0 lg:gap-9'>
+          {blocks.map((block, idx) => {
+            const key = keys[idx] ?? null;
+            if (!key) return null;
 
-          <div className='col-span-2 md:col-span-1 mt-9 md:mt-0'>
-            <StatBlock
-              value='10'
-              suffix=''
-              title={tStats("projects")}
-              description={tStats("projects_desc")}
-              className='max-w-md'
-            />
-          </div>
+            return (
+              <StatBlock
+                key={key}
+                value={block.value}
+                suffix={suffix[key]}
+                title={tStats(key)}
+                description={tStats(`${key}_desc`)}
+              />
+            );
+          })}
         </div>
       </div>
     </section>

@@ -33,9 +33,9 @@ export default function ContactsSection() {
       </h2>
 
       <div className='flex flex-col gap-8 lg:flex-row'>
-        {/* ——— Контакты ——— */}
+        {/* ——— Контакти ——— */}
         <div className='flex flex-col lg:w-1/3 gap-10 justify-between'>
-          {/* Адрес + Instagram */}
+          {/* Адресa + Instagram */}
           <div className='flex items-center justify-between'>
             <div className='flex items-center gap-4'>
               <div className='w-11 h-11 lg:w-16 lg:h-16 border-2 border-black flex items-center justify-center'>
@@ -84,9 +84,9 @@ export default function ContactsSection() {
               href='https://www.facebook.com/yourpage'
               target='_blank'
               rel='noopener noreferrer'
-              className='flex-shrink-0 bg-[#3D5A98] lg:hidden '
+              className='flex-shrink-0 bg-[#3D5A98]  lg:hidden '
             >
-              <FacebookIcon className='w-11 h-11  fill-white' />
+              <FacebookIcon className='w-11 h-11 p-1  fill-white stroke-none ' />
             </Link>
           </div>
           <div className='hidden lg:flex items-center gap-15 mt-4'>
@@ -95,25 +95,23 @@ export default function ContactsSection() {
               target='_blank'
               rel='noopener noreferrer'
               className='
-    group                    
-    w-11 h-11 lg:w-16 lg:h-16
-    border-2 border-black
-    flex items-center justify-center
-    text-black               
-    hover:text-white
-    hover:bg-[#3D5A98]
-    hover:border-0          
-    transition
-  '
+              group                    
+              w-11 h-11 lg:w-16 lg:h-16
+              border-2 border-black
+              flex items-center justify-center
+              text-black               
+              hover:text-white
+              hover:bg-[#3D5A98]
+              hover:border-0          
+              transition'
             >
               <FacebookIcon
                 className='
-      w-5 h-5 lg:w-7 lg:h-7
-      fill-transparent        
-      stroke-current         
-      group-hover:fill-white   
-      group-hover:stroke-none 
-    '
+                w-5 h-5 lg:w-7 lg:h-7
+                fill-transparent        
+                stroke-current         
+                group-hover:fill-white   
+                group-hover:stroke-none'
               />
             </Link>
             <InstagramLink />

@@ -107,6 +107,20 @@
     "sub_2": {
       "item_1": "We support environmental projects, youth and sports, culture and education, as well as charitable foundations aimed at treating children and addressing other social challenges, including inclusivity and accessibility.",
       "item_2": "We are convinced that by joining forces, we can achieve more!"
-    }
+    },
+  },
+  "News": {
+    "title": "NEWS",
+    "description": "Stay updated with our latest news and events.",
+    "detailsButton": "DETAILS",
+    "mainButton": "ALL NEWS",
+    "mainButtonLabel": "View all news"
+  },
+  "Projects": {
+    "title": "PROJECTS",
+    "description": "Explore our diverse portfolio of completed projects.",
+    "visitWebsiteButton": "VISIT WEBSITE",
+    "mainButton": "ALL PROJECTS",
+    "mainButtonLabel": "View all projects"
   }
 }

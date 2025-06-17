@@ -29,12 +29,12 @@ export default function Navbar() {
   };
 
   return (
-    <nav className='bg-white relative z-20'>
+    <nav className='bg-white relative z-20 px-4 xl:px-6'>
       {/* MAIN HEADER */}
       <div
         className='
-          max-w-[1600px] mx-auto
-          px-4 xl:px-0
+          2xl:max-w-[1600px] mx-auto
+           2xl:px-0
           my-3
           h-16 xl:h-20
           flex items-center
@@ -44,17 +44,23 @@ export default function Navbar() {
       >
         {/* Logo */}
         <Link href='/' className='flex items-center xl:absolute xl:left-0'>
-          <Image src='/logo.svg' alt='Logo' width={100} height={100} />
+          <Image
+            src='/logo.svg'
+            alt='Logo'
+            width={100}
+            height={100}
+            className='w-[66px] h-[66px] 2xl:w-25 2xl:h-25'
+          />
         </Link>
 
         {/* Desktop nav */}
-        <div className='hidden xl:flex items-center space-x-2 pl-8'>
+        <div className='hidden xl:flex items-center space-x-2 pl-6'>
           {navigationItems.map((item) => (
             <Link
               key={item.key}
               href={item.href}
               className='
-                text-xl text-black uppercase
+                text-base 2xl:text-xl text-black uppercase
                 px-2 py-1
                 outline outline-transparent outline-offset-2
                 transition-all duration-200 tracking-tight
@@ -67,12 +73,12 @@ export default function Navbar() {
         </div>
 
         {/* Language switch + Contact button */}
-        <div className='hidden xl:flex items-center space-x-4  xl:absolute xl:right-0'>
+        <div className='hidden xl:flex items-center space-x-4 xl:absolute xl:right-0'>
           <button
             onClick={handleLanguageSwitch}
             className='
               flex items-center gap-1.5
-              text-xl text-black
+              text-base 2xl:text-xl text-black
               px-2 py-1
               outline outline-transparent outline-offset-2
               transition-all duration-200 hover:outline-black
@@ -121,9 +127,8 @@ export default function Navbar() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "tween", duration: 0.3 }}
-            className='fixed inset-0 bg-black text-white z-30 flex flex-col overflow-y-auto xl:hidden'
+            className='fixed inset-0 bg-black text-white z-30 flex flex-col overflow-y-auto'
           >
-            {/* Mobile header */}
             <div className='flex items-center justify-between px-4 py-7'>
               <Link href='/' className='flex items-center'>
                 <Image src='/logo.png' alt='Logo' width={60} height={60} />
@@ -132,46 +137,54 @@ export default function Navbar() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className='focus:outline-none'
               >
-                <svg width='24' height='24' fill='none' viewBox='0 0 24 24'>
+                <svg
+                  width='800px'
+                  height='800px'
+                  viewBox='0 0 24 24'
+                  fill='none'
+                  className='w-11 h-11 '
+                >
                   <path
                     d='M6 6L18 18'
                     stroke='currentColor'
-                    strokeLinecap='round'
+                    stroke-linecap='round'
                   />
                   <path
-                    d='M18 6L6 18'
+                    d='M18 6L6.00001 18'
                     stroke='currentColor'
-                    strokeLinecap='round'
+                    stroke-linecap='round'
                   />
                 </svg>
               </button>
             </div>
 
-            {/* Links + language */}
-            <nav className='flex-1 flex flex-col px-4 space-y-6'>
-              {navigationItems.map((item) => (
-                <Link
-                  key={item.key}
-                  href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`text-xl ${oswald.className} text-white uppercase`}
+            <div className='flex'>
+              <nav className='flex-1 flex flex-col px-4 space-y-11'>
+                {navigationItems.map((item) => (
+                  <Link
+                    key={item.key}
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`text-xl ${oswald.className}  text-white uppercase`}
+                  >
+                    {t(item.key)}
+                  </Link>
+                ))}
+              </nav>
+              <div className='px-4 mb-6'>
+                <button
+                  onClick={handleLanguageSwitch}
+                  className={`${oswald.className} flex items-center gap-2 text-lg font-medium`}
                 >
-                  {t(item.key)}
-                </Link>
-              ))}
-              <button
-                onClick={handleLanguageSwitch}
-                className={`${oswald.className} flex items-center gap-2 text-lg font-medium`}
-              >
-                <GlobeIcon className='w-6 h-6' />
-                {t("language")}
-              </button>
-            </nav>
+                  <GlobeIcon className='w-6 h-6 text-white' />
+                  {t("language")}
+                </button>
+              </div>
+            </div>
 
-            <hr className='border-gray-700 mx-4 my-6' />
+            <hr className='border-gray-700 mx-4 my-11' />
 
-            {/* Contact info */}
-            <div className='px-4 space-y-6'>
+            <div className='px-4 space-y-6 mt-6'>
               <div className='flex items-center space-x-3'>
                 <div className='w-10 h-10 p-3 border border-white flex items-center justify-center'>
                   <Image
@@ -205,8 +218,7 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* Socials */}
-            <div className='flex justify-between px-4 py-6 space-x-4'>
+            <div className='flex justify-between max-w-56 px-4 py-6'>
               <Link
                 href='https://instagram.com/yourprofile'
                 target='_blank'

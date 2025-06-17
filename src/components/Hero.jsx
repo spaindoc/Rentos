@@ -9,19 +9,19 @@ import NumberFlow, { continuous } from "@number-flow/react";
 function StatBlock({ value, suffix, title, description, className = "" }) {
   return (
     <div
-      className={`${className} text-center md:text-left max-w-[180px] md:max-w-md relative bg-white`}
+      className={`${className} text-center px-4 md:px-6 md:text-left max-w-[180px] md:max-w-md relative bg-white`}
     >
-      <div className='flex items-baseline text-[32px] md:text-[77px] justify-start text-[var(--black)] font-oswald leading-normal'>
+      <div className='flex items-baseline text-[32px] 2xl:text-[77px] justify-start text-[var(--black)] font-oswald leading-normal'>
         <span className='flex items-baseline'>
           <NumberFlow value={value} />
           {suffix && <span className='ml-1'>{suffix}</span>}
         </span>
       </div>
-      <p className='text-base font-roboto md:text-2xl font-medium text-[var(--black)] tracking-wide mb-2 md:mb-6 text-left'>
+      <p className='text-base font-roboto 2xl:text-2xl font-medium text-[var(--black)] tracking-wide mb-2 md:mb-6 text-left'>
         {title}
       </p>
       {description && (
-        <p className='font-roboto text-[var(--gray)] text-base md:text-xl leading-relaxed text-left'>
+        <p className='font-roboto text-[var(--gray)] text-base 2xl:text-xl leading-relaxed text-left'>
           {description}
         </p>
       )}
@@ -40,7 +40,7 @@ export default function Hero({ data, locale }) {
   return (
     <section className='relative bg-white overflow-hidden'>
       <PatternBackground />
-      <div className='max-w-[1600px] px-4 md:px-0 mx-auto pt-14 md:pb-7'>
+      <div className='max-w-[1600px] px-4 md:px-6 mx-auto pt-14 md:pb-7'>
         <div className='flex flex-col md:flex-row justify-between items-start md:items-center'>
           <div className='relative z-10 w-full md:w-auto md:mb-0 flex flex-col items-start'>
             <div className='relative scroll -ml-1'>

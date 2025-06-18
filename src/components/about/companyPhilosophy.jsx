@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { Container, Heading3, List, ListItem, Paragraph, Section } from "./ui";
+import { Container, Heading3, List, ListItem, Paragraph, Section } from "../ui";
 
 const companyPhilosophy = () => {
   const t = useTranslations();

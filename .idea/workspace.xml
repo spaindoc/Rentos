@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a29caee-284f-46a7-8bdb-cb32c39dc48f" name="Changes" comment="">
+    <list default="true" id="7a29caee-284f-46a7-8bdb-cb32c39dc48f" name="Changes" comment="check-commit">
+      <change afterPath="$PROJECT_DIR$/src/components/CorporateResponsibility.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[locale]/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[locale]/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/feedback.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/feedback.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/partners.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/partners.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/containers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/containers.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/input.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/input.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/textarea.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/textarea.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +108,7 @@
       <workItem from="1749725021522" duration="148000" />
       <workItem from="1749740688705" duration="3840000" />
       <workItem from="1750069228039" duration="435000" />
-      <workItem from="1750069674666" duration="21615000" />
+      <workItem from="1750069674666" duration="24169000" />
     </task>
     <task id="LOCAL-00001" summary="configured i18n">
       <option name="closed" value="true" />
@@ -187,7 +182,23 @@
       <option name="project" value="LOCAL" />
       <updated>1749745028548</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="did feedback section (hardcode but responsive)">
+      <option name="closed" value="true" />
+      <created>1750165865579</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1750165865579</updated>
+    </task>
+    <task id="LOCAL-00011" summary="check-commit">
+      <option name="closed" value="true" />
+      <created>1750168378645</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1750168378645</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,6 +224,8 @@
     <MESSAGE value="did animation(button feedback)" />
     <MESSAGE value="did ui-kit &amp; sponsor section." />
     <MESSAGE value="add partners" />
-    <option name="LAST_COMMIT_MESSAGE" value="add partners" />
+    <MESSAGE value="did feedback section (hardcode but responsive)" />
+    <MESSAGE value="check-commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="check-commit" />
   </component>
 </project>

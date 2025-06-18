@@ -9,11 +9,11 @@ const CorporateResponsibility = () => {
     const t = useTranslations('corporateResponsibility');
 
     return (
-        <section className="py-16">
+        <section className="py-16" id="">
             <Container>
             <div className="flex flex-col lg:flex-row justify-between mb-6 md:mb-10 lg:mb-[130px]">
                     <div className="flex flex-col items-left text-left lg:text-left lg:block">
-                        <Heading2 className="mb-6 md:mb-10 lg:mb-[76px] max-w-[476px] uppercase leading-10 lg:leading-20 ">
+                        <Heading2 className="mb-6 md:mb-10 lg:mb-[76px] max-w-[300px] lg:max-w-[476px] uppercase leading-10 lg:leading-20 ">
                             {t('title')}
                         </Heading2>
                         <div className="flex flex-col lg:flex-row items-start gap-4 md:gap-6 lg:gap-8">

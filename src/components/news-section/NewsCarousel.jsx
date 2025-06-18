@@ -28,7 +28,7 @@ export default function NewsCarousel({ newsItems, locale }) {
   if (!newsItems?.length) return null;
 
   return (
-    <section className='md:py-16 max-w-[1600px] mx-auto px-2'>
+    <section className='md:py-16 max-w-[1600px] mx-auto px-2' id="news">
       {/* Header */}
       <div className='flex items-center justify-between mb-7 md:mb-25 mx-4 md:mx-0'>
         <h2 className='text-[32px] md:text-[62px] font-oswald'>НОВИНИ</h2>

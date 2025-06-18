@@ -27,7 +27,7 @@
   --font-oswald: var(--font-oswald);
   --background: #fdfdfd;
   --blue: #cce4f0;
-  --footer-links: #d9d9d9;
+  --footer-links: rgba(217, 217, 217, 0.8);
   --light-blue: #eff4f7;
   --color-gray: #3f3f3f;
   --container-8xl: 1560px;
@@ -58,6 +58,10 @@
   --color-blue: var(--blue);
   --color-flink: var(--footer-links);
   --color-light-blue: var(--light-blue);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 .embla {

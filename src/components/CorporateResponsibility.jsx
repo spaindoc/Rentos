@@ -12,7 +12,7 @@ const CorporateResponsibility = () => {
         <section className="py-16">
             <Container>
             <div className="flex flex-col lg:flex-row justify-between mb-6 md:mb-10 lg:mb-[130px]">
-                    <div className="flex flex-col items-left text-center lg:text-left lg:block">
+                    <div className="flex flex-col items-left text-left lg:text-left lg:block">
                         <Heading2 className="mb-6 md:mb-10 lg:mb-[76px] max-w-[476px] uppercase leading-10 lg:leading-20 ">
                             {t('title')}
                         </Heading2>

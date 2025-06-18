@@ -5,7 +5,7 @@ const companyPhilosophy = () => {
   const t = useTranslations();
 
   return (
-    <Section size='small' className='lg:bg-[var(--light-blue)] lg:mb-32'>
+    <Section size='small' className='lg:bg-[var(--light-blue)] lg:mb-32 '>
       <Container className='flex flex-col lg:flex-row gap-6  justify-between text-black'>
         {/*! TODO: Потім винести у окремий компонент */}
         <div className='flex-1 bg-[var(--light-blue)] lg:bg-none p-2 mx-auto w-full '>
@@ -17,9 +17,9 @@ const companyPhilosophy = () => {
           <Paragraph>{t("Philosophy.block_2.subtitle")}</Paragraph>
         </div>
         <div className='flex-1 bg-[var(--light-blue)] lg:bg-none p-2 mx-auto w-full'>
-          <Heading3 className='mb-6'>{t("Philosophy.block_3.title")}</Heading3>
+          <Heading3 className='mb-6 '>{t("Philosophy.block_3.title")}</Heading3>
           <List>
-            <ListItem>{t("Philosophy.block_3.item_1")}</ListItem>
+            <ListItem >{t("Philosophy.block_3.item_1")}</ListItem>
             <ListItem>{t("Philosophy.block_3.item_2")}</ListItem>
             <ListItem>{t("Philosophy.block_3.item_3")}</ListItem>
             <ListItem>{t("Philosophy.block_3.item_4")}</ListItem>

@@ -61,10 +61,10 @@ export default function ProjectsCarousel({ projects, locale }) {
   };
 
   return (
-    <section className='py-16 max-w-[1600px] mx-auto'>
+    <section className='py-16 max-w-[1600px] mx-auto px-2 2xl:px-0'>
       {/* Mobile header */}
-      <div className='flex items-center justify-between px-4 mb-6 lg:hidden'>
-        <h2 className='text-[62px] font-oswald'>ПРОЄКТИ</h2>
+      <div className='flex items-center justify-between px-4 mb-10 lg:hidden'>
+        <h2 className='text-[32px]] font-oswald'>ПРОЄКТИ</h2>
         <div className='flex gap-2'>
           <ArrowLeftButton
             onClick={handleScrollPrev}
@@ -80,7 +80,7 @@ export default function ProjectsCarousel({ projects, locale }) {
       </div>
 
       {/* Desktop header */}
-      <h2 className='hidden lg:block text-6xl font-oswald text-center mb-12'>
+      <h2 className='hidden lg:block 2xl:text-6xl font-oswald text-center mb-12'>
         ПРОЄКТИ
       </h2>
 
@@ -185,12 +185,12 @@ export default function ProjectsCarousel({ projects, locale }) {
               exit='exit'
               custom={direction}
               transition={transition}
-              className='absolute top-0 right-0 inline-flex items-center border-2 border-black font-oswald bg-transparent z-10'
+              className='absolute top-0 left-32  2xl:right-0 inline-flex items-center border-2 border-black font-oswald bg-white 2xl:bg-transparent z-10'
             >
               <motion.h3
                 layoutId={`project-title-${id}`}
                 transition={transition}
-                className='text-[34px] px-16 py-3 uppercase text-center min-w-[422px] bg-white'
+                className='text-xl 2xl:text-[34px] px-16 py-3 uppercase text-center 2xl:min-w-[422px] bg-white'
               >
                 {name[locale]}
               </motion.h3>
@@ -198,7 +198,7 @@ export default function ProjectsCarousel({ projects, locale }) {
                 href={link}
                 target='_blank'
                 rel='noopener noreferrer'
-                className='px-9 py-6 bg-black text-white text-xl font-medium uppercase tracking-wider focus:outline-none transition-colors duration-200 border-l-2 border-black hover:bg-[var(--blue)] hover:text-black'
+                className='px-9 py-3 2xl:py-6 bg-black text-white text-xl 2xl:text-xl font-medium uppercase tracking-wider focus:outline-none transition-colors duration-200 border-l-2 border-black hover:bg-[var(--blue)] hover:text-black'
                 aria-label={`Перейти на сайт ${name[locale]}`}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ")
@@ -213,7 +213,7 @@ export default function ProjectsCarousel({ projects, locale }) {
                 <motion.div
                   layoutId={`project-image-${id}`}
                   transition={transition}
-                  className='flex-shrink-0 w-[500px] h-[512px] overflow-hidden border-2 border-black'
+                  className='flex-shrink-0 w-[360px] h-[360px] 2xl:w-[500px] 2xl:h-[512px] overflow-hidden border-2 border-black'
                 >
                   <Image
                     src={imageUrl || "/placeholder.svg"}
@@ -232,7 +232,7 @@ export default function ProjectsCarousel({ projects, locale }) {
                   transition={transition}
                   className='flex-1 bg-white'
                 >
-                  <p className='text-roboto text-xl text-[var(--gray)] whitespace-pre-line'>
+                  <p className='text-roboto text-base 2xl:text-xl text-[var(--gray)] whitespace-pre-line'>
                     {description[locale]}
                   </p>
                 </motion.div>
@@ -245,12 +245,12 @@ export default function ProjectsCarousel({ projects, locale }) {
             <div className='flex gap-4 md:gap-10 mb-8'>
               <ArrowLeftButton
                 onClick={handleScrollPrev}
-                className='transition-opacity w-11 h-11 md:w-18 md:h-18'
+                className='transition-opacity w-11 h-11 2xl:w-18 2xl:h-18'
                 aria-label='Попередня новина'
               />
               <ArrowRightButton
                 onClick={handleScrollNext}
-                className='transition-opacity w-11 h-11 md:w-18 md:h-18'
+                className='transition-opacity w-11 h-11 2xl:w-18 2xl:h-18'
                 aria-label='Наступна новина'
               />
             </div>
@@ -272,12 +272,12 @@ export default function ProjectsCarousel({ projects, locale }) {
                   exit='exit'
                   custom={direction}
                   transition={transition}
-                  className='absolute top-0 right-20 inline-flex items-center border-2 border-black font-oswald bg-transparent z-10'
+                  className='absolute top-0 left-2 2xl:right-20 inline-flex items-center border-2 border-black font-oswald bg-transparent z-10'
                 >
                   <motion.h3
                     layoutId={`project-title-${next._id}`}
                     transition={transition}
-                    className='text-[34px] px-16 py-3 uppercase text-center min-w-[422px] bg-white'
+                    className='text-xl 2xl:text-[34px] px-16 py-3 uppercase text-center 2xl:min-w-[422px] bg-white'
                   >
                     {next.name[locale]}
                   </motion.h3>
@@ -285,7 +285,7 @@ export default function ProjectsCarousel({ projects, locale }) {
                 <motion.div
                   layoutId={`project-image-${next._id}`}
                   transition={transition}
-                  className='w-full max-w-[385px] h-[328px] overflow-hidden'
+                  className='w-full max-w-[320px] h-[180px] 2xl:max-w-[385px] 2xl:h-[328px] overflow-hidden'
                 >
                   <Image
                     src={next.imageUrl || "/placeholder.svg"}

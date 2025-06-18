@@ -16,6 +16,29 @@ import {
 } from "@/lib/sanity-queries";
 import CorporateResponsibility from "@/components/CorporateResponsibility";
 import About from "@/components/about/about";
+export async function generateMetadata({ params: { locale } }) {
+  return {
+    title:
+      locale === "uk"
+        ? "Rentos Group - Ваш партнер у розвитку бізнесу"
+        : "Rentos Group - Your Business Development Partner",
+    description:
+      locale === "uk"
+        ? "Ми об'єднуємо досвід, репутацію та ефективність для довгострокового успіху наших проектів"
+        : "We combine experience, reputation and efficiency for long-term success of our projects",
+    openGraph: {
+      title:
+        locale === "uk"
+          ? "Rentos Group - Ваш партнер у розвитку бізнесу"
+          : "Rentos Group - Your Business Development Partner",
+      description:
+        locale === "uk"
+          ? "Ми об'єднуємо досвід, репутацію та ефективність для довгострокового успіху наших проектів"
+          : "We combine experience, reputation and efficiency for long-term success of our projects",
+      type: "website",
+    },
+  };
+}
 
 export default async function HomePage({ params }) {
   const locale = await params.locale;
@@ -34,6 +57,8 @@ export default async function HomePage({ params }) {
       <CorporateResponsibility/>
       <NewsCarousel newsItems={newsData} locale={locale} />
       <ContactsSection />
+      <Partners />
+      {/* <CorporateResponsibility/> */}
       <Feedback />
       <Footer />
     </main>

@@ -9,7 +9,7 @@ const About_temp = () => {
   const t = useTranslations("AboutSection");
 
   return (
-    <section className='max-w-[1600px] w-full mx-auto bg-white text-[var(--gray)] py-10 lg:py-32'>
+    <section className='max-w-[1600px] w-full mx-auto bg-white text-[var(--gray)] py-10 2xl:py-32 px-4 '>
       <div className='mx-auto flex flex-col lg:flex-row items-start gap-10'>
         <div className='hidden lg:block flex-shrink-0 w-[334px] xl:w-[496px]'>
           <Image
@@ -30,7 +30,7 @@ const About_temp = () => {
           <div className='flex flex-col lg:flex-row gap-8 lg:gap-12'>
             <div className='flex-1 flex flex-col gap-4'>
               <Paragraph>{t("description.part1")}</Paragraph>
-              <ul className='list-disc pl-5 text-base md:text-[20px] xl:text-[22px] font-roboto space-y-1'>
+              <ul className='list-disc pl-5 text-base md:text-base 2xl:text-[22px] font-roboto space-y-1'>
                 <li>{t("list.management")}</li>
                 <li>{t("list.development")}</li>
                 <li>{t("list.consulting")}</li>

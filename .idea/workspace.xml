@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a29caee-284f-46a7-8bdb-cb32c39dc48f" name="Changes" comment="check-commit">
-      <change afterPath="$PROJECT_DIR$/src/components/CorporateResponsibility.jsx" afterDir="false" />
+    <list default="true" id="7a29caee-284f-46a7-8bdb-cb32c39dc48f" name="Changes" comment="did corporate responsibility section">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[locale]/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[locale]/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CorporateResponsibility.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CorporateResponsibility.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/feedback.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/feedback.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/buttons/button.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/buttons/button.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/input.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/input.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/textarea.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/textarea.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/typography.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/typography.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,10 +68,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Desktop\work\rental\src\components\about" />
+      <recent name="C:\Users\User\Desktop\work\rental\src\components" />
       <recent name="C:\Users\User\Desktop\work\rental\public\icons" />
       <recent name="C:\Users\User\Desktop\work\rental\public" />
       <recent name="C:\Users\User\Desktop\work\rental\src\app\[locale]\components" />
-      <recent name="C:\Users\User\Desktop\work\rental\src\app\[locale]\images" />
     </key>
   </component>
   <component name="RunManager" selected="npm.Next.js: server-side">
@@ -108,7 +115,8 @@
       <workItem from="1749725021522" duration="148000" />
       <workItem from="1749740688705" duration="3840000" />
       <workItem from="1750069228039" duration="435000" />
-      <workItem from="1750069674666" duration="24169000" />
+      <workItem from="1750069674666" duration="32104000" />
+      <workItem from="1750248288047" duration="4387000" />
     </task>
     <task id="LOCAL-00001" summary="configured i18n">
       <option name="closed" value="true" />
@@ -198,7 +206,23 @@
       <option name="project" value="LOCAL" />
       <updated>1750168378645</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="check-commit">
+      <option name="closed" value="true" />
+      <created>1750168575308</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1750168575308</updated>
+    </task>
+    <task id="LOCAL-00013" summary="did corporate responsibility section">
+      <option name="closed" value="true" />
+      <created>1750176566786</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1750176566786</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,6 +250,7 @@
     <MESSAGE value="add partners" />
     <MESSAGE value="did feedback section (hardcode but responsive)" />
     <MESSAGE value="check-commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="check-commit" />
+    <MESSAGE value="did corporate responsibility section" />
+    <option name="LAST_COMMIT_MESSAGE" value="did corporate responsibility section" />
   </component>
 </project>

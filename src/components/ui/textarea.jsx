@@ -14,7 +14,7 @@ export const Textarea = forwardRef(({ className, placeholder, onChange, ...props
   const showPlaceholder = !hasText;
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full mb-0">
       {showPlaceholder && (
         <div
           className={cn(
@@ -38,7 +38,7 @@ export const Textarea = forwardRef(({ className, placeholder, onChange, ...props
           "bg-white text-left resize-none focus:outline-none",
           "text-base md:text-[22px] leading-tight",
           focused || hasText ? "pt-4" : "pt-[52px] lg:pt-[65px]",
-          "px-4 pb-2 max-h-[160px]",
+          "px-4 max-h-[160px]",
           "transition-all duration-200 ease-in-out",
           className
         )}

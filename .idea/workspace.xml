@@ -5,26 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a29caee-284f-46a7-8bdb-cb32c39dc48f" name="Changes" comment="fixed Responsibility &amp; feedback; (check-commit)">
-      <change afterPath="$PROJECT_DIR$/public/footer_logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/icons/facebook_icon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/icons/instagram_icon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/FacebookFooterIcon.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/footerLogo.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messages/uk.json" beforeDir="false" afterPath="$PROJECT_DIR$/messages/uk.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[locale]/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[locale]/globals.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CorporateResponsibility.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CorporateResponsibility.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Projects.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Projects.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Services.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Services.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/about/about.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/about/about.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/feedback.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/feedback.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/footer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/news-section/NewsCarousel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/news-section/NewsCarousel.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/partners.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/partners.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/InstagramIcon.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/InstagramFooterIcon.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/buttons/button.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/buttons/button.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/typography.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/typography.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +110,7 @@
       <workItem from="1749740688705" duration="3840000" />
       <workItem from="1750069228039" duration="435000" />
       <workItem from="1750069674666" duration="32104000" />
-      <workItem from="1750248288047" duration="11021000" />
+      <workItem from="1750248288047" duration="11758000" />
     </task>
     <task id="LOCAL-00001" summary="configured i18n">
       <option name="closed" value="true" />

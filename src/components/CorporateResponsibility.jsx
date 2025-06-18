@@ -11,7 +11,7 @@ const CorporateResponsibility = () => {
     return (
         <section className="py-16" id="">
             <Container>
-            <div className="flex flex-col lg:flex-row justify-between mb-6 md:mb-10 lg:mb-[130px]">
+            <div className="flex flex-col lg:flex-row justify-between mb-[42px] md:mb-16 lg:mb-[130px]">
                     <div className="flex flex-col items-left text-left lg:text-left lg:block">
                         <Heading2 className="mb-6 md:mb-10 lg:mb-[76px] max-w-[300px] lg:max-w-[476px] uppercase leading-10 lg:leading-20 ">
                             {t('title')}
@@ -21,11 +21,12 @@ const CorporateResponsibility = () => {
                                 <Paragraph>{t('sub_1.item_1')}</Paragraph>
                                 <Paragraph>{t('sub_1.item_2')}</Paragraph>
                             </div>
-                            <div className="flex-shrink-0 w-full lg:hidden">
+                            <div className="flex-shrink-0 w-full lg:hidden ">
                                 <Image
                                     src={img}
                                     alt="Corporate Responsibility"
-                                    className="w-full xs:max-w-[300px] sm:max-w-[450px] xs:max-h-[300px] sm:max-h-[450px] lg:h-full object-cover"
+                                    className="w-full xs:max-w-[300px] sm:max-w-[450px] xs:max-h-[300px] sm:max-h-[450px] lg:h-full
+                                     object-cover border-2 border-black"
                                 />
                             </div>
                             <div className="flex flex-col gap-4 md:gap-6 max-w-[500px] text-gray ">
@@ -34,11 +35,11 @@ const CorporateResponsibility = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="flex-shrink-0 w-full lg:w-[400px] xl:w-[500px] hidden lg:block">
+                    <div className="flex-shrink-0 w-full lg:w-[400px] xl:w-[500px] h-fit 3xl:h-[530px] hidden lg:block ">
                         <Image
                             src={img}
                             alt="Corporate Responsibility"
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover border-2 border-black"
                         />
                     </div>
                 </div>

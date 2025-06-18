@@ -57,7 +57,7 @@ export const Paragraph = forwardRef(
   ({ children, className, ...props }, ref) => (
     <p
       ref={ref}
-      className={cn("text-base  2xl:text-[22px] font-roboto", className)}
+      className={cn("text-base  lg:text-[22px] font-roboto", className)}
       {...props}
     >
       {children}

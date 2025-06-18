@@ -11,7 +11,7 @@ const CorporateResponsibility = () => {
     return (
         <section className="py-16">
             <Container>
-                    <div className="flex flex-col items-start lg:block mb-6 md:mb-10 lg:mb-[130px] text-left">
+                    <div className="flex flex-col lg:flex-row items-start lg:block mb-6 md:mb-10 lg:mb-[130px] text-left">
                         <Heading2 className="mb-6 md:mb-10 lg:mb-[76px] max-w-[300px] lg:max-w-[476px] uppercase leading-10 lg:leading-20 ">
                             {t('title')}
                         </Heading2>
@@ -31,15 +31,16 @@ const CorporateResponsibility = () => {
                                 <Paragraph>{t('sub_2.item_1')}</Paragraph>
                                 <Paragraph>{t('sub_2.item_2')}</Paragraph>
                             </div>
+                            <div className="flex-shrink-0 w-full lg:w-[400px] xl:w-[500px] hidden lg:block">
+                            <Image
+                                src={img}
+                                alt="Corporate Responsibility"
+                                className="w-full h-full object-cover"
+                            />
+                            </div>
                         </div>
                     </div>
-                    <div className="flex-shrink-0 w-full lg:w-[400px] xl:w-[500px] hidden lg:block">
-                        <Image
-                            src={img}
-                            alt="Corporate Responsibility"
-                            className="w-full h-full object-cover"
-                        />
-                    </div>
+
 
                 <div className="text-left">
                     <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-8">

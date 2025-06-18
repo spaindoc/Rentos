@@ -43,44 +43,60 @@ export default function ProjectsCarousel({ projects, locale }) {
 
   const active = projects[selectedIndex];
   const next = projects[selectedIndex + 1];
-
   const { _id: id, name, description, imageUrl, link } = active;
 
-  const transition = { duration: 0.5, ease: "easeInOut" };
+  // Удвоенная длительность для более медленных анимаций
+  const transition = { duration: 1.2, ease: "easeInOut" };
 
+  // Контейнер слайда — только движение по X
   const slideVariants = {
-    initial: (dir) => ({ x: dir === 1 ? "100%" : "-100%", opacity: 0 }),
-    animate: { x: "0%", opacity: 1 },
-    exit: (dir) => ({ x: dir === 1 ? "-100%" : "100%", opacity: 0 }),
+    initial: (dir) => ({ x: dir === 1 ? "100%" : "-100%" }),
+    animate: { x: "0%" },
+    exit: (dir) => ({ x: dir === 1 ? "-100%" : "100%" }),
   };
 
-  const textSlideVariants = {
+  // Изображение — масштаб и fade на вход/выход
+  const imageVariants = {
+    initial: { scale: 0.8, opacity: 1 },
+    animate: { scale: 1, opacity: 1 },
+    exit: { scale: 0.8, opacity: 0 },
+  };
+
+  // Кнопка — плавное появление и исчезновение
+  const buttonVariants = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
+  };
+
+  // Общие текстовые анимации для заголовков/описаний
+  const textVariants = {
     initial: (dir) => ({ x: dir === 1 ? 50 : -50, opacity: 0 }),
     animate: { x: 0, opacity: 1 },
     exit: (dir) => ({ x: dir === 1 ? -50 : 50, opacity: 0 }),
   };
 
   return (
-    <section className='py-16 max-w-[1600px] mx-auto px-2 2xl:px-0'>
+    <section className='py-16 max-w-[1600px] mx-auto'>
       {/* Mobile header */}
-      <div className='flex items-center justify-between px-4 mb-10 lg:hidden'>
-        <h2 className='text-[32px]] font-oswald'>ПРОЄКТИ</h2>
+      <div className='flex items-center justify-between px-4 mb-6 lg:hidden'>
+        <h2 className='text-[62px] font-oswald'>ПРОЄКТИ</h2>
         <div className='flex gap-2'>
           <ArrowLeftButton
             onClick={handleScrollPrev}
-            className='transition-opacity w-11 h-11 md:w-18 md:h-18'
+            className='w-11 h-11'
             aria-label='Попередня новина'
           />
           <ArrowRightButton
             onClick={handleScrollNext}
-            className='transition-opacity w-11 h-11 md:w-18 md:h-18'
+            className='w-11 h-11'
             aria-label='Наступна новина'
           />
         </div>
       </div>
 
       {/* Desktop header */}
-      <h2 className='hidden lg:block 2xl:text-6xl font-oswald text-center mb-12'>
+      <h2 className='hidden lg:block text-6xl font-oswald text-center mb-12'>
         ПРОЄКТИ
       </h2>
 
@@ -110,25 +126,31 @@ export default function ProjectsCarousel({ projects, locale }) {
             className='flex flex-col gap-4'
           >
             <motion.div
-              variants={textSlideVariants}
+              variants={textVariants}
+              initial='initial'
               animate='animate'
               exit='exit'
               custom={direction}
               transition={transition}
-              className='absolute -top-8 left-4 inline-flex items-center border-2 border-black font-oswald bg-transparent z-10'
+              className='absolute -top-8 left-4 inline-flex items-center border-2 border-black font-oswald bg-white z-10'
             >
               <motion.h3
                 layoutId={`project-title-${id}-mobile`}
                 transition={transition}
-                className='text-2xl px-7 py-3 uppercase text-center min-w-[250px] bg-white'
+                className='text-2xl px-7 py-3 uppercase text-center min-w-[250px]'
               >
                 {name[locale]}
               </motion.h3>
             </motion.div>
+
             <motion.div
               layoutId={`project-image-${id}-mobile`}
+              variants={imageVariants}
+              initial='initial'
+              animate='animate'
+              exit='exit'
               transition={transition}
-              className='relative w-full h-[244px] border-2 border-black'
+              className='relative w-full h-[244px] border-2 border-black overflow-hidden'
             >
               <Image
                 src={imageUrl || "/placeholder.svg"}
@@ -136,22 +158,27 @@ export default function ProjectsCarousel({ projects, locale }) {
                 fill
                 className='object-cover'
               />
-              <Link
-                href={link}
-                target='_blank'
-                rel='noopener noreferrer'
-                className='absolute -bottom-8 font-oswald right-0 translate-x-[2px] px-[10px] py-4 bg-black text-white text-xl font-medium uppercase tracking-wider focus:outline-none transition-colors duration-200 border-l-2 border-black hover:bg-[var(--blue)] hover:text-black z-50'
-                aria-label={`Перейти на сайт ${name[locale]}`}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ")
-                    e.currentTarget.click();
-                }}
+              <motion.div
+                variants={buttonVariants}
+                initial='initial'
+                animate='animate'
+                exit='exit'
+                transition={{ ...transition, delay: 0.6 }}
+                className='absolute -bottom-8 right-0 px-[10px] py-4 bg-black text-white text-xl font-oswald uppercase tracking-wider z-50'
               >
-                ПЕРЕЙТИ НА САЙТ
-              </Link>
+                <Link
+                  href={link}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  aria-label={`Перейти на сайт ${name[locale]}`}
+                >
+                  ПЕРЕЙТИ НА САЙТ
+                </Link>
+              </motion.div>
             </motion.div>
+
             <motion.p
-              variants={textSlideVariants}
+              variants={textVariants}
               initial='initial'
               animate='animate'
               exit='exit'
@@ -180,40 +207,50 @@ export default function ProjectsCarousel({ projects, locale }) {
             className='relative flex-1 max-w-5xl'
           >
             <motion.div
-              variants={textSlideVariants}
+              variants={textVariants}
+              initial='initial'
               animate='animate'
               exit='exit'
               custom={direction}
               transition={transition}
-              className='absolute top-0 left-32  2xl:right-0 inline-flex items-center border-2 border-black font-oswald bg-white 2xl:bg-transparent z-10'
+              className='absolute top-0 right-0 inline-flex items-center border-2 border-black font-oswald bg-white z-10'
             >
               <motion.h3
                 layoutId={`project-title-${id}`}
                 transition={transition}
-                className='text-xl 2xl:text-[34px] px-16 py-3 uppercase text-center 2xl:min-w-[422px] bg-white'
+                className='text-[34px] px-16 py-3 uppercase text-center min-w-[422px]'
               >
                 {name[locale]}
               </motion.h3>
-              <Link
-                href={link}
-                target='_blank'
-                rel='noopener noreferrer'
-                className='px-9 py-3 2xl:py-6 bg-black text-white text-xl 2xl:text-xl font-medium uppercase tracking-wider focus:outline-none transition-colors duration-200 border-l-2 border-black hover:bg-[var(--blue)] hover:text-black'
-                aria-label={`Перейти на сайт ${name[locale]}`}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ")
-                    e.currentTarget.click();
-                }}
+              <motion.div
+                variants={buttonVariants}
+                initial='initial'
+                animate='animate'
+                exit='exit'
+                transition={{ ...transition, delay: 0.6 }}
+                className='px-9 py-6 bg-black text-white text-xl font-oswald uppercase tracking-wider'
               >
-                ПЕРЕЙТИ НА САЙТ
-              </Link>
+                <Link
+                  href={link}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  aria-label={`Перейти на сайт ${name[locale]}`}
+                >
+                  ПЕРЕЙТИ НА САЙТ
+                </Link>
+              </motion.div>
             </motion.div>
+
             <div className='overflow-hidden'>
               <div className='flex gap-8 items-end'>
                 <motion.div
                   layoutId={`project-image-${id}`}
+                  variants={imageVariants}
+                  initial='initial'
+                  animate='animate'
+                  exit='exit'
                   transition={transition}
-                  className='flex-shrink-0 w-[360px] h-[360px] 2xl:w-[500px] 2xl:h-[512px] overflow-hidden border-2 border-black'
+                  className='flex-shrink-0 w-[500px] h-[512px] overflow-hidden border-2 border-black'
                 >
                   <Image
                     src={imageUrl || "/placeholder.svg"}
@@ -224,7 +261,7 @@ export default function ProjectsCarousel({ projects, locale }) {
                   />
                 </motion.div>
                 <motion.div
-                  variants={textSlideVariants}
+                  variants={textVariants}
                   initial='initial'
                   animate='animate'
                   exit='exit'
@@ -232,7 +269,7 @@ export default function ProjectsCarousel({ projects, locale }) {
                   transition={transition}
                   className='flex-1 bg-white'
                 >
-                  <p className='text-roboto text-base 2xl:text-xl text-[var(--gray)] whitespace-pre-line'>
+                  <p className='text-roboto text-xl text-[var(--gray)] whitespace-pre-line'>
                     {description[locale]}
                   </p>
                 </motion.div>
@@ -245,13 +282,11 @@ export default function ProjectsCarousel({ projects, locale }) {
             <div className='flex gap-4 md:gap-10 mb-8'>
               <ArrowLeftButton
                 onClick={handleScrollPrev}
-                className='transition-opacity w-11 h-11 2xl:w-18 2xl:h-18'
-                aria-label='Попередня новина'
+                className='w-11 h-11'
               />
               <ArrowRightButton
                 onClick={handleScrollNext}
-                className='transition-opacity w-11 h-11 2xl:w-18 2xl:h-18'
-                aria-label='Наступна новина'
+                className='w-11 h-11'
               />
             </div>
             {next && (
@@ -266,26 +301,30 @@ export default function ProjectsCarousel({ projects, locale }) {
                 className='relative flex flex-col items-end w-full min-w-[385px]'
               >
                 <motion.div
-                  variants={textSlideVariants}
+                  variants={textVariants}
                   initial='initial'
                   animate='animate'
                   exit='exit'
                   custom={direction}
                   transition={transition}
-                  className='absolute top-0 left-2 2xl:right-20 inline-flex items-center border-2 border-black font-oswald bg-transparent z-10'
+                  className='absolute top-0 right-20 inline-flex items-center border-2 border-black font-oswald bg-white z-10'
                 >
                   <motion.h3
                     layoutId={`project-title-${next._id}`}
                     transition={transition}
-                    className='text-xl 2xl:text-[34px] px-16 py-3 uppercase text-center 2xl:min-w-[422px] bg-white'
+                    className='text-[34px] px-16 py-3 uppercase text-center min-w-[422px]'
                   >
                     {next.name[locale]}
                   </motion.h3>
                 </motion.div>
                 <motion.div
                   layoutId={`project-image-${next._id}`}
+                  variants={imageVariants}
+                  initial='initial'
+                  animate='animate'
+                  exit='exit'
                   transition={transition}
-                  className='w-full max-w-[320px] h-[180px] 2xl:max-w-[385px] 2xl:h-[328px] overflow-hidden'
+                  className='w-full max-w-[385px] h-[328px] overflow-hidden border-2 border-black'
                 >
                   <Image
                     src={next.imageUrl || "/placeholder.svg"}

@@ -36,7 +36,7 @@ export default function Navbar() {
           2xl:max-w-[1600px] mx-auto
            2xl:px-0
           my-3
-          h-16 xl:h-20
+          h-16 xl:h-31
           flex items-center
           justify-between xl:justify-center
           relative
@@ -49,12 +49,12 @@ export default function Navbar() {
             alt='Logo'
             width={100}
             height={100}
-            className='w-[66px] h-[66px] 2xl:w-25 2xl:h-25'
+            className='w-[66px] h-[66px] 2xl:w-28 2xl:h-27'
           />
         </Link>
 
         {/* Desktop nav */}
-        <div className='hidden xl:flex items-center space-x-2 pl-6'>
+        <div className='hidden xl:flex items-center space-x-1 pl-8'>
           {navigationItems.map((item) => (
             <Link
               key={item.key}
@@ -78,7 +78,7 @@ export default function Navbar() {
             onClick={handleLanguageSwitch}
             className='
               flex items-center gap-1.5
-              text-base 2xl:text-xl text-black
+              text-base 2xl:text-xl text-black mr-20
               px-2 py-1
               outline outline-transparent outline-offset-2
               transition-all duration-200 hover:outline-black

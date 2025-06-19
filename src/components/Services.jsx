@@ -37,14 +37,14 @@ export default function Services() {
     <section
       className="
         bg-[url('/service-bg.png')]
-        bg-cover md:bg-center bg-no-repeat 
+        bg-cover md:bg-center bg-no-repeat scroll-mt-10 
       "
       id='services'
     >
       <div className='py-8 2xl:py-36 max-w-[1400px] mx-auto px-4  2xl:px-0 flex flex-col lg:flex-row justify-start w-full'>
-        <div className='w-full mb-20 px-4 lg:w-1/3 h-[120px] 2xl:h-[340px] sticky top-10 2xl:top-45'>
+        <div className='w-full mb-20 md:mb-0 px-4 lg:w-1/3 h-[120px] 2xl:h-[340px] sticky top-20 2xl:top-45'>
           <h2
-            className={`${oswald.className} text-right 2xl:mr-12 mb-15 text-[32px] md:text-[62px]`}
+            className={`${oswald.className} text-right 2xl:mr-12 mb-15 text-[32px] md:text-[54px]`}
           >
             {t("title")}
           </h2>
@@ -60,7 +60,7 @@ export default function Services() {
               className={`
                 sticky ${topClass} ${zIndices[i]}
                 border-1 border-black bg-white
-                py-6 md:py-11 px-4 h-[320px] 2xl:h-[340px] w-full flex flex-col justify-between
+                py-6 md:py-11 px-4 h-[320px] 2xl:h-[340px] w-full flex flex-col justify-between md:max-w-xl md:ml-6
                 ${i > 0 ? "mt-15" : ""}
               `}
             >

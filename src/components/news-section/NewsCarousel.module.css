@@ -4,7 +4,7 @@
 
 .container {
   display: flex;
-  gap: 37px;
+  gap: 30px;
   user-select: none;
   -webkit-touch-callout: none;
   -webkit-tap-highlight-color: transparent;

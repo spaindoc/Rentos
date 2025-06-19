@@ -38,10 +38,10 @@ const Partners = () => {
   );
 
   return (
-    <Section className='bg-light-blue' id='partners'>
+    <Section className='bg-light-blue scroll-mt-20' id='partners'>
       <Container>
         <div className='flex flex-col items-start gap-4 lg:gap-8'>
-          <Heading2 className='text-black w-1/3 pl-4 mx-auto text-left mb-8 '>
+          <Heading2 className='text-black w-1/3 pl-8 mx-auto text-left mb-8 '>
             {t("Partners.title")}
           </Heading2>
           <div className='flex-1 overflow-hidden flex justify-center items-center w-full'>

@@ -33,12 +33,19 @@ const getNewsData = async () => {
     link
   }`;
   const data = await client.fetch(query);
+
   const newsWithUrls = data.map((news) => {
+    const formattedDate = news.date
+      ? new Date(news.date).toLocaleDateString("uk-UA") 
+      : null;
+
     return {
       ...news,
+      date: formattedDate,
       imageUrl: news.image ? urlFor(news.image).url() : null,
     };
   });
+
   return newsWithUrls;
 };
 

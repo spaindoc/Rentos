@@ -14,7 +14,8 @@ import {
 } from "@/lib/sanity-queries";
 import CorporateResponsibility from "@/components/CorporateResponsibility";
 import About from "@/components/about/about";
-export async function generateMetadata({ params: { locale } }) {
+export async function generateMetadata({ params }) {
+  const locale = params;
   return {
     title:
       locale === "uk"
@@ -39,7 +40,7 @@ export async function generateMetadata({ params: { locale } }) {
 }
 
 export default async function HomePage({ params }) {
-  const locale = await params.locale;
+  const locale = params;
   const heroData = await getHeroData();
   const projectsData = await getProjectsData();
   const newsData = await getNewsData();

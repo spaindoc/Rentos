@@ -19,7 +19,7 @@ export const Heading2 = forwardRef(({ children, className, ...props }, ref) => (
   <h2
     ref={ref}
     className={cn(
-      "text-3xl md:text-5xl font-oswald text-black uppercase",
+      "text-3xl md:text-[54px] font-oswald text-black uppercase",
       className
     )}
     {...props}
@@ -32,7 +32,10 @@ Heading2.displayName = "Heading2";
 export const Heading3 = forwardRef(({ children, className, ...props }, ref) => (
   <h3
     ref={ref}
-    className={cn("text-[32px] lg:text-4xl font-oswald text-black uppercase", className)}
+    className={cn(
+      "text-[32px] lg:text-4xl font-oswald text-black uppercase",
+      className
+    )}
     {...props}
   >
     {children}

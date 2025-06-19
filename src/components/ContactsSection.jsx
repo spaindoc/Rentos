@@ -27,19 +27,19 @@ export default function ContactsSection() {
   }
 
   return (
-    <section className='py-10 2xl:py-16 px-4 lg:px-6 max-w-[1600px] mx-auto'>
-      <h2 className=' text-[32px] text-right lg:text-left lg:text-[62px] font-oswald uppercase mb-12'>
+    <section className='py-10 2xl:py-16 px-4 lg:px-0 max-w-[1400px] mx-auto'>
+      <h2 className=' text-[32px] text-right lg:text-left lg:text-[54px] font-oswald uppercase mb-12'>
         Контакти
       </h2>
 
       <div className='flex flex-col gap-8 lg:flex-row'>
         {/* ——— Контакти ——— */}
-        <div className='flex flex-col lg:w-1/3 gap-5 2xl:gap-10 justify-between'>
+        <div className='flex flex-col lg:w-1/3  gap-5 2xl:gap-10 justify-between'>
           {/* Адресa + Instagram */}
           <div className='flex items-center justify-between'>
             <div className='flex items-center gap-4'>
-              <div className='w-11 h-11 lg:w-16 lg:h-16 border-2 border-black flex items-center justify-center'>
-                <LocationIcon className='stroke-black w-5 h-5 lg:w-7 lg:h-7' />
+              <div className='w-11 h-11  border-2 border-black flex items-center justify-center'>
+                <LocationIcon className='stroke-black w-5 h-5 ' />
               </div>
               <p className=' text-base 2xl:text-xl'>
                 М. Рівне
@@ -59,8 +59,8 @@ export default function ContactsSection() {
 
           {/* Телефон */}
           <div className='flex items-center gap-4'>
-            <div className='w-11 h-11 lg:w-16 lg:h-16 border-2 border-black flex items-center justify-center'>
-              <PhoneIcon className='stroke-black w-5 h-5 lg:w-7 lg:h-7' />
+            <div className='w-11 h-11  border-2 border-black flex items-center justify-center'>
+              <PhoneIcon className='stroke-black w-5 h-5 ' />
             </div>
             <Link
               href='tel:+380991168518'
@@ -73,7 +73,7 @@ export default function ContactsSection() {
           {/* Email + Facebook */}
           <div className='flex items-center justify-between'>
             <div className='flex items-center gap-4'>
-              <div className='w-11 h-11 lg:w-16 lg:h-16 border-2 border-black flex items-center justify-center'>
+              <div className='w-11 h-11  border-2 border-black flex items-center justify-center'>
                 <MailIcon className='stroke-black w-5 h-5 2xl:w-7 lg:h-7' />
               </div>
               <Link
@@ -99,7 +99,7 @@ export default function ContactsSection() {
               rel='noopener noreferrer'
               className='
               group                    
-              w-11 h-11 lg:w-16 lg:h-16
+              w-11 h-11 
               border-2 border-black
               flex items-center justify-center
               text-black               
@@ -110,7 +110,7 @@ export default function ContactsSection() {
             >
               <FacebookIcon
                 className='
-                w-5 h-5 lg:w-7 lg:h-7
+                w-5 h-5 
                 fill-transparent        
                 stroke-current         
                 group-hover:fill-white   
@@ -122,7 +122,7 @@ export default function ContactsSection() {
         </div>
 
         {/* ——— Карта ——— */}
-        <div className='flex-1 lg:w-2/3'>
+        <div className='flex-1 lg:w-2/3 md:-ml-8'>
           <div className='w-full h-64 sm:h-80 lg:h-[400px] border-2 border-black'>
             {isLoaded ? (
               <GoogleMap

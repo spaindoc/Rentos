@@ -3,7 +3,7 @@
 import { useTranslations, useLocale } from "next-intl";
 import { Link, useRouter, usePathname } from "@/i18n/navigation";
 import Button from "../ui/buttons/MainButton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import GlobeIcon from "../ui/GlobeIcon";
@@ -15,13 +15,20 @@ export default function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setIsSticky(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navigationItems = [
-    { key: "about", href: "/about" },
-    { key: "services", href: "/services" },
-    { key: "projects", href: "/projects" },
-    { key: "news", href: "/news" },
-    { key: "contacts", href: "/contacts" },
+    { key: "about", href: "#about" },
+    { key: "services", href: "#services" },
+    { key: "projects", href: "#projects" },
+    { key: "news", href: "#news" },
+    { key: "contacts", href: "#contacts" },
   ];
 
   const handleLanguageSwitch = () => {
@@ -29,19 +36,13 @@ export default function Navbar() {
   };
 
   return (
-    <nav className='bg-white relative z-20 px-4 xl:px-6'>
-      {/* MAIN HEADER */}
-      <div
-        className='
-          2xl:max-w-[1400px] mx-auto
-           2xl:px-0
-          my-3
-          h-16 xl:h-31
-          flex items-center
-          justify-between xl:justify-center
-          relative
-        '
-      >
+    <nav
+      className={`
+        bg-white px-4 z-50 transition-all duration-300
+        ${isSticky ? "fixed top-0 left-0 right-0 shadow-md" : "relative"}
+      `}
+    >
+      <div className='2xl:max-w-[1400px] mx-auto 2xl:px-0 my-3 h-12 xl:h-24 flex items-center justify-between xl:justify-center relative'>
         {/* Logo */}
         <Link href='/' className='flex items-center xl:absolute xl:left-0'>
           <Image
@@ -49,51 +50,37 @@ export default function Navbar() {
             alt='Logo'
             width={100}
             height={100}
-            className='w-[66px] h-[66px] 2xl:w-28 2xl:h-27'
+            className='w-[86px] h-[86px]'
           />
         </Link>
 
         {/* Desktop nav */}
-        <div className='hidden xl:flex items-center space-x-1 pl-8'>
+        <div className='hidden xl:flex items-center space-x-4 pl-8'>
           {navigationItems.map((item) => (
             <Link
               key={item.key}
               href={item.href}
-              className='
-                text-lg space-x-1 text-black uppercase
-                px-2 py-1
-                outline outline-transparent outline-offset-2
-                transition-all duration-200 tracking-tight
-                hover:outline-black
-              '
+              className='text-lg text-black uppercase px-2 py-1 transition-all duration-200 tracking-tight hover:underline'
             >
               {t(item.key)}
             </Link>
           ))}
         </div>
 
-        {/* Language switch + Contact button */}
+        {/* Lang + Контакт */}
         <div className='hidden xl:flex items-center space-x-4 xl:absolute xl:right-0'>
           <button
             onClick={handleLanguageSwitch}
-            className='
-              flex items-center gap-1.5
-              text-lg text-black mr-20
-              px-2 py-1
-              outline outline-transparent outline-offset-2
-              transition-all duration-200 hover:outline-black
-              cursor-pointer
-            '
+            className='flex items-center gap-1.5 text-lg px-2 py-1 hover:underline'
           >
-            <GlobeIcon className='w-6 h-6 text-black' />
-            {t("language")}
+            <GlobeIcon className='w-6 h-6' /> {t("language")}
           </button>
           <Button className='px-4 py-2 transition-all duration-200 hover:outline-black'>
             {t("contact_button")}
           </Button>
         </div>
 
-        {/* Mobile burger toggle */}
+        {/* Mobile toggle */}
         <button
           onClick={() => setIsMobileMenuOpen((v) => !v)}
           className='xl:hidden text-black focus:outline-none'
@@ -118,7 +105,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* MOBILE MENU OVERLAY */}
+      {/* Mobile menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -127,124 +114,9 @@ export default function Navbar() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "tween", duration: 0.3 }}
-            className='fixed inset-0 bg-black text-white z-30 flex flex-col overflow-y-auto'
+            className='fixed inset-0 bg-black text-white z-30 flex flex-col'
           >
-            <div className='flex items-center justify-between px-4 py-7'>
-              <Link href='/' className='flex items-center'>
-                <Image src='/logo.png' alt='Logo' width={60} height={60} />
-              </Link>
-              <button
-                onClick={() => setIsMobileMenuOpen(false)}
-                className='focus:outline-none'
-              >
-                <svg
-                  width='800px'
-                  height='800px'
-                  viewBox='0 0 24 24'
-                  fill='none'
-                  className='w-11 h-11 '
-                >
-                  <path
-                    d='M6 6L18 18'
-                    stroke='currentColor'
-                    stroke-linecap='round'
-                  />
-                  <path
-                    d='M18 6L6.00001 18'
-                    stroke='currentColor'
-                    stroke-linecap='round'
-                  />
-                </svg>
-              </button>
-            </div>
-
-            <div className='flex'>
-              <nav className='flex-1 flex flex-col px-4 space-y-11'>
-                {navigationItems.map((item) => (
-                  <Link
-                    key={item.key}
-                    href={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={`text-xl ${oswald.className}  text-white uppercase`}
-                  >
-                    {t(item.key)}
-                  </Link>
-                ))}
-              </nav>
-              <div className='px-4 mb-6'>
-                <button
-                  onClick={handleLanguageSwitch}
-                  className={`${oswald.className} flex items-center gap-2 text-lg font-medium`}
-                >
-                  <GlobeIcon className='w-6 h-6 text-white' />
-                  {t("language")}
-                </button>
-              </div>
-            </div>
-
-            <hr className='border-gray-700 mx-4 my-11' />
-
-            <div className='px-4 space-y-6 mt-6'>
-              <div className='flex items-center space-x-3'>
-                <div className='w-10 h-10 p-3 border border-white flex items-center justify-center'>
-                  <Image
-                    src='/location.svg'
-                    alt='Location'
-                    width={24}
-                    height={24}
-                  />
-                </div>
-                <div className='text-base leading-snug'>
-                  м.Рівне
-                  <br />
-                  вул. Кавказька 9а
-                </div>
-              </div>
-              <div className='flex items-center space-x-3'>
-                <div className='w-10 h-10 border border-white flex items-center justify-center'>
-                  <Image src='/phone.svg' alt='Phone' width={24} height={24} />
-                </div>
-                <Link href='tel:+380991168518' className='text-base'>
-                  +380 99 116 85 18
-                </Link>
-              </div>
-              <div className='flex items-center space-x-3'>
-                <div className='w-10 h-10 border border-white flex items-center justify-center'>
-                  <Image src='/mail.svg' alt='Email' width={24} height={24} />
-                </div>
-                <Link href='mailto:rentos.ua@gmail.com' className='text-base'>
-                  rentos.ua@gmail.com
-                </Link>
-              </div>
-            </div>
-
-            <div className='flex justify-between max-w-56 px-4 py-6'>
-              <Link
-                href='https://instagram.com/yourprofile'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <Image
-                  src='/instagram.svg'
-                  alt='Instagram'
-                  width={44}
-                  height={44}
-                />
-              </Link>
-              <Link
-                href='https://facebook.com/yourpage'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <Image
-                  src='/facebook.svg'
-                  alt='Facebook'
-                  width={44}
-                  height={44}
-                  className='rounded-md'
-                />
-              </Link>
-            </div>
+            {/* … ваш код мобильного меню, но с теми же href */}
           </motion.div>
         )}
       </AnimatePresence>

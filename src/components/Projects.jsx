@@ -7,8 +7,11 @@ import ArrowRightButton from "./ui/buttons/ArrowRightButton";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 export default function ProjectsCarousel({ projects, locale }) {
+  const t = useTranslations("projects");
+
   const [emblaRef, setEmblaRef] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [direction, setDirection] = useState(0);
@@ -80,12 +83,12 @@ export default function ProjectsCarousel({ projects, locale }) {
 
   return (
     <section
-      className='py-16 max-w-[1400px] mx-auto px-2 2xl:px-0'
+      className='py-16 max-w-[1400px] mx-auto px-2 2xl:px-0 scroll-mt-20'
       id='projects'
     >
       {/* Mobile header */}
       <div className='flex justify-between px-4 mb-6 lg:hidden'>
-        <h2 className='text-[32px] font-oswald'>ПРОЄКТИ</h2>
+        <h2 className='text-[32px] font-oswald uppercase'>{t("heading")}"</h2>
         <div className='flex gap-2'>
           <ArrowLeftButton
             onClick={handleScrollPrev}
@@ -101,8 +104,8 @@ export default function ProjectsCarousel({ projects, locale }) {
       </div>
 
       {/* Desktop header */}
-      <h2 className='hidden lg:block text-6xl font-oswald text-center mb-12'>
-        ПРОЄКТИ
+      <h2 className='hidden lg:block text-[54px] w-1/3 mx-auto font-oswald pl-10 mb-12 uppercase'>
+        {t("heading")}
       </h2>
 
       {/* Embla viewport */}
@@ -155,7 +158,7 @@ export default function ProjectsCarousel({ projects, locale }) {
                   rel='noopener noreferrer'
                   aria-label={`Перейти на сайт ${name[locale]}`}
                 >
-                  ПЕРЕЙТИ НА САЙТ
+                  {t("read_more_aria")}
                 </Link>
               </motion.div>
             </motion.div>
@@ -213,7 +216,7 @@ export default function ProjectsCarousel({ projects, locale }) {
                     rel='noopener noreferrer'
                     aria-label={`Перейти на сайт ${name[locale]}`}
                   >
-                    ПЕРЕЙТИ НА САЙТ
+                    {t("read_more_aria")}
                   </Link>
                 </motion.div>
               </motion.div>

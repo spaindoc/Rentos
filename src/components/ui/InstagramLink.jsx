@@ -9,7 +9,7 @@ export default function InstagramLink() {
       rel='noopener noreferrer'
       className='group
     relative
-    w-16 h-16
+    w-11 h-11
     border-2 border-black
     flex items-center justify-center
     bg-transparent

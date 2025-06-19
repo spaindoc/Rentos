@@ -10,7 +10,7 @@ const CorporateResponsibility = () => {
   const t = useTranslations("corporateResponsibility");
 
   return (
-    <section className='py-16 relative' id=''>
+    <section className='py-16 relative scroll-mt-20' id=''>
       <PatternBackground />
       <Container className='bg-white relative z-10 -mt-16 pt-16'>
         <div className='flex flex-col lg:flex-row justify-between pb-[42px] pd:mb-16 lg:pb-10 lg:mb-10'>
@@ -27,8 +27,7 @@ const CorporateResponsibility = () => {
                 <Image
                   src={img}
                   alt='Corporate Responsibility'
-                  className='w-full xs:max-w-[300px] sm:max-w-[450px] xs:max-h-[300px] sm:max-h-[450px] lg:h-full
-                                     object-cover border-2 border-black'
+                  className='w-full  sm:max-w-[450px] xs:max-h-[300px] sm:max-h-[450px] lg:h-full object-cover border-black'
                 />
               </div>
               <div className='flex flex-col gap-4 md:gap-6 max-w-[380px] text-gray '>

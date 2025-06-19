@@ -140,5 +140,16 @@
     "visitWebsiteButton": "ПЕРЕЙТИ НА САЙТ",
     "mainButton": "УСІ ПРОЄКТИ",
     "mainButtonLabel": "Переглянути всі проєкти"
-  }
+  },
+
+"news": {
+  "heading": "Новини",
+  "read_more": "Детальніше",
+  "read_more_aria": "Детальніше про {caption}"
+},
+"projects": {
+  "heading": "Проєкти",
+  "read_more": "Детальніше",
+  "read_more_aria": "Детальніше про {caption}"    
+} 
 }

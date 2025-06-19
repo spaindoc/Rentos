@@ -9,8 +9,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button, Heading2 } from "../ui";
 import styles from "./NewsCarousel.module.css";
+import { useTranslations, useLocale } from "next-intl";
 
-export default function NewsCarousel({ newsItems, locale }) {
+export default function NewsCarousel({ newsItems }) {
+  const t = useTranslations("news");
+  const locale = useLocale();
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: "start", slidesToScroll: 1 },
     []
@@ -28,22 +31,25 @@ export default function NewsCarousel({ newsItems, locale }) {
   if (!newsItems?.length) return null;
 
   return (
-    <section className='md:py-16 max-w-[1400px] mx-auto px-2' id='news'>
+    <section
+      id='news'
+      className='md:py-16 max-w-[1400px] mx-auto px-2 scroll-mt-10'
+    >
       {/* Header */}
       <div className='flex items-center justify-between mb-7 md:mb-25 mx-4 md:mx-0'>
-        <Heading2 className='text-black w-1/3 pl-4 mx-auto text-left mb-8 '>
-          Новини
+        <Heading2 className='text-black w-1/3 pl-18 mx-auto text-left mb-8'>
+          {t("heading")}
         </Heading2>
         <div className='flex gap-4 md:gap-10'>
           <ArrowLeftButton
             onClick={handleScrollPrev}
-            className='transition-opacity w-11 h-11 2xl:w-18 2xl:h-18'
-            aria-label='Попередня новина'
+            className='transition-opacity w-13 h-13'
+            aria-label={t("read_more_aria", { caption: "" })}
           />
           <ArrowRightButton
             onClick={handleScrollNext}
-            className='transition-opacity w-11 h-11 2xl:w-18 2xl:h-18'
-            aria-label='Наступна новина'
+            className='transition-opacity w-13 h-13'
+            aria-label={t("read_more_aria", { caption: "" })}
           />
         </div>
       </div>
@@ -51,50 +57,51 @@ export default function NewsCarousel({ newsItems, locale }) {
       {/* Embla viewport */}
       <div className={styles.viewport} ref={emblaRef}>
         <div className={styles.container}>
-          {newsItems.map((item) => (
-            <div key={item._id} className={styles.slide}>
-              <div className='h-full max-w-[496px] w-full flex flex-col'>
-                {/* Image */}
-                <div className='relative w-full h-64 2xl:h-[428px] bg-gray-200 overflow-hidden border-2 border-black'>
-                  <Image
-                    src={item.imageUrl || "/placeholder.svg"}
-                    alt={item.caption[locale]}
-                    fill
-                    className='object-cover'
-                  />
-                  <Link
-                    href={item.link}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                  >
-                    <Button
-                      className='absolute bottom-0 right-0 2xl:px-14 2xl:y-5 bg-black text-base text-white 2xl:text-xl font-oswald focus:outline-none transition-colors duration-200 border-2 border-b-0 border-r-0 border-black hover:bg-[var(--blue)] hover:text-black 2xl:min-w-[156px]'
-                      aria-label={`Детальніше про ${item.caption[locale]}`}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter" || e.key === " ")
-                          e.currentTarget.click();
-                      }}
+          {newsItems.map((item) => {
+            return (
+              <div key={item._id} className={styles.slide}>
+                <div className='h-full max-w-[380px] w-full flex flex-col'>
+                  {/* Image */}
+                  <div className='relative w-full h-64 2xl:h-[328px] bg-gray-200 overflow-hidden border-2 border-black'>
+                    <Image
+                      src={item.imageUrl || "/placeholder.svg"}
+                      alt={item.caption[locale]}
+                      fill
+                      className='object-cover'
+                    />
+                    <Link
+                      href={item.link}
+                      target='_blank'
+                      rel='noopener noreferrer'
                     >
-                      ДЕТАЛЬНІШЕ
-                    </Button>
-                  </Link>
-                </div>
+                      <Button
+                        className='absolute -bottom-1 -right-1 2xl:px-14 2xl:y-5 bg-black text-base text-white 2xl:text-xl font-oswald focus:outline-none transition-colors duration-200 border-1 border-b-2 border-r-1 border-black hover:bg-[var(--blue)] hover:text-black 2xl:min-w-[156px] uppercase'
+                        aria-label={t("read_more_aria", {
+                          caption: item.caption[locale],
+                        })}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ")
+                            e.currentTarget.click();
+                        }}
+                      >
+                        {t("read_more")}
+                      </Button>
+                    </Link>
+                  </div>
 
-                {/* Text */}
-                <div className='py-3 flex-grow flex flex-col gap-3 justify-between'>
-                  <p
-                    className='text-base 2xl:text-xl font-roboto text-black
-                  '
-                  >
-                    {item.date}
-                  </p>
-                  <p className='text-lg 2xl:text-2xl font-oswald uppercase whitespace-pre-line min-h-25'>
-                    {item.caption[locale]}
-                  </p>
+                  {/* Text */}
+                  <div className='py-2 flex-grow flex flex-col gap-1 justify-between'>
+                    <p className='text-base 2xl:text-lg font-roboto text-black'>
+                      {item.date}
+                    </p>
+                    <p className='text-lg font-oswald uppercase whitespace-pre-line min-h-25'>
+                      {item.caption[locale]}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

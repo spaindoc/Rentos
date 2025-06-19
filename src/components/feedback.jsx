@@ -31,12 +31,12 @@ const Feedback = () => {
                        bg-[position:51%_40%] md:bg-[position:50%_50%] lg:bg-[position:50%_61%]
                        xl:bg-[position:50%_57%] 2xl:bg- 3xl:bg-[position:50%_61%]
                        md:bg-size-[300%] lg:bg-size-[180%] xl:bg-size-[130%] 3xl:bg-size-[109%]
-                       lg:min-h-[91vh] max-h-[840px]"
+                       lg:min-h-[91vh] max-h-[840px] scroll-mt-40"
             style={{ backgroundImage: `url(${bg.src})` }}
         >
             <Container>
                 <div className="w-full mx-auto mb-9 lg:mb-12 py-3.5 px-2.5
-                               xs:w-full xs:max-w-none xs:text-center lg:text-left  sm:w-full md:w-[70%] max-w-[510px] lg:max-w-[400px] xl:max-w-[410px] 2xl:max-w-[490px] 3xl:max-w-[510px]
+                               xs:w-full xs:max-w-none xs:text-center lg:text-center  sm:w-full md:w-[70%] max-w-[510px] lg:max-w-[400px] xl:max-w-[410px] 2xl:max-w-[490px] 3xl:max-w-[510px]
                                text-black bg-white border-2 border-black uppercase">
                     <Heading2>{t('Feedback.title')}</Heading2>
                 </div>

@@ -4,16 +4,16 @@ import CompanyPhilosophy from "@/components/about/companyPhilosophy";
 
 const About = () => {
     return (
-        <>
-        <div className='hidden lg:block'>
+        <div id="about">
+         <div className='hidden lg:block'>
             <About_temp />
             <CompanyPhilosophy />
-      </div>
-      <div className='lg:hidden block'>
-            <CompanyPhilosophy />
-            <About_temp />
-      </div>
-        </>
+          </div>
+          <div className='lg:hidden block'>
+                <CompanyPhilosophy />
+                <About_temp />
+          </div>
+        </div>
 
     );
 };

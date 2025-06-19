@@ -38,7 +38,7 @@ const Partners = () => {
   );
 
   return (
-    <Section className="bg-light-blue">
+    <Section className="bg-light-blue" id="partners">
       <Container>
         <div className="flex flex-col items-start gap-4 lg:gap-8">
           <Heading2 className="text-black w-full text-center mb-8 lg:mb-[72px]">

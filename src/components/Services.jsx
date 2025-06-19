@@ -39,6 +39,7 @@ export default function Services() {
         bg-[url('/service-bg.png')]
         bg-cover md:bg-center bg-no-repeat 
       "
+      id="services"
     >
       <div className='py-8 2xl:py-36 max-w-[1600px] mx-auto px-4  2xl:px-0 flex flex-col lg:flex-row justify-start w-full'>
         <div className='w-full  px-4 lg:w-1/3 h-[120px] 2xl:h-[340px] sticky top-20 2xl:top-45'>

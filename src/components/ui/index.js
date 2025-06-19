@@ -6,4 +6,4 @@ export * from "./textarea";
 export * from "./list";
 export * from "./slider";
 export { default as FacebookIcon } from "./InstagramLink.jsx";
-export { default as InstagramIcon } from "./InstagramIcon";
+export { default as InstagramIcon } from "./InstagramFooterIcon";

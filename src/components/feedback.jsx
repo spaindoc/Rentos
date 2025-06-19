@@ -25,10 +25,11 @@ const Feedback = () => {
 
     return (
         <section
+            id="contacts"
         // Нахардкожено але працює )
             className="min-w-full overflow-x-hidden bg-auto bg-no-repeat box-border py-10 md:py-15
                        bg-[position:51%_40%] md:bg-[position:50%_50%] lg:bg-[position:50%_61%]
-                       xl:bg-[position:50%_57%] 2xl:bg-[position:50%_59%] 3xl:bg-[position:50%_61%]
+                       xl:bg-[position:50%_57%] 2xl:bg- 3xl:bg-[position:50%_61%]
                        md:bg-size-[300%] lg:bg-size-[180%] xl:bg-size-[130%] 3xl:bg-size-[109%]
                        lg:min-h-[91vh] max-h-[840px]"
             style={{ backgroundImage: `url(${bg.src})` }}

@@ -77,7 +77,9 @@ export default function ProjectsCarousel({ projects, locale }) {
   };
 
   return (
-    <section className='py-16 max-w-[1600px] mx-auto'>
+
+    <section className='py-16 max-w-[1600px] mx-auto px-2 2xl:px-0' id="projects">
+
       {/* Mobile header */}
       <div className='flex items-center justify-between px-4 mb-6 lg:hidden'>
         <h2 className='text-[62px] font-oswald'>ПРОЄКТИ</h2>

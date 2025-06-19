@@ -9,9 +9,9 @@ const About_temp = () => {
   const t = useTranslations("AboutSection");
 
   return (
-    <section className='max-w-[1600px] w-full mx-auto bg-white text-[var(--gray)] py-10 2xl:py-32 px-4 '>
-      <div className='mx-auto flex flex-col lg:flex-row items-start gap-10'>
-        <div className='hidden lg:block flex-shrink-0 w-[334px] xl:w-[496px]'>
+    <section className='max-w-[1400px] w-full mx-auto bg-white text-[var(--gray)] py-2 xl:py-25 px-4 md:px-0'>
+      <div className='mx-auto flex flex-col lg:flex-row items-start gap-15'>
+        <div className='hidden lg:block flex-shrink-0 w-[334px] lg:w-[416px]'>
           <Image
             src='/About_img.jpg'
             alt='about_us'
@@ -24,13 +24,13 @@ const About_temp = () => {
         </div>
 
         <div className='flex-1 flex flex-col gap-8'>
-          <Heading2 className=' mb-4 uppercase text-[32px] md:text-[62px]'>
+          <Heading2 className='  uppercase text-[32px] md:text-[54px]'>
             {t("title")}
           </Heading2>
-          <div className='flex flex-col lg:flex-row gap-8 lg:gap-12'>
+          <div className='flex flex-col md:mt-11 lg:flex-row gap-8 lg:gap-12'>
             <div className='flex-1 flex flex-col gap-4'>
               <Paragraph>{t("description.part1")}</Paragraph>
-              <ul className='list-disc pl-5 text-base md:text-base 2xl:text-[22px] font-roboto space-y-1'>
+              <ul className='list-disc pl-5 text-base md:text-lg font-roboto space-y-1'>
                 <li>{t("list.management")}</li>
                 <li>{t("list.development")}</li>
                 <li>{t("list.consulting")}</li>
@@ -38,7 +38,7 @@ const About_temp = () => {
               </ul>
             </div>
 
-            <div className='block lg:hidden mx-auto w-full max-w-[340px] md:max-w-[450px]'>
+            <div className='block lg:hidden md:mx-auto w-full max-w-[450px]'>
               <Image
                 src='/About_img.jpg'
                 alt='about_us'

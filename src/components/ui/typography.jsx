@@ -5,7 +5,7 @@ export const Heading1 = forwardRef(({ children, className, ...props }, ref) => (
   <h1
     ref={ref}
     className={cn(
-      "text-4xl md:text-5xl lg:text-7xl font-oswald text-black",
+      "text-4xl md:text-5xl lg:text-7xl font-oswald text-black uppercase",
       className
     )}
     {...props}
@@ -19,7 +19,7 @@ export const Heading2 = forwardRef(({ children, className, ...props }, ref) => (
   <h2
     ref={ref}
     className={cn(
-      "text-3xl lg:text-[62px] font-oswald text-black uppercase",
+      "text-3xl md:text-5xl font-oswald text-black uppercase",
       className
     )}
     {...props}
@@ -32,7 +32,7 @@ Heading2.displayName = "Heading2";
 export const Heading3 = forwardRef(({ children, className, ...props }, ref) => (
   <h3
     ref={ref}
-    className={cn("text-[32px] 2xl:text-5xl font-oswald text-black", className)}
+    className={cn("text-[32px] lg:text-4xl font-oswald text-black uppercase", className)}
     {...props}
   >
     {children}
@@ -44,7 +44,7 @@ export const Heading4 = forwardRef(({ children, className, ...props }, ref) => (
   <h4
     ref={ref}
     className={cn(
-      "text-[22px] lg:text-[34px] text-white font-oswald ",
+      "text-[22px] lg:text-[34px] text-white font-oswald uppercase ",
       className
     )}
     {...props}
@@ -57,7 +57,7 @@ export const Paragraph = forwardRef(
   ({ children, className, ...props }, ref) => (
     <p
       ref={ref}
-      className={cn("text-base  lg:text-[22px] font-roboto", className)}
+      className={cn("text-base  lg:text-lg font-roboto", className)}
       {...props}
     >
       {children}

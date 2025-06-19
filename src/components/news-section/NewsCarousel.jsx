@@ -7,7 +7,7 @@ import ArrowLeftButton from "../ui/buttons/ArrowLeftButton";
 import ArrowRightButton from "../ui/buttons/ArrowRightButton";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "../ui";
+import { Button, Heading2 } from "../ui";
 import styles from "./NewsCarousel.module.css";
 
 export default function NewsCarousel({ newsItems, locale }) {
@@ -28,10 +28,12 @@ export default function NewsCarousel({ newsItems, locale }) {
   if (!newsItems?.length) return null;
 
   return (
-    <section className='md:py-16 max-w-[1600px] mx-auto px-2' id="news">
+    <section className='md:py-16 max-w-[1400px] mx-auto px-2' id='news'>
       {/* Header */}
       <div className='flex items-center justify-between mb-7 md:mb-25 mx-4 md:mx-0'>
-        <h2 className='text-[32px] md:text-[62px] font-oswald'>НОВИНИ</h2>
+        <Heading2 className='text-black w-1/3 pl-4 mx-auto text-left mb-8 '>
+          Новини
+        </Heading2>
         <div className='flex gap-4 md:gap-10'>
           <ArrowLeftButton
             onClick={handleScrollPrev}

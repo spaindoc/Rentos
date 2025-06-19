@@ -1,16 +1,15 @@
-'use client';
+"use client";
 
-import { motion, useAnimationFrame } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import { motion, useAnimationFrame } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 
 export const Slider = ({
   items,
   renderItem,
-  className = '',
-  containerClassName = '',
-  itemClassName = '',
+  className = "",
+  containerClassName = "",
+  itemClassName = "",
   speed = 50, // px per second
-  hoverScale = 1.05,
 }) => {
   const containerRef = useRef(null);
   const [width, setWidth] = useState(0);
@@ -33,9 +32,7 @@ export const Slider = ({
   });
 
   return (
-    <div
-      className={`w-full overflow-hidden ${containerClassName}`}
-    >
+    <div className={`w-full overflow-hidden ${containerClassName}`}>
       <div
         className={`flex w-fit gap-[64px] lg:gap-[110px]  ${className}`}
         ref={containerRef}
@@ -47,7 +44,6 @@ export const Slider = ({
           <motion.div
             key={index}
             className={`shrink-0 ${itemClassName}`}
-            whileHover={{ scale: hoverScale }}
             transition={{ duration: 0.2 }}
           >
             {renderItem(item, index % items.length)}

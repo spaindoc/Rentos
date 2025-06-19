@@ -30,7 +30,7 @@ export default function Services() {
     offset: ["start end", "end start"],
   });
 
-  const topClass = "top-20";
+  const topClass = "top-32 md:top-20";
   const zIndices = ["z-10", "z-20", "z-30"];
 
   return (
@@ -39,10 +39,10 @@ export default function Services() {
         bg-[url('/service-bg.png')]
         bg-cover md:bg-center bg-no-repeat 
       "
-      id="services"
+      id='services'
     >
-      <div className='py-8 2xl:py-36 max-w-[1600px] mx-auto px-4  2xl:px-0 flex flex-col lg:flex-row justify-start w-full'>
-        <div className='w-full  px-4 lg:w-1/3 h-[120px] 2xl:h-[340px] sticky top-20 2xl:top-45'>
+      <div className='py-8 2xl:py-36 max-w-[1400px] mx-auto px-4  2xl:px-0 flex flex-col lg:flex-row justify-start w-full'>
+        <div className='w-full mb-20 px-4 lg:w-1/3 h-[120px] 2xl:h-[340px] sticky top-10 2xl:top-45'>
           <h2
             className={`${oswald.className} text-right 2xl:mr-12 mb-15 text-[32px] md:text-[62px]`}
           >
@@ -52,7 +52,7 @@ export default function Services() {
 
         <div
           ref={ref}
-          className='relative w-full lg:max-w-2xl  2xl:h-[130vh] md:pl-3'
+          className='relative w-full lg:max-w-2xl 2xl:h-[130vh] md:pl-3'
         >
           {items.map((item, i) => (
             <motion.div

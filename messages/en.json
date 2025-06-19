@@ -24,15 +24,16 @@
     },
     "contacts": "Contacts",
     "contactInfo": {
-      "address": "Rivne city 9a Kavkazka St."
+      "address_1": "city Rivne",
+      "address_2": "Kavkazka St, 9/a"
     },
     "links": {
-      "privacyPolicy": "Privaci Policy",
+      "privacyPolicy": "Privacy Policy",
       "websiteDevelopment": "Website Development"
     }
   },
   "Feedback": {
-    "title": "Feedback",
+    "title": "Leave the feedback",
     "form": {
       "name": "How can we contact you?",
       "question": "Your question",

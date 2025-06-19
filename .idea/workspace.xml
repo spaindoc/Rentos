@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7a29caee-284f-46a7-8bdb-cb32c39dc48f" name="Changes" comment="fixed Responsibility &amp; feedback; (check-commit)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CorporateResponsibility.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CorporateResponsibility.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messages/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/messages/en.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +110,8 @@
       <workItem from="1749740688705" duration="3840000" />
       <workItem from="1750069228039" duration="435000" />
       <workItem from="1750069674666" duration="32104000" />
-      <workItem from="1750248288047" duration="11758000" />
+      <workItem from="1750248288047" duration="12506000" />
+      <workItem from="1750320487456" duration="522000" />
     </task>
     <task id="LOCAL-00001" summary="configured i18n">
       <option name="closed" value="true" />

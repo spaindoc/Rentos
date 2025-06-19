@@ -6,20 +6,28 @@ import ArrowLeftButton from "./ui/buttons/ArrowLeftButton";
 import ArrowRightButton from "./ui/buttons/ArrowRightButton";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 
 export default function ProjectsCarousel({ projects, locale }) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
+  const [emblaRef, setEmblaRef] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [direction, setDirection] = useState(0);
 
+  const [emblaRefCallback, emblaApiInstance] = useEmblaCarousel({
+    loop: false,
+  });
+
+  useEffect(() => {
+    setEmblaRef(emblaApiInstance);
+  }, [emblaApiInstance]);
+
   const handleScrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
+    if (emblaRef) emblaRef.scrollPrev();
+  }, [emblaRef]);
 
   const handleScrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
+    if (emblaRef) emblaRef.scrollNext();
+  }, [emblaRef]);
 
   const handleSelect = useCallback((api) => {
     const previous = api.previousScrollSnap();
@@ -29,15 +37,15 @@ export default function ProjectsCarousel({ projects, locale }) {
   }, []);
 
   useEffect(() => {
-    if (!emblaApi) return;
-    handleSelect(emblaApi);
-    emblaApi.on("select", handleSelect);
-    emblaApi.on("reInit", handleSelect);
+    if (!emblaRef) return;
+    handleSelect(emblaRef);
+    emblaRef.on("select", handleSelect);
+    emblaRef.on("reInit", handleSelect);
     return () => {
-      emblaApi.off("select", handleSelect);
-      emblaApi.off("reInit", handleSelect);
+      emblaRef.off("select", handleSelect);
+      emblaRef.off("reInit", handleSelect);
     };
-  }, [emblaApi, handleSelect]);
+  }, [emblaRef, handleSelect]);
 
   if (!projects || projects.length === 0) return null;
 
@@ -45,7 +53,6 @@ export default function ProjectsCarousel({ projects, locale }) {
   const next = projects[selectedIndex + 1];
   const { _id: id, name, description, imageUrl, link } = active;
 
-  // Удвоенная длительность для более медленных анимаций
   const transition = { duration: 1.2, ease: "easeInOut" };
 
   // Контейнер слайда — только движение по X
@@ -53,20 +60,6 @@ export default function ProjectsCarousel({ projects, locale }) {
     initial: (dir) => ({ x: dir === 1 ? "100%" : "-100%" }),
     animate: { x: "0%" },
     exit: (dir) => ({ x: dir === 1 ? "-100%" : "100%" }),
-  };
-
-  // Изображение — масштаб и fade на вход/выход
-  const imageVariants = {
-    initial: { scale: 0.8, opacity: 1 },
-    animate: { scale: 1, opacity: 1 },
-    exit: { scale: 0.8, opacity: 0 },
-  };
-
-  // Кнопка — плавное появление и исчезновение
-  const buttonVariants = {
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    exit: { opacity: 0 },
   };
 
   // Общие текстовые анимации для заголовков/описаний
@@ -77,12 +70,13 @@ export default function ProjectsCarousel({ projects, locale }) {
   };
 
   return (
-
-    <section className='py-16 max-w-[1600px] mx-auto px-2 2xl:px-0' id="projects">
-
+    <section
+      className=' py-16 max-w-[1400px] mx-auto px-2 2xl:px-0'
+      id='projects'
+    >
       {/* Mobile header */}
-      <div className='flex items-center justify-between px-4 mb-6 lg:hidden'>
-        <h2 className='text-[62px] font-oswald'>ПРОЄКТИ</h2>
+      <div className='flex  justify-between px-4 mb-6 lg:hidden'>
+        <h2 className='text-[32px] font-oswald'>ПРОЄКТИ</h2>
         <div className='flex gap-2'>
           <ArrowLeftButton
             onClick={handleScrollPrev}
@@ -103,7 +97,7 @@ export default function ProjectsCarousel({ projects, locale }) {
       </h2>
 
       {/* Embla viewport */}
-      <div className='embla__viewport overflow-hidden' ref={emblaRef}>
+      <div className='embla__viewport overflow-hidden' ref={emblaRefCallback}>
         <div className='embla__container flex'>
           {projects.map((proj) => (
             <div
@@ -137,7 +131,7 @@ export default function ProjectsCarousel({ projects, locale }) {
               className='absolute -top-8 left-4 inline-flex items-center border-2 border-black font-oswald bg-white z-10'
             >
               <motion.h3
-                layoutId={`project-title-${id}-mobile`}
+                // Removed layoutId from here
                 transition={transition}
                 className='text-2xl px-7 py-3 uppercase text-center min-w-[250px]'
               >
@@ -147,12 +141,9 @@ export default function ProjectsCarousel({ projects, locale }) {
 
             <motion.div
               layoutId={`project-image-${id}-mobile`}
-              variants={imageVariants}
-              initial='initial'
-              animate='animate'
-              exit='exit'
+              layout // Enable layout animations
               transition={transition}
-              className='relative w-full h-[244px] border-2 border-black overflow-hidden'
+              className='relative w-full h-[244px] border-2 border-black '
             >
               <Image
                 src={imageUrl || "/placeholder.svg"}
@@ -161,12 +152,11 @@ export default function ProjectsCarousel({ projects, locale }) {
                 className='object-cover'
               />
               <motion.div
-                variants={buttonVariants}
-                initial='initial'
-                animate='animate'
-                exit='exit'
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 transition={{ ...transition, delay: 0.6 }}
-                className='absolute -bottom-8 right-0 px-[10px] py-4 bg-black text-white text-xl font-oswald uppercase tracking-wider z-50'
+                className='absolute -bottom-8 -right-[2px] px-[10px] py-4 bg-black text-white text-xl font-oswald uppercase tracking-wider z-60'
               >
                 <Link
                   href={link}
@@ -195,152 +185,149 @@ export default function ProjectsCarousel({ projects, locale }) {
       </div>
 
       {/* Desktop slides */}
-      <AnimatePresence mode='popLayout' custom={direction}>
-        <div className='hidden lg:flex flex-col lg:flex-row items-start justify-between mt-8'>
-          {/* Active */}
-          <motion.div
-            key={id + "-active"}
-            variants={slideVariants}
-            initial='initial'
-            animate='animate'
-            exit='exit'
-            custom={direction}
-            transition={transition}
-            className='relative flex-1 max-w-5xl'
-          >
+      <LayoutGroup>
+        {" "}
+        {/* LayoutGroup wraps the entire desktop section */}
+        <div className='hidden lg:flex flex-col lg:flex-row items-end justify-between mt-8 relative'>
+          {/* Active Slide Content */}
+          <AnimatePresence mode='popLayout' custom={direction}>
             <motion.div
-              variants={textVariants}
+              key={id + "-active-slide-wrapper"} // Unique key for AnimatePresence
+              variants={slideVariants} // This makes the whole active block slide out
               initial='initial'
               animate='animate'
               exit='exit'
               custom={direction}
               transition={transition}
-              className='absolute top-0 right-0 inline-flex items-center border-2 border-black font-oswald bg-white z-10'
+              className='relative flex-1 max-w-5xl'
             >
-              <motion.h3
-                layoutId={`project-title-${id}`}
-                transition={transition}
-                className='text-[34px] px-16 py-3 uppercase text-center min-w-[422px]'
-              >
-                {name[locale]}
-              </motion.h3>
+              {/* Active Title Block (appears from 0) */}
               <motion.div
-                variants={buttonVariants}
-                initial='initial'
-                animate='animate'
-                exit='exit'
-                transition={{ ...transition, delay: 0.6 }}
-                className='px-9 py-6 bg-black text-white text-xl font-oswald uppercase tracking-wider'
+                key={`active-title-block-${id}`} // Unique key for AnimatePresence
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ ...transition, duration: 0.6 }}
+                className='absolute top-0 right-40 inline-flex items-center border-2 border-black font-oswald bg-white z-10'
               >
-                <Link
-                  href={link}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  aria-label={`Перейти на сайт ${name[locale]}`}
-                >
-                  ПЕРЕЙТИ НА САЙТ
-                </Link>
-              </motion.div>
-            </motion.div>
-
-            <div className='overflow-hidden'>
-              <div className='flex gap-8 items-end'>
-                <motion.div
-                  layoutId={`project-image-${id}`}
-                  variants={imageVariants}
-                  initial='initial'
-                  animate='animate'
-                  exit='exit'
+                <motion.h3
+                  // Removed layoutId from here
                   transition={transition}
-                  className='flex-shrink-0 w-[500px] h-[512px] overflow-hidden border-2 border-black'
+                  className='text-2xl px-14 py-2 uppercase text-center min-w-[290px]'
                 >
-                  <Image
-                    src={imageUrl || "/placeholder.svg"}
-                    alt={name[locale]}
-                    width={496}
-                    height={512}
-                    className='object-cover w-full h-full'
-                  />
-                </motion.div>
+                  {name[locale]}
+                </motion.h3>
                 <motion.div
-                  variants={textVariants}
-                  initial='initial'
-                  animate='animate'
-                  exit='exit'
-                  custom={direction}
-                  transition={transition}
-                  className='flex-1 bg-white'
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ ...transition, delay: 0.6 }}
+                  className='px-9 py-3 bg-black text-white text-base font-oswald uppercase tracking-wider'
                 >
-                  <p className='text-roboto text-xl text-[var(--gray)] whitespace-pre-line'>
-                    {description[locale]}
-                  </p>
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Navigation & Next */}
-          <div className='flex-shrink-0 flex flex-col items-center lg:items-end gap-20'>
-            <div className='flex gap-4 md:gap-10 mb-8'>
-              <ArrowLeftButton
-                onClick={handleScrollPrev}
-                className='w-11 h-11'
-              />
-              <ArrowRightButton
-                onClick={handleScrollNext}
-                className='w-11 h-11'
-              />
-            </div>
-            {next && (
-              <motion.div
-                key={next._id + "-next"}
-                variants={slideVariants}
-                initial='initial'
-                animate='animate'
-                exit='exit'
-                custom={direction}
-                transition={transition}
-                className='relative flex flex-col items-end w-full min-w-[385px]'
-              >
-                <motion.div
-                  variants={textVariants}
-                  initial='initial'
-                  animate='animate'
-                  exit='exit'
-                  custom={direction}
-                  transition={transition}
-                  className='absolute top-0 right-20 inline-flex items-center border-2 border-black font-oswald bg-white z-10'
-                >
-                  <motion.h3
-                    layoutId={`project-title-${next._id}`}
-                    transition={transition}
-                    className='text-[34px] px-16 py-3 uppercase text-center min-w-[422px]'
+                  <Link
+                    href={link}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    aria-label={`Перейти на сайт ${name[locale]}`}
                   >
-                    {next.name[locale]}
-                  </motion.h3>
-                </motion.div>
-                <motion.div
-                  layoutId={`project-image-${next._id}`}
-                  variants={imageVariants}
-                  initial='initial'
-                  animate='animate'
-                  exit='exit'
-                  transition={transition}
-                  className='w-full max-w-[385px] h-[328px] overflow-hidden border-2 border-black'
-                >
-                  <Image
-                    src={next.imageUrl || "/placeholder.svg"}
-                    alt={next.name[locale]}
-                    width={300}
-                    height={150}
-                    className='object-cover w-full h-full'
-                  />
+                    ПЕРЕЙТИ НА САЙТ
+                  </Link>
                 </motion.div>
               </motion.div>
+
+              <div className='overflow-hidden'>
+                <div className='flex gap-6 items-end'>
+                  {/* Active Image - this is the target for the next image's layout animation */}
+                  <motion.div
+                    layoutId={`project-image-${id}`} // Shared layoutId for image
+                    layout // Enable layout animations
+                    transition={transition}
+                    className='relative flex-shrink-0 w-[479px] h-[480px] overflow-hidden border-2 border-black'
+                    style={{ willChange: "transform, width, height" }} // Added will-change
+                  >
+                    <Image
+                      src={imageUrl || "/placeholder.svg"}
+                      alt={name[locale]}
+                      fill // Changed to fill
+                      className='object-cover'
+                    />
+                  </motion.div>
+                  {/* Description text - should slide out with the active container */}
+                  <motion.div
+                    variants={textVariants}
+                    initial='initial'
+                    animate='animate'
+                    exit='exit'
+                    custom={direction}
+                    transition={transition}
+                    className='flex-1 bg-white w-full max-w-1/3'
+                  >
+                    <p className='text-roboto text-base text-[var(--gray)] whitespace-pre-line'>
+                      {description[locale]}
+                    </p>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Navigation & Next Slide Preview */}
+          <div className='flex gap-4 md:gap-10 mb-8 absolute top-0 right-0'>
+            <ArrowLeftButton onClick={handleScrollPrev} className='w-13 h-13' />
+            <ArrowRightButton
+              onClick={handleScrollNext}
+              className='w-13 h-13'
+            />
+          </div>
+          <div className='flex-shrink-0 flex flex-col items-center h-full lg:items-end gap-29'>
+            {next && (
+              // This container for the next slide preview does not exit/enter,
+              // only its children (image and title) animate with AnimatePresence/LayoutGroup
+              <div className='relative flex flex-col items-end w-full min-w-[382px]'>
+                {/* Next Title Block */}
+                <AnimatePresence mode='wait' custom={direction}>
+                  <motion.div
+                    key={`next-title-block-${next._id}`} // Unique key for AnimatePresence
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ ...transition, duration: 0.6 }}
+                    className='absolute top-0 -left-15 inline-flex items-center border-2 border-black font-oswald bg-white z-10'
+                  >
+                    <motion.h3
+                      // Removed layoutId from here
+                      transition={transition}
+                      className='text-2xl px-16 py-2 uppercase text-center min-w-[260px]'
+                    >
+                      {next.name[locale]}
+                    </motion.h3>
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Next Image - wrapped in its own AnimatePresence for layout transition */}
+                <AnimatePresence mode='popLayout' custom={direction}>
+                  <motion.div
+                    key={`next-image-wrapper-${next._id}`} // Unique key for AnimatePresence
+                    layoutId={`project-image-${next._id}`} // Shared layoutId for image
+                    layout // Enable layout animations
+                    transition={transition}
+                    className='relative w-full max-w-[420px] h-[280px] overflow-hidden border-2 border-black cursor-pointer'
+                    onClick={handleScrollNext} // Add click handler to next image
+                    style={{ willChange: "transform, width, height" }} // Added will-change
+                  >
+                    <Image
+                      src={next.imageUrl || "/placeholder.svg"}
+                      alt={next.name[locale]}
+                      fill // Changed to fill
+                      className='object-cover'
+                    />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
             )}
           </div>
         </div>
-      </AnimatePresence>
+      </LayoutGroup>
     </section>
   );
 }

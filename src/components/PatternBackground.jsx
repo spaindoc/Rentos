@@ -3,7 +3,7 @@ export default function PatternBackground() {
     <>
       {/* Desktop Pattern */}
       <svg
-        className='absolute inset-0 z-0 pointer-events-none w-full max-w-[1600px] h-full -translate-x-1/2 left-1/2 top-0 hidden md:block'
+        className='absolute inset-0 z-0 pointer-events-none w-full max-w-[1400px] h-full -translate-x-1/2 left-1/2 top-0 hidden md:block'
         viewBox='0 0 1561 1404'
         fill='none'
         preserveAspectRatio='none'

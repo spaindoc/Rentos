@@ -33,7 +33,7 @@ export default function Navbar() {
       {/* MAIN HEADER */}
       <div
         className='
-          2xl:max-w-[1600px] mx-auto
+          2xl:max-w-[1400px] mx-auto
            2xl:px-0
           my-3
           h-16 xl:h-31
@@ -60,7 +60,7 @@ export default function Navbar() {
               key={item.key}
               href={item.href}
               className='
-                text-base 2xl:text-xl text-black uppercase
+                text-lg space-x-1 text-black uppercase
                 px-2 py-1
                 outline outline-transparent outline-offset-2
                 transition-all duration-200 tracking-tight
@@ -78,7 +78,7 @@ export default function Navbar() {
             onClick={handleLanguageSwitch}
             className='
               flex items-center gap-1.5
-              text-base 2xl:text-xl text-black mr-20
+              text-lg text-black mr-20
               px-2 py-1
               outline outline-transparent outline-offset-2
               transition-all duration-200 hover:outline-black

@@ -5,7 +5,7 @@ export default function Pattern() {
       height='1545'
       viewBox='0 0 1402 1545'
       fill='none'
-      className='absolute inset-0 z-0 pointer-events-none w-full max-w-[1400px] h-full -translate-x-1/2 left-1/2 top-0 hidden md:block'
+      className='absolute inset-0 z-0 pointer-events-none w-full  h-full -translate-x-1/2 left-1/2 top-0 hidden md:block'
       xmlns='http://www.w3.org/2000/svg'
     >
       <path

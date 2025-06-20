@@ -19,7 +19,7 @@ const CorporateResponsibility = () => {
               {t("title")}
             </Heading2>
             <div className='flex flex-col lg:flex-row items-start gap-4 md:gap-6 lg:gap-8'>
-              <div className='flex flex-col gap-4 md:gap-6 max-w-[380px] text-gray mr-18'>
+              <div className='flex flex-col gap-4 md:gap-6 w-full md:max-w-[380px] text-gray mr-18'>
                 <Paragraph>{t("sub_1.item_1")}</Paragraph>
                 <Paragraph>{t("sub_1.item_2")}</Paragraph>
               </div>
@@ -30,7 +30,7 @@ const CorporateResponsibility = () => {
                   className='w-full  sm:max-w-[450px] xs:max-h-[300px] sm:max-h-[450px] lg:h-full object-cover border-black'
                 />
               </div>
-              <div className='flex flex-col gap-4 md:gap-6 max-w-[380px] text-gray '>
+              <div className='flex flex-col gap-4 md:gap-6 md:max-w-[380px] text-gray '>
                 <Paragraph>{t("sub_2.item_1")}</Paragraph>
                 <Paragraph>{t("sub_2.item_2")}</Paragraph>
               </div>

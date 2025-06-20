@@ -37,9 +37,9 @@ export default function ContactsSection() {
       </h2>
 
       <div className='flex flex-col gap-8 lg:flex-row'>
-        {/* ——— Контакты ——— */}
+
         <div className='flex flex-col lg:w-1/3 gap-5 2xl:gap-10 justify-between'>
-          {/* Адрес + Instagram */}
+
           <div className='flex items-center justify-between'>
             <div className='flex items-center gap-4'>
               <div className='w-11 h-11 border-2 border-black flex items-center justify-center'>

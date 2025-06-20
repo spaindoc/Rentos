@@ -77,7 +77,7 @@ export default function Feedback() {
         <div
           className='
             w-full mx-auto mb-4 md:mb-9 py-3.5 px-2.5
-            max-w-[380px] md:max-w-[400px]
+             md:max-w-[400px]
             text-black bg-white border-2 border-black uppercase
           '
         >
@@ -89,7 +89,7 @@ export default function Feedback() {
         <form
           onSubmit={handleSubmit(onSubmit)}
           className='
-            w-full mx-auto mt-4 px-2.5 space-y-4 box-border
+            w-full mx-auto mt-4 md:px-2.5 space-y-4 box-border
             max-w-[420px]
           '
         >

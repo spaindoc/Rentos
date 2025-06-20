@@ -37,7 +37,7 @@ export default function NewsCarousel({ newsItems }) {
     >
       {/* Header */}
       <div className='flex items-center justify-between mb-7 md:mb-25 mx-4 md:mx-0'>
-        <Heading2 className='text-black w-1/3 pl-19 mx-auto text-left mb-8'>
+        <Heading2 className='text-black md:w-1/3 md:pl-19 md:mx-auto text-left md:mb-8'>
           {t("heading")}
         </Heading2>
         <div className='flex gap-4 md:gap-10'>

@@ -33,11 +33,18 @@
     }
   },
   "Feedback": {
-    "title": "Leave the feedback",
+    "title": "Send us a message",
     "form": {
-      "name": "How can we contact you?",
+      "name": "Your name",
       "question": "Your question",
-      "submit": "Submit"
+      "submit": "Send"
+    },
+    "messages": {
+      "nameRequired": "Name is required",
+      "phoneRequired": "Phone is required",
+      "messageRequired": "Message is required",
+      "error": "Failed to send message. Please try again later.",
+      "success": "Thank you! Your message has been sent."
     }
   },
   "Partners": {

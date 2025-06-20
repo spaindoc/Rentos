@@ -1,15 +1,30 @@
+// app/components/Feedback.jsx
 "use client";
+
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
+import { useForm, Controller } from "react-hook-form";
+
 import desktopBg from "@/../public/feedback_bg.jpg";
 import mobileBg from "@/../public/form-bg.png";
+
 import { Input, Textarea, Container } from "./ui";
 import Button from "./ui/buttons/MainButton";
 
-const Feedback = () => {
+export default function Feedback() {
   const t = useTranslations();
-  const [form, setForm] = useState({ name: "", phone: "", message: "" });
   const [isMobile, setIsMobile] = useState(false);
+  const [hasError, setHasError] = useState(false);
+  const [isSent, setIsSent] = useState(false);
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm({
+    defaultValues: { name: "", phone: "", message: "" },
+  });
 
   useEffect(() => {
     const updateIsMobile = () => setIsMobile(window.innerWidth < 768);
@@ -18,15 +33,22 @@ const Feedback = () => {
     return () => window.removeEventListener("resize", updateIsMobile);
   }, []);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
+  const onSubmit = async (data) => {
+    setHasError(false);
+    setIsSent(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // TODO: Implement API call
-    console.log("Form data:", form);
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error();
+      reset();
+      setIsSent(true);
+    } catch {
+      setHasError(true);
+    }
   };
 
   const bgSrc = isMobile ? mobileBg.src : desktopBg.src;
@@ -65,46 +87,85 @@ const Feedback = () => {
         </div>
 
         <form
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmit(onSubmit)}
           className='
             w-full mx-auto mt-4 px-2.5 space-y-4 box-border
             max-w-[420px]
           '
         >
-          <Input
+          <Controller
             name='name'
-            type='text'
-            placeholder={t("Feedback.form.name")}
-            value={form.name}
-            onChange={handleChange}
-            className='mb-3 xl:mb-7'
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <Input
+                {...field}
+                type='text'
+                placeholder={t("Feedback.form.name")}
+                className='mb-3 xl:mb-7'
+              />
+            )}
           />
+          {errors.name && (
+            <p className='text-red-600 text-sm'>
+              {t("Feedback.messages.nameRequired")}
+            </p>
+          )}
 
-          <Input
+          <Controller
             name='phone'
-            type='tel'
-            placeholder='+380 00 000 00 00'
-            value={form.phone}
-            onChange={handleChange}
-            className='mb-3 xl:mb-7'
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <Input
+                {...field}
+                type='tel'
+                placeholder='+380 00 000 00 00'
+                className='mb-3 xl:mb-7'
+              />
+            )}
           />
+          {errors.phone && (
+            <p className='text-red-600 text-sm'>
+              {t("Feedback.messages.phoneRequired")}
+            </p>
+          )}
 
-          <Textarea
+          <Controller
             name='message'
-            placeholder={t("Feedback.form.question")}
-            rows={4}
-            value={form.message}
-            onChange={handleChange}
-            className='mb-9 2xl:mb-12'
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <Textarea
+                {...field}
+                placeholder={t("Feedback.form.question")}
+                rows={4}
+                className='mb-9 2xl:mb-12'
+              />
+            )}
           />
+          {errors.message && (
+            <p className='text-red-600 text-sm'>
+              {t("Feedback.messages.messageRequired")}
+            </p>
+          )}
 
-          <Button type='submit' className='w-full'>
-            {t("Feedback.form.submit")}
+          <Button type='submit' disabled={isSubmitting} className='w-full'>
+            {isSubmitting
+              ? `${t("Feedback.form.submit")}...`
+              : t("Feedback.form.submit")}
           </Button>
         </form>
+
+        {hasError && (
+          <p className='mt-4 text-red-600'>{t("Feedback.messages.error")}</p>
+        )}
+        {isSent && (
+          <p className='mt-4 text-green-600'>
+            {t("Feedback.messages.success")}
+          </p>
+        )}
       </Container>
     </section>
   );
-};
-
-export default Feedback;
+}

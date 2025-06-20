@@ -11,13 +11,14 @@ import { useTranslations } from "next-intl";
 
 export default function ProjectsCarousel({ projects, locale }) {
   const t = useTranslations("projects");
+  const currentLocale = locale.split("-")[0];
+  const getLocalized = (field) => field[currentLocale] ?? field["en"] ?? "";
 
   const [emblaRef, setEmblaRef] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [direction, setDirection] = useState(0);
-
   const [emblaRefCallback, emblaApiInstance] = useEmblaCarousel({
-    loop: false,
+    loop: true,
   });
 
   useEffect(() => {
@@ -25,11 +26,11 @@ export default function ProjectsCarousel({ projects, locale }) {
   }, [emblaApiInstance]);
 
   const handleScrollPrev = useCallback(() => {
-    if (emblaRef) emblaRef.scrollPrev();
+    emblaRef?.scrollPrev();
   }, [emblaRef]);
 
   const handleScrollNext = useCallback(() => {
-    if (emblaRef) emblaRef.scrollNext();
+    emblaRef?.scrollNext();
   }, [emblaRef]);
 
   const handleSelect = useCallback((api) => {
@@ -55,21 +56,14 @@ export default function ProjectsCarousel({ projects, locale }) {
   const active = projects[selectedIndex];
   const next = projects[selectedIndex + 1];
   const { _id: id, name, description, imageUrl, link } = active;
-
   const transition = { duration: 1.2, ease: "easeInOut" };
 
-  // Нові варіанти анімацій для мобільної версії
+  // Варианты анимации
   const mobileSlideVariants = {
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-  };
-  const mobileTextVariants = {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
     exit: { opacity: 0 },
   };
-
-  // Варіанти для десктопу (залишаються без змін)
   const slideVariants = {
     initial: (dir) => ({ x: dir === 1 ? "100%" : "-100%" }),
     animate: { x: "0%" },
@@ -83,22 +77,22 @@ export default function ProjectsCarousel({ projects, locale }) {
 
   return (
     <section
-      className='py-16 max-w-[1400px] mx-auto px-2 2xl:px-0 scroll-mt-20'
       id='projects'
+      className='py-16 max-w-[1400px] mx-auto px-2 2xl:px-0 scroll-mt-20'
     >
       {/* Mobile header */}
       <div className='flex justify-between px-4 mb-6 lg:hidden'>
-        <h2 className='text-[32px] font-oswald uppercase'>{t("heading")}"</h2>
+        <h2 className='text-[32px] font-oswald uppercase'>{t("heading")}</h2>
         <div className='flex gap-2'>
           <ArrowLeftButton
             onClick={handleScrollPrev}
             className='w-11 h-11'
-            aria-label='Попередня новина'
+            aria-label={t("prevProject")}
           />
           <ArrowRightButton
             onClick={handleScrollNext}
             className='w-11 h-11'
-            aria-label='Наступна новина'
+            aria-label={t("nextProject")}
           />
         </div>
       </div>
@@ -129,25 +123,20 @@ export default function ProjectsCarousel({ projects, locale }) {
             initial='initial'
             animate='animate'
             exit='exit'
-            transition={transition / 2}
+            transition={{
+              duration: transition.duration / 2,
+              ease: transition.ease,
+            }}
             className='flex flex-col gap-4'
           >
-            <motion.h3
-              className='
-    absolute -top-8 left-4
-    inline-flex items-center justify-center
-    text-center
-    border-2 border-black font-oswald bg-white z-10
-    px-7 py-3 text-2xl uppercase min-w-[250px]
-  '
-            >
-              {name[locale]}
+            <motion.h3 className='absolute -top-8 left-4 inline-flex items-center justify-center text-center border-2 border-black font-oswald bg-white z-10 px-7 py-3 text-2xl uppercase min-w-[250px]'>
+              {getLocalized(name)}
             </motion.h3>
 
             <motion.div className='relative w-full h-[244px] border-2 border-black'>
               <Image
                 src={imageUrl || "/placeholder.svg"}
-                alt={name[locale]}
+                alt={getLocalized(name)}
                 fill
                 className='object-cover'
               />
@@ -156,9 +145,9 @@ export default function ProjectsCarousel({ projects, locale }) {
                   href={link}
                   target='_blank'
                   rel='noopener noreferrer'
-                  aria-label={`Перейти на сайт ${name[locale]}`}
+                  aria-label={t("read_more")}
                 >
-                  {t("read_more_aria")}
+                  {t("read_more")}
                 </Link>
               </motion.div>
             </motion.div>
@@ -167,7 +156,7 @@ export default function ProjectsCarousel({ projects, locale }) {
               transition={{ ...transition, delay: 0.2 }}
               className='text-roboto text-base text-[var(--gray)] whitespace-pre-line mt-12'
             >
-              {description[locale]}
+              {getLocalized(description)}
             </motion.p>
           </motion.div>
         </AnimatePresence>
@@ -176,7 +165,7 @@ export default function ProjectsCarousel({ projects, locale }) {
       {/* Desktop slides */}
       <LayoutGroup>
         <div className='hidden lg:flex flex-col lg:flex-row items-end justify-between mt-8 relative'>
-          {/* Active Slide Content */}
+          {/* Active Slide */}
           <AnimatePresence mode='popLayout' custom={direction}>
             <motion.div
               key={id + "-active-slide-wrapper"}
@@ -188,7 +177,7 @@ export default function ProjectsCarousel({ projects, locale }) {
               transition={transition}
               className='relative flex-1 max-w-5xl'
             >
-              {/* Active Title Block */}
+              {/* Title & button */}
               <motion.div
                 key={`active-title-block-${id}`}
                 initial={{ opacity: 0 }}
@@ -201,7 +190,7 @@ export default function ProjectsCarousel({ projects, locale }) {
                   transition={transition}
                   className='text-2xl px-14 py-2 uppercase text-center min-w-[290px]'
                 >
-                  {name[locale]}
+                  {getLocalized(name)}
                 </motion.h3>
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -214,16 +203,16 @@ export default function ProjectsCarousel({ projects, locale }) {
                     href={link}
                     target='_blank'
                     rel='noopener noreferrer'
-                    aria-label={`Перейти на сайт ${name[locale]}`}
+                    aria-label={t("read_more")}
                   >
-                    {t("read_more_aria")}
+                    {t("read_more")}
                   </Link>
                 </motion.div>
               </motion.div>
 
               <div className='overflow-hidden'>
                 <div className='flex gap-6 items-end'>
-                  {/* Active Image */}
+                  {/* Image */}
                   <motion.div
                     layoutId={`project-image-${id}`}
                     layout
@@ -233,7 +222,7 @@ export default function ProjectsCarousel({ projects, locale }) {
                   >
                     <Image
                       src={imageUrl || "/placeholder.svg"}
-                      alt={name[locale]}
+                      alt={getLocalized(name)}
                       fill
                       className='object-cover'
                     />
@@ -249,7 +238,7 @@ export default function ProjectsCarousel({ projects, locale }) {
                     className='flex-1 bg-white w-full max-w-1/3'
                   >
                     <p className='text-roboto text-base text-[var(--gray)] whitespace-pre-line'>
-                      {description[locale]}
+                      {getLocalized(description)}
                     </p>
                   </motion.div>
                 </div>
@@ -257,18 +246,24 @@ export default function ProjectsCarousel({ projects, locale }) {
             </motion.div>
           </AnimatePresence>
 
-          {/* Navigation & Next Preview */}
+          {/* Навигация */}
           <div className='flex gap-4 md:gap-10 mb-8 absolute top-0 right-0'>
-            <ArrowLeftButton onClick={handleScrollPrev} className='w-13 h-13' />
+            <ArrowLeftButton
+              onClick={handleScrollPrev}
+              className='w-13 h-13'
+              aria-label={t("prevProject")}
+            />
             <ArrowRightButton
               onClick={handleScrollNext}
               className='w-13 h-13'
+              aria-label={t("nextProject")}
             />
           </div>
-          <div className='flex-shrink-0 flex flex-col items-center h-full lg:items-end gap-29'>
-            {next && (
+
+          {/* Next preview */}
+          {next && (
+            <div className='flex-shrink-0 flex flex-col items-center h-full lg:items-end gap-29'>
               <div className='relative flex flex-col items-end w-full min-w-[382px]'>
-                {/* Next Title Block */}
                 <AnimatePresence mode='wait' custom={direction}>
                   <motion.div
                     key={`next-title-block-${next._id}`}
@@ -282,12 +277,11 @@ export default function ProjectsCarousel({ projects, locale }) {
                       transition={transition}
                       className='text-2xl px-16 py-2 uppercase text-center min-w-[260px]'
                     >
-                      {next.name[locale]}
+                      {getLocalized(next.name)}
                     </motion.h3>
                   </motion.div>
                 </AnimatePresence>
 
-                {/* Next Image Preview */}
                 <AnimatePresence mode='popLayout' custom={direction}>
                   <motion.div
                     key={`next-image-wrapper-${next._id}`}
@@ -300,15 +294,15 @@ export default function ProjectsCarousel({ projects, locale }) {
                   >
                     <Image
                       src={next.imageUrl || "/placeholder.svg"}
-                      alt={next.name[locale]}
+                      alt={getLocalized(next.name)}
                       fill
                       className='object-cover'
                     />
                   </motion.div>
                 </AnimatePresence>
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </LayoutGroup>
     </section>

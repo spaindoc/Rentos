@@ -3,6 +3,7 @@
 import React from "react";
 import { useJsApiLoader, GoogleMap, Marker } from "@react-google-maps/api";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 import {
   FacebookIcon,
@@ -15,6 +16,8 @@ import {
 import InstagramLink from "./ui/InstagramLink";
 
 export default function ContactsSection() {
+  const t = useTranslations("contacts");
+
   const center = { lat: 50.6197, lng: 26.2541 };
   const { isLoaded, loadError } = useJsApiLoader({
     id: "google-map-script",
@@ -23,28 +26,29 @@ export default function ContactsSection() {
 
   if (loadError) {
     console.error(loadError);
-    return <p className='text-red-500'>Не вдалося завантажити карту</p>;
+    return <p className='text-red-500'>{t("loadError")}</p>;
   }
 
   return (
     <section className='py-10 2xl:py-16 px-4 lg:px-0 max-w-[1400px] mx-auto'>
-      <h2 className=' text-[32px] text-right lg:text-left lg:text-[54px] font-oswald uppercase mb-12'>
-        Контакти
+      {/* Заголовок */}
+      <h2 className='text-[32px] text-right lg:text-left lg:text-[54px] font-oswald uppercase mb-12'>
+        {t("contactsTitle")}
       </h2>
 
       <div className='flex flex-col gap-8 lg:flex-row'>
-        {/* ——— Контакти ——— */}
-        <div className='flex flex-col lg:w-1/3  gap-5 2xl:gap-10 justify-between'>
-          {/* Адресa + Instagram */}
+        {/* ——— Контакты ——— */}
+        <div className='flex flex-col lg:w-1/3 gap-5 2xl:gap-10 justify-between'>
+          {/* Адрес + Instagram */}
           <div className='flex items-center justify-between'>
             <div className='flex items-center gap-4'>
-              <div className='w-11 h-11  border-2 border-black flex items-center justify-center'>
-                <LocationIcon className='stroke-black w-5 h-5 ' />
+              <div className='w-11 h-11 border-2 border-black flex items-center justify-center'>
+                <LocationIcon className='stroke-black w-5 h-5' />
               </div>
-              <p className=' text-base 2xl:text-xl'>
-                М. Рівне
+              <p className='text-base 2xl:text-xl'>
+                {t("addressLine1")}
                 <br />
-                вул. Кавказька 9а
+                {t("addressLine2")}
               </p>
             </div>
             <Link
@@ -52,6 +56,7 @@ export default function ContactsSection() {
               target='_blank'
               rel='noopener noreferrer'
               className='flex-shrink-0'
+              aria-label={t("instagram")}
             >
               <InstagramGradientIcon className='w-11 h-11 lg:hidden' />
             </Link>
@@ -59,12 +64,13 @@ export default function ContactsSection() {
 
           {/* Телефон */}
           <div className='flex items-center gap-4'>
-            <div className='w-11 h-11  border-2 border-black flex items-center justify-center'>
-              <PhoneIcon className='stroke-black w-5 h-5 ' />
+            <div className='w-11 h-11 border-2 border-black flex items-center justify-center'>
+              <PhoneIcon className='stroke-black w-5 h-5' />
             </div>
             <Link
               href='tel:+380991168518'
               className='text-base 2xl:text-xl hover:underline'
+              aria-label={t("phone")}
             >
               +380 99 116 85 18
             </Link>
@@ -73,12 +79,13 @@ export default function ContactsSection() {
           {/* Email + Facebook */}
           <div className='flex items-center justify-between'>
             <div className='flex items-center gap-4'>
-              <div className='w-11 h-11  border-2 border-black flex items-center justify-center'>
+              <div className='w-11 h-11 border-2 border-black flex items-center justify-center'>
                 <MailIcon className='stroke-black w-5 h-5 2xl:w-7 lg:h-7' />
               </div>
               <Link
                 href='mailto:rentos.ua@gmail.com'
                 className='text-base 2xl:text-xl hover:underline'
+                aria-label={t("email")}
               >
                 rentos.ua@gmail.com
               </Link>
@@ -87,37 +94,43 @@ export default function ContactsSection() {
               href='https://www.facebook.com/yourpage'
               target='_blank'
               rel='noopener noreferrer'
-              className='flex-shrink-0 bg-[#3D5A98]  lg:hidden '
+              className='flex-shrink-0 bg-[#3D5A98] lg:hidden'
+              aria-label={t("facebook")}
             >
-              <FacebookIcon className='w-11 h-11 p-1  fill-white stroke-none ' />
+              <FacebookIcon className='w-11 h-11 p-1 fill-white stroke-none' />
             </Link>
           </div>
+
+          {/* Иконки Facebook + Instagram на десктопе */}
           <div className='hidden lg:flex items-center gap-15 mt-4'>
             <Link
               href='https://www.facebook.com/yourpage'
               target='_blank'
               rel='noopener noreferrer'
               className='
-              group                    
-              w-11 h-11 
-              border-2 border-black
-              flex items-center justify-center
-              text-black               
-              hover:text-white
-              hover:bg-[#3D5A98]
-              hover:border-0          
-              transition'
+                group
+                w-11 h-11
+                border-2 border-black
+                flex items-center justify-center
+                text-black
+                hover:text-white
+                hover:bg-[#3D5A98]
+                hover:border-0
+                transition
+              '
+              aria-label={t("facebook")}
             >
               <FacebookIcon
                 className='
-                w-5 h-5 
-                fill-transparent        
-                stroke-current         
-                group-hover:fill-white   
-                group-hover:stroke-none'
+                  w-5 h-5
+                  fill-transparent
+                  stroke-current
+                  group-hover:fill-white
+                  group-hover:stroke-none
+                '
               />
             </Link>
-            <InstagramLink />
+            <InstagramLink aria-label={t("instagram")} />
           </div>
         </div>
 
@@ -139,7 +152,7 @@ export default function ContactsSection() {
               </GoogleMap>
             ) : (
               <p className='flex items-center justify-center h-full'>
-                Завантаження карти…
+                {t("loadingMap")}
               </p>
             )}
           </div>

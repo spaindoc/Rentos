@@ -151,5 +151,17 @@
   "heading": "Проєкти",
   "read_more": "Детальніше",
   "read_more_aria": "Детальніше про {caption}"    
-} 
+} ,
+  "contacts": {
+    "contactsTitle": "Контакти",
+    "loadError": "Не вдалося завантажити карту",
+    "loadingMap": "Завантаження карти…",
+    "addressLine1": "м. Рівне",
+    "addressLine2": "вул. Кавказька 9а",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "phone": "Телефон",
+    "email": "Email"
+  }
+
 }

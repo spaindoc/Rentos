@@ -97,7 +97,7 @@
       "title": "DEVELOPMENT",
       "text": "We execute projects from analyzing the commercial viability of land plots to the full launch of commercialized properties. Redevelopment and reconstruction are among our core competencies, transforming projects into modern commercial spaces based on current demands."
     },
-    "contact": "CONTACT"
+    "contact": "CONTACT US"
   },
   "News": {
     "title": "NEWS",
@@ -150,5 +150,17 @@
   "heading": "Projects",
   "read_more": "Read more",
   "read_more_aria": "GO TO THE WEBSITE"    
-} 
+},
+
+  "contacts": {
+    "contactsTitle": "Contacts",
+    "loadError": "Failed to load the map",
+    "loadingMap": "Loading map…",
+    "addressLine1": "Rivne",
+    "addressLine2": "Kavkazka St., 9a",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "phone": "Phone",
+    "email": "Email"
+  }
 }

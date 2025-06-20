@@ -1,3 +1,4 @@
+// app/[locale]/page.jsx
 import Partners from "@/components/partners";
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/Hero";
@@ -14,8 +15,8 @@ import {
 } from "@/lib/sanity-queries";
 import CorporateResponsibility from "@/components/CorporateResponsibility";
 import About from "@/components/about/about";
-export async function generateMetadata({ params }) {
-  const locale = params;
+
+export async function generateMetadata({ params: { locale } }) {
   return {
     title:
       locale === "uk"
@@ -39,8 +40,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default async function HomePage({ params }) {
-  const locale = params;
+export default async function HomePage({ params: { locale } }) {
   const heroData = await getHeroData();
   const projectsData = await getProjectsData();
   const newsData = await getNewsData();
@@ -51,6 +51,7 @@ export default async function HomePage({ params }) {
       <Hero data={heroData} locale={locale} />
       <About />
       <Services />
+      {/* Теперь locale — строка */}
       <ProjectsCarousel projects={projectsData} locale={locale} />
       <Partners />
       <CorporateResponsibility />

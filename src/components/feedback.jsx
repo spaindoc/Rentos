@@ -1,83 +1,104 @@
-'use client';
-import { useState } from 'react';
+"use client";
+import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
-import bg from '@/../public/feedback_bg.jpg';
-import { Heading2, Input, Textarea, Button, Container } from './ui';
+import desktopBg from "@/../public/feedback_bg.jpg";
+import mobileBg from "@/../public/form-bg.png";
+import { Input, Textarea, Container } from "./ui";
+import Button from "./ui/buttons/MainButton";
 
 const Feedback = () => {
-    const t = useTranslations();
-    const [form, setForm] = useState({
-        name: '',
-        phone: '',
-        message: ''
-    });
+  const t = useTranslations();
+  const [form, setForm] = useState({ name: "", phone: "", message: "" });
+  const [isMobile, setIsMobile] = useState(false);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setForm(prev => ({ ...prev, [name]: value }));
-    };
+  useEffect(() => {
+    const updateIsMobile = () => setIsMobile(window.innerWidth < 768);
+    updateIsMobile();
+    window.addEventListener("resize", updateIsMobile);
+    return () => window.removeEventListener("resize", updateIsMobile);
+  }, []);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        // TODO: Implement API call
-        console.log('Form data:', form);
-    };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
 
-    return (
-        <section
-            id="contacts"
-        // Нахардкожено але працює )
-            className="min-w-full overflow-x-hidden bg-auto bg-no-repeat box-border py-10 md:py-15
-                       bg-[position:51%_40%] md:bg-[position:50%_50%] lg:bg-[position:50%_61%]
-                       xl:bg-[position:50%_57%] 2xl:bg- 3xl:bg-[position:50%_61%]
-                       md:bg-size-[300%] lg:bg-size-[180%] xl:bg-size-[130%] 3xl:bg-size-[109%]
-                       lg:min-h-[91vh] max-h-[840px] scroll-mt-40"
-            style={{ backgroundImage: `url(${bg.src})` }}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // TODO: Implement API call
+    console.log("Form data:", form);
+  };
+
+  const bgSrc = isMobile ? mobileBg.src : desktopBg.src;
+
+  return (
+    <section
+      id='contacts'
+      className={`
+        relative
+        w-full
+        min-h-[580px]
+        md:min-h-[780px]
+        overflow-y-auto
+        bg-no-repeat bg-cover
+        flex items-center justify-center
+
+        bg-[position:51%_40%]
+        md:bg-[position:50%_50%]
+        lg:bg-[position:50%_61%]
+        xl:bg-[position:50%_57%]
+        2xl:bg-[position:50%_61%]
+      `}
+      style={{ backgroundImage: `url(${bgSrc})` }}
+    >
+      <Container className='h-full flex flex-col items-center justify-center md:-mt-14'>
+        <div
+          className='
+            w-full mx-auto mb-4 md:mb-9 py-3.5 px-2.5
+            max-w-[380px] md:max-w-[400px]
+            text-black bg-white border-2 border-black uppercase
+          '
         >
-            <Container>
-                <div className="w-full mx-auto mb-9 lg:mb-12 py-3.5 px-2.5
-                               xs:w-full xs:max-w-none xs:text-center lg:text-center  sm:w-full md:w-[70%] max-w-[510px] lg:max-w-[400px] xl:max-w-[410px] 2xl:max-w-[490px] 3xl:max-w-[510px]
-                               text-black bg-white border-2 border-black uppercase">
-                    <Heading2>{t('Feedback.title')}</Heading2>
-                </div>
+          <h2 className='md:text-[48px] font-oswald text-center'>
+            {t("Feedback.title")}
+          </h2>
+        </div>
 
-                <form
-                    className="w-full mx-auto mt-4 space-y-4 box-border xs:max-w-none xs:w-full
-                              max-w-[510px] sm:w-full md:w-[70%] lg:max-w-[400px] xl:max-w-[410px] 2xl:max-w-[490px] 3xl:max-w-[510px]"
-                    onSubmit={handleSubmit}
-                >
-                    <Input
-                        name="name"
-                        type="text"
-                        placeholder={t('Feedback.form.name')}
-                        value={form.name}
-                        onChange={handleChange}
-                        className="mb:3 xl:mb-7"
-                    />
+        <form
+          onSubmit={handleSubmit}
+          className='
+            w-full mx-auto mt-4 px-2.5 space-y-4 box-border
+            max-w-[420px]
+          '
+        >
+          <Input
+            name='name'
+            type='text'
+            placeholder={t("Feedback.form.name")}
+            value={form.name}
+            onChange={handleChange}
+            className='mb-3 xl:mb-7'
+          />
 
-                    <Input
-                        name="phone"
-                        type="tel"
-                        placeholder="+380 00 000 00 00"
-                        value={form.phone}
-                        onChange={handleChange}
-                        className="mb-3 xl:mb-7"
-                    />
+          <Input
+            name='phone'
+            type='tel'
+            placeholder='+380 00 000 00 00'
+            value={form.phone}
+            onChange={handleChange}
+            className='mb-3 xl:mb-7'
+          />
 
-                    <Textarea
-                        name="message"
-                        placeholder={t('Feedback.form.question')}
-                        rows={4}
-                        value={form.message}
-                        onChange={handleChange}
-                        className="mb-9  2xl:mb-12"
-                    />
+          <Textarea
+            name='message'
+            placeholder={t("Feedback.form.question")}
+            rows={4}
+            value={form.message}
+            onChange={handleChange}
+            className='mb-9 2xl:mb-12'
+          />
 
-          <Button
-            type='submit'
-            size="lg"
-            className='uppercase  max-w-[510px] xs:max-w-none w-full'
-          >
+          <Button type='submit' className='w-full'>
             {t("Feedback.form.submit")}
           </Button>
         </form>

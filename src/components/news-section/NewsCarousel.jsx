@@ -33,11 +33,11 @@ export default function NewsCarousel({ newsItems }) {
   return (
     <section
       id='news'
-      className='md:py-16 max-w-[1400px] mx-auto px-2 scroll-mt-10'
+      className='md:py-16 max-w-[1080px] 2xl:max-w-[1400px] mx-auto px-2 sm:px-0 scroll-mt-20'
     >
       {/* Header */}
       <div className='flex items-center justify-between mb-7 md:mb-25 mx-4 md:mx-0'>
-        <Heading2 className='text-black md:w-1/3 md:pl-19 md:mx-auto text-left md:mb-8'>
+        <Heading2 className='text-black md:w-1/3 md:pl-21 md:mx-auto text-left md:mb-8'>
           {t("heading")}
         </Heading2>
         <div className='flex gap-4 md:gap-10'>
@@ -75,7 +75,7 @@ export default function NewsCarousel({ newsItems }) {
                       rel='noopener noreferrer'
                     >
                       <Button
-                        className='absolute -bottom-1 -right-1 2xl:px-14 2xl:y-5 bg-black text-base text-white 2xl:text-xl font-oswald focus:outline-none transition-colors duration-200 border-1 border-b-2 border-r-1 border-black hover:bg-[var(--blue)] hover:text-black 2xl:min-w-[156px] uppercase'
+                        className='absolute -bottom-1 -right-1 px-9 py-3 2xl:px-14 2xl:py-5 bg-black text-[15px] text-white 2xl:text-xl font-oswald focus:outline-none transition-colors duration-200 border-1 border-b-2 border-r-1 border-black hover:bg-[var(--blue)] hover:text-black 2xl:min-w-[156px] uppercase'
                         aria-label={t("read_more_aria", {
                           caption: item.caption[locale],
                         })}

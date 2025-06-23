@@ -9,7 +9,7 @@ const InstagramFooterIcon = () => {
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-[44px] h-[44px] lg:w-[64px] lg:h-[64px] flex items-center justify-center group rounded-xl cursor-pointer"
+            className="w-[48px] h-[48px] 2xl:w-[64px] 2xl:h-[64px] flex items-center justify-center group rounded-xl cursor-pointer"
         >
             <Image
                 src={Instagram}

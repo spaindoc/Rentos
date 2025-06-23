@@ -78,7 +78,7 @@ export default function ProjectsCarousel({ projects, locale }) {
   return (
     <section
       id='projects'
-      className='py-16 max-w-[1400px] mx-auto px-2 2xl:px-0 scroll-mt-20'
+      className='py-16  max-w-[1080px] 2xl:max-w-[1400px] mx-auto px-2 sm:px-0  scroll-mt-20'
     >
       {/* Mobile header */}
       <div className='flex justify-between px-4 mb-6 lg:hidden'>
@@ -98,7 +98,7 @@ export default function ProjectsCarousel({ projects, locale }) {
       </div>
 
       {/* Desktop header */}
-      <h2 className='hidden lg:block text-[54px] w-1/3 mx-auto font-oswald pl-10 mb-12 uppercase'>
+      <h2 className='hidden lg:block text-[54px] w-1/3 mx-auto font-oswald pl-2 2xl:pl-10 mb-12 uppercase'>
         {t("heading")}
       </h2>
 
@@ -184,7 +184,7 @@ export default function ProjectsCarousel({ projects, locale }) {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ ...transition, duration: 0.6 }}
-                className='absolute top-0 right-40 inline-flex items-center border-2 border-black font-oswald bg-white z-10'
+                className='absolute top-0 right-0 2xl:right-40 inline-flex items-center border-2 border-black font-oswald bg-white z-10'
               >
                 <motion.h3
                   transition={transition}
@@ -217,8 +217,8 @@ export default function ProjectsCarousel({ projects, locale }) {
                     layoutId={`project-image-${id}`}
                     layout
                     transition={transition}
-                    className='relative flex-shrink-0 w-[479px] h-[480px] overflow-hidden border-2 border-black'
-                    style={{ willChange: "transform, width, height" }}
+                    className='relative flex-shrink-0 w-[341px] h-[352px] 2xl:w-[479px] 2xl:h-[480px] overflow-hidden border-2 border-black'
+                    style={{ willChange: "transform, width, hight" }}
                   >
                     <Image
                       src={imageUrl || "/placeholder.svg"}
@@ -235,9 +235,9 @@ export default function ProjectsCarousel({ projects, locale }) {
                     exit='exit'
                     custom={direction}
                     transition={transition}
-                    className='flex-1 bg-white w-full max-w-1/3'
+                    className='flex-1 bg-white w-full 2xl:max-w-1/3'
                   >
-                    <p className='text-roboto text-base text-[var(--gray)] whitespace-pre-line'>
+                    <p className='text-roboto text-[15px] 2xl:text-base text-[var(--gray)] whitespace-pre-line'>
                       {getLocalized(description)}
                     </p>
                   </motion.div>
@@ -271,7 +271,7 @@ export default function ProjectsCarousel({ projects, locale }) {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ ...transition, duration: 0.6 }}
-                    className='absolute top-0 -left-15 inline-flex items-center border-2 border-black font-oswald bg-white z-10'
+                    className='absolute top-0 left-2 2xl:-left-15 inline-flex items-center border-2 border-black font-oswald bg-white z-10'
                   >
                     <motion.h3
                       transition={transition}
@@ -288,7 +288,7 @@ export default function ProjectsCarousel({ projects, locale }) {
                     layoutId={`project-image-${next._id}`}
                     layout
                     transition={transition}
-                    className='relative w-full max-w-[420px] h-[280px] overflow-hidden border-2 border-black cursor-pointer'
+                    className='relative w-full max-w-[266px] 2xl:max-w-[420px] h-[225px]  2xl:h-[280px] overflow-hidden border-2 border-black cursor-pointer'
                     onClick={handleScrollNext}
                     style={{ willChange: "transform, width, height" }}
                   >

@@ -30,37 +30,44 @@ export default function Services() {
     offset: ["start end", "end start"],
   });
 
-  const topClass = "top-32 md:top-20";
+  const topClass = "top-20 md:top-40"; // Немного поправил top для консистентности
   const zIndices = ["z-10", "z-20", "z-30"];
 
   return (
     <section
-      className="
-        bg-[url('/service-bg.png')]
-        bg-cover md:bg-center bg-no-repeat scroll-mt-10 
-      "
       id='services'
+      className='relative scroll-mt-10 bg-no-repeat bg-cover md:bg-center'
     >
-      <div className='py-8 2xl:py-36 max-w-[1400px] mx-auto px-4  2xl:px-0 flex flex-col lg:flex-row justify-start w-full'>
-        <div className='w-full mb-20 md:mb-0 px-4 lg:w-1/3 h-[120px] 2xl:h-[340px] sticky top-20 2xl:top-45'>
+      {/* Размытие фонового изображения через абсолютный слой */}
+      <div
+        className='absolute inset-0 bg-cover bg-center filter blur-sm pointer-events-none'
+        style={{ backgroundImage: "url('/services.webp')" }}
+        aria-hidden='true'
+      />
+
+      {/* Контент с отступом и центровкой */}
+      <div className='relative py-8 2xl:py-16 max-w-[1400px] mx-auto  flex flex-col lg:flex-row md:justify-center md:gap-7 2xl:gap-0 2xl:justify-start w-full '>
+        {/* Заголовок слева с sticky */}
+        <div className='w-full mb-20 md:mb-0 px-4 md:px-0 md:w-2xs 2xl:w-1/3 h-[120px] md:h-[320px] 2xl:h-[340px] sticky top-40 2xl:top-[180px]'>
           <h2
-            className={`${oswald.className} text-right 2xl:mr-12 mb-15 text-[32px] md:text-[54px]`}
+            className={`${oswald.className} text-left md:-translate-x-12 2xl:translate-0 2xl:mr-12 mb-15 text-[32px] md:text-[54px]`}
           >
             {t("title")}
           </h2>
         </div>
 
+        {/* Колонка с карточками */}
         <div
           ref={ref}
-          className='relative w-full lg:max-w-2xl 2xl:h-[130vh] md:pl-3'
+          className='relative w-full lg:max-w-2xl 2xl:h-[130vh]  2xl:pl-0'
         >
           {items.map((item, i) => (
             <motion.div
               key={item.title}
               className={`
                 sticky ${topClass} ${zIndices[i]}
-                border-1 border-black bg-white
-                py-6 md:py-11 px-4 h-[320px] 2xl:h-[340px] w-full flex flex-col justify-between md:max-w-xl md:ml-6
+                border border-black bg-white
+                py-6 md:py-11 px-4 h-[320px] 2xl:h-[340px] w-full flex flex-col justify-between md:max-w-xl md:ml-2
                 ${i > 0 ? "mt-15" : ""}
               `}
             >
@@ -70,14 +77,13 @@ export default function Services() {
                 </h3>
                 <Button
                   className='ml-4 flex-shrink-0'
-                  // onClick={handleContact}
                   tabIndex={0}
                   aria-label={t("contact")}
                 >
                   {t("contact")}
                 </Button>
               </div>
-              <p className='text-base font-roboto 2xl:text-lg leading-relaxed text-[var-(gray)]'>
+              <p className='text-base font-roboto 2xl:text-lg leading-relaxed text-[var(--gray)]'>
                 {item.text}
               </p>
             </motion.div>

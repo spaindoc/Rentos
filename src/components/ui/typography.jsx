@@ -33,7 +33,7 @@ export const Heading3 = forwardRef(({ children, className, ...props }, ref) => (
   <h3
     ref={ref}
     className={cn(
-      "text-[32px] lg:text-4xl font-oswald text-black uppercase",
+      "text-[25.5px] 2xl:text-4xl font-oswald text-black uppercase",
       className
     )}
     {...props}
@@ -47,7 +47,7 @@ export const Heading4 = forwardRef(({ children, className, ...props }, ref) => (
   <h4
     ref={ref}
     className={cn(
-      "text-[22px] lg:text-[34px] text-white font-oswald uppercase ",
+      "text-[22px] sm:text-2xl 2xl:text-[34px] text-white font-oswald uppercase ",
       className
     )}
     {...props}
@@ -60,7 +60,10 @@ export const Paragraph = forwardRef(
   ({ children, className, ...props }, ref) => (
     <p
       ref={ref}
-      className={cn("text-base  lg:text-lg font-roboto", className)}
+      className={cn(
+        "text-base sm:text-[16.5px]  2xl:text-lg font-roboto",
+        className
+      )}
       {...props}
     >
       {children}

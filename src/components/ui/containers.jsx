@@ -6,7 +6,7 @@ export const Container = forwardRef(
     <div
       ref={ref}
       className={cn(
-        "sm:container mx-auto px-4 md:px-0 box-border 2xl:max-w-[1400px] ", // Трохи хардкоду куди без нього
+        " mx-auto px-4 md:px-0 box-border max-w-[1080px] 2xl:max-w-[1400px] ",
         className
       )}
       {...props}

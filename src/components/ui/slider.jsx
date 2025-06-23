@@ -9,7 +9,7 @@ export const Slider = ({
   className = "",
   containerClassName = "",
   itemClassName = "",
-  speed = 50, // px per second
+  speed = 80, // px per second
 }) => {
   const containerRef = useRef(null);
   const [width, setWidth] = useState(0);
@@ -34,7 +34,7 @@ export const Slider = ({
   return (
     <div className={`w-full overflow-hidden ${containerClassName}`}>
       <div
-        className={`flex w-fit gap-[64px] lg:gap-[110px]  ${className}`}
+        className={`flex w-fit gap-[64px] lg:gap-[80px]  ${className}`}
         ref={containerRef}
         style={{
           transform: `translateX(${x}px)`,

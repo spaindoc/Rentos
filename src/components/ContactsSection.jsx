@@ -30,16 +30,14 @@ export default function ContactsSection() {
   }
 
   return (
-    <section className='py-10 2xl:py-16 px-4 lg:px-0 max-w-[1400px] mx-auto'>
+    <section className='py-10 2xl:py-16 px-4 lg:px-0 max-w-[1080px] 2xl:max-w-[1400px] mx-auto'>
       {/* Заголовок */}
       <h2 className='text-[32px] text-right lg:text-left lg:text-[54px] font-oswald uppercase mb-12'>
         {t("contactsTitle")}
       </h2>
 
-      <div className='flex flex-col gap-8 lg:flex-row'>
-
-        <div className='flex flex-col lg:w-1/3 gap-5 2xl:gap-10 justify-between'>
-
+      <div className='flex flex-col gap-8 sm:flex-row justify-between'>
+        <div className='flex flex-col w-[218px] 2xl:w-1/3  2xl:gap-10 justify-between'>
           <div className='flex items-center justify-between'>
             <div className='flex items-center gap-4'>
               <div className='w-11 h-11 border-2 border-black flex items-center justify-center'>
@@ -135,8 +133,8 @@ export default function ContactsSection() {
         </div>
 
         {/* ——— Карта ——— */}
-        <div className='flex-1 lg:w-2/3 md:-ml-8'>
-          <div className='w-full h-64 sm:h-80 lg:h-[400px] border-2 border-black'>
+        <div className='flex-1 max-w-[700px] 2xl:max-w-2/3 md:-ml-8'>
+          <div className='w-full h-64 sm:h-80 2xl:h-[400px] border-2 border-black'>
             {isLoaded ? (
               <GoogleMap
                 mapContainerStyle={{ width: "100%", height: "100%" }}

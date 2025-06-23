@@ -11,7 +11,7 @@ const CorporateResponsibility = () => {
 
   return (
     <section className='py-13 2xl:py-16 relative scroll-mt-20' id=''>
-      <Container className='bg-white relative z-10 -mt-16 pt-16'>
+      <Container className='bg-white relative z-10 -mt-13 pt-13 2xl:-mt-16 2xl:pt-16'>
         <div className='flex flex-col lg:flex-row justify-between items-center pb-[42px] pd:mb-16 lg:pb-10 lg:mb-10'>
           <div className='flex flex-col items-left text-left lg:text-left lg:block'>
             <Heading2 className='mb-6 md:mb-10  max-w-[300px] lg:max-w-[476px] uppercase leading-10 lg:leading-20 '>

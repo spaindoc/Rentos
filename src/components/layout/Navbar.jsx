@@ -3,7 +3,7 @@
 import { useTranslations, useLocale } from "next-intl";
 import { Link, useRouter, usePathname } from "@/i18n/navigation";
 import Button from "../ui/buttons/MainButton";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import GlobeIcon from "../ui/GlobeIcon";
@@ -40,48 +40,65 @@ export default function Navbar() {
     <nav
       className={`
         bg-white px-4 z-50 transition-all duration-300
-        ${isSticky ? "fixed top-0 left-0 right-0 shadow-md" : "relative"}
+        fixed top-0 left-0 right-0 py-
       `}
     >
-      <div className='2xl:max-w-[1400px] mx-auto 2xl:px-0 my-3 h-12 xl:h-24 flex items-center justify-between xl:justify-center relative'>
+      <div className='2xl:max-w-[1400px] mx-auto max-w-[1080px] 2xl:px-0 2xl:py-10 py-4 flex items-center justify-between 2xl:justify-center relative'>
         {/* Logo */}
-        <Link href='/' className='flex items-center xl:absolute xl:left-0'>
+        <Link href='/' className='flex-1 w-1/3 items-center 2xl:absolute 2xl:left-0'>
           <Image
             src='/logo.svg'
             alt='Logo'
             width={100}
             height={100}
-            className='w-[86px] h-[86px]'
+            className='w-[84px] h-[84px]'
           />
         </Link>
 
         {/* Desktop nav */}
-        <div className='hidden xl:flex items-center space-x-4 pl-8'>
+        <div className='hidden md:flex items-center justify-center flex-1 2xl:max-w-[486px] 2xl:w-full 2xl:pl-12 2xl:space-x-2'>
           {navigationItems.map((item) => (
             <Link
               key={item.key}
               href={item.href}
-              className='text-lg text-black uppercase px-2 py-1 transition-all duration-200 tracking-tight hover:underline'
+              className='
+                text-[15px] 2xl:text-base  text-black uppercase
+                px-1 py-1
+                outline outline-transparent outline-offset-2
+                transition-all duration-200 tracking-tight
+                hover:outline-black
+              '
             >
               {t(item.key)}
             </Link>
           ))}
         </div>
 
-        {/* Lang + Контакт */}
-        <div className='hidden xl:flex items-center space-x-4 xl:absolute xl:right-0'>
+        {/* Language switch + Contact button */}
+        <div className='hidden md:flex items-center ml-5 space-x-5 2xl:absolute xl:right-0 2xl:w-[360px] md:justify-between'>
           <button
             onClick={handleLanguageSwitch}
-            className='flex items-center gap-1.5 text-lg px-2 py-1 hover:underline'
+            className='
+              flex items-center gap-1.5 
+              text-base  text-black
+              px-2 py-1
+              outline outline-transparent outline-offset-2
+              transition-all duration-200 hover:outline-black
+              cursor-pointer
+            '
           >
-            <GlobeIcon className='w-6 h-6' /> {t("language")}
+            <GlobeIcon className='w-6 h-6 text-black' />
+            {t("language")}
           </button>
-          <Button className='px-4 py-2 transition-all duration-200 hover:outline-black'>
+          <Button
+            className='px-4 py-2 transition-all ml-3 duration-200 hover:outline-black'
+            href='#contacts'
+          >
             {t("contact_button")}
           </Button>
         </div>
 
-        {/* Mobile toggle */}
+        {/* Mobile burger toggle */}
         <button
           onClick={() => setIsMobileMenuOpen((v) => !v)}
           className='xl:hidden text-black focus:outline-none'
@@ -106,7 +123,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* MOBILE MENU OVERLAY */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div

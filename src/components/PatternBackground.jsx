@@ -3,88 +3,90 @@ export default function PatternBackground() {
     <>
       {/* Desktop Pattern */}
       <svg
-        className='absolute inset-0 z-0 pointer-events-none w-full max-w-[1400px] h-full -translate-x-1/2 left-1/2 top-0 hidden md:block'
-        viewBox='0 0 1561 1404'
+        className='absolute inset-0 z-0 pointer-events-none w-full max-w-[1080px] 2xl:max-w-[1400px] h-full -translate-x-1/2 left-1/2 top-0 hidden md:block'
+        width='1081'
+        height='1050'
+        viewBox='0 0 1081 1050'
         fill='none'
         preserveAspectRatio='none'
         xmlns='http://www.w3.org/2000/svg'
       >
         <line
           opacity='0.5'
-          x1='1560.49'
-          y1='1399.71'
-          x2='1560.49'
-          y2='-144.64'
-          stroke='url(#paint0_linear)'
-          strokeWidth='0.5'
+          x1='1080.81'
+          y1='1049.78'
+          x2='1080.81'
+          y2='-108.482'
+          stroke='url(#paint0_linear_272_253)'
+          strokeWidth='0.375'
         />
         <line
           opacity='0.5'
-          x1='1067.75'
-          y1='1393.63'
-          x2='1067.75'
-          y2='-150.716'
-          stroke='url(#paint1_linear)'
-          strokeWidth='0.5'
+          x1='747.812'
+          y1='1045.22'
+          x2='747.812'
+          y2='-113.038'
+          stroke='url(#paint1_linear_272_253)'
+          strokeWidth='0.375'
         />
         <line
           opacity='0.5'
-          x1='532.75'
-          y1='1368.35'
-          x2='532.75'
-          y2='-175.999'
-          stroke='url(#paint2_linear)'
-          strokeWidth='0.5'
+          x1='373.812'
+          y1='1045.22'
+          x2='373.812'
+          y2='-132.002'
+          stroke='url(#paint2_linear_272_253)'
+          strokeWidth='0.375'
         />
         <line
           opacity='0.5'
-          x1='0.75'
-          y1='1403.71'
-          x2='0.75'
-          y2='-140.639'
-          stroke='url(#paint3_linear)'
-          strokeWidth='0.5'
+          x1='0.8125'
+          y1='1046'
+          x2='0.8125'
+          y2='-104.703'
+          stroke='url(#paint3_linear_272_253)'
+          strokeWidth='0.375'
         />
         <defs>
           <linearGradient
-            id='paint0_linear'
-            x1='1561.24'
-            y1='-144.64'
-            x2='1561.24'
-            y2='1399.71'
+            id='paint0_linear_272_253'
+            x1='1081.5'
+            y1='-108.482'
+            x2='1081.5'
+            y2='1049.78'
             gradientUnits='userSpaceOnUse'
           >
-            <stop offset='0.05' stopColor='#0D0D0D' stopOpacity='1' />
+            <stop offset='0.0528846' stopColor='#0D0D0D' stopOpacity='1' />
           </linearGradient>
           <linearGradient
-            id='paint1_linear'
-            x1='1068.5'
-            y1='-150.716'
-            x2='1068.5'
-            y2='1393.63'
+            id='paint1_linear_272_253'
+            x1='748.5'
+            y1='-113.038'
+            x2='748.5'
+            y2='1045.22'
             gradientUnits='userSpaceOnUse'
           >
-            <stop offset='0.05' stopColor='#0D0D0D' stopOpacity='1' />
+            <stop offset='0.0528846' stopColor='#0D0D0D' stopOpacity='1' />
           </linearGradient>
           <linearGradient
-            id='paint2_linear'
-            x1='533.5'
-            y1='-175.999'
-            x2='533.5'
-            y2='1368.35'
+            id='paint2_linear_272_253'
+            x1='374.5'
+            y1='-132.002'
+            x2='374.5'
+            y2='1045.22'
             gradientUnits='userSpaceOnUse'
           >
-            <stop offset='0.05' stopColor='#0D0D0D' stopOpacity='1' />
+            <stop offset='0.0528846' stopColor='#0D0D0D' stopOpacity='1' />
           </linearGradient>
           <linearGradient
-            id='paint3_linear'
+            id='paint3_linear_272_253'
             x1='1.5'
-            y1='-140.639'
+            y1='-104.703'
             x2='1.5'
-            y2='1403.71' ///
+            y2='1046'
             gradientUnits='userSpaceOnUse'
           >
-            <stop offset='0.05' stopColor='#0D0D0D' stopOpacity='1' />
+            <stop offset='0.0528846' stopColor='#0D0D0D' stopOpacity='1' />
           </linearGradient>
         </defs>
       </svg>
@@ -96,7 +98,7 @@ export default function PatternBackground() {
         viewBox='0 0 182 1159'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
-        className='absolute inset-0 z-0 pointer-events-none ml-4  h-full top-0 block md:hidden'
+        className='absolute inset-0 z-0 pointer-events-none ml-4 h-full top-0 block md:hidden'
       >
         <line
           opacity='0.5'

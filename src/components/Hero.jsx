@@ -4,9 +4,7 @@ import { useTranslations } from "next-intl";
 import Button from "./ui/buttons/MainButton";
 import PatternBackground from "./PatternBackground";
 import Image from "next/image";
-import NumberFlow, { continuous } from "@number-flow/react";
 import AnimatedNumber from "./ui/AnimatedNumber";
-
 function StatBlock({
   value,
   suffix,
@@ -16,20 +14,18 @@ function StatBlock({
   className = "",
 }) {
   return (
-    <div
-      className={`${className} text-center  md:text-left  relative bg-white`}
-    >
-      <div className='flex items-baseline text-[32px] md:text-[54px] justify-start text-[var(--black)] font-oswald leading-[1.17] '>
+    <div className={`${className} text-center md:text-left relative bg-white`}>
+      <div className='flex items-baseline text-[32px] md:text-[54px] justify-start text-[var(--black)] font-oswald leading-[1.17]'>
         <span className='flex items-baseline'>
           <AnimatedNumber value={value} delay={delay} />
           {suffix && <span className='ml-1'>{suffix}</span>}
         </span>
       </div>
-      <p className='text-base font-roboto -mt-3 text-[var(--black)]  mb-2 md:mb-6 text-left'>
+      <p className='text-base font-roboto -mt-3 text-[var(--black)] mb-2 md:mb-6 text-left'>
         {title}
       </p>
       {description && (
-        <p className='font-roboto text-[var(--gray)] text-base  leading-[1.45] text-left max-w-[366px]'>
+        <p className='font-roboto text-[var(--gray)] text-base leading-[1.45] text-left max-w-full md:max-w-[366px]'>
           {description}
         </p>
       )}
@@ -82,19 +78,21 @@ export default function Hero({ data, locale }) {
       </div>
 
       <div className='max-w-[1080px] 2xl:max-w-[1400px] mx-auto py-10'>
-        <div className='grid grid-cols-2 md:grid-cols-3 px-4 md:px-0 md:gap-9 2xl:gap-12 bg-white'>
+        <div className='grid grid-cols-2 md:grid-cols-3 px-4 md:px-0 gap-x-4 gap-y-8 bg-white'>
           {blocks.map((block, idx) => {
             const key = keys[idx] ?? null;
             if (!key) return null;
+            const isLast = idx === blocks.length - 1;
 
             return (
               <StatBlock
                 key={key}
+                className={isLast ? "col-span-2 md:col-span-1" : ""}
                 value={block.value}
                 suffix={suffix[key]}
                 title={tStats(key)}
                 description={tStats(`${key}_desc`)}
-                delay={key * 50}
+                delay={idx * 50}
               />
             );
           })}

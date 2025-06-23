@@ -46,7 +46,7 @@ const CorporateResponsibility = () => {
       </Container>
       <div className='text-left max-w-[1080px] 2xl:max-w-[1400px] mx-auto px-4 sm:px-0'>
         <PatternBackground />
-        <div className='grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 '>
+        <div className='grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 '>
           <div className='text-left bg-white relative justify-self-start md:justify-self-auto max-w-[480px]'>
             <Heading2 className='text-[46px]'>
               {t(`items.item_1.title`)}
@@ -57,7 +57,7 @@ const CorporateResponsibility = () => {
             <Paragraph className=''>{t(`items.item_1.subtitle`)}</Paragraph>
           </div>
 
-          <div className='text-left bg-white relative justify-self-end md:justify-self-auto max-w-[480px]'>
+          <div className='text-left bg-white relative justify-self-end md:justify-self-auto  max-w-[480px]'>
             <Heading2 className='text-[46px]'>
               {t(`items.item_2.title`)}
             </Heading2>

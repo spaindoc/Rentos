@@ -98,7 +98,7 @@ export default function PatternBackground() {
         viewBox='0 0 182 1159'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
-        className='absolute inset-0 z-0 pointer-events-none ml-4 h-full top-0 block md:hidden'
+        className='absolute inset-0 z-0 pointer-events-none ml-4  h-full  top-0 block md:hidden'
       >
         <line
           opacity='0.5'

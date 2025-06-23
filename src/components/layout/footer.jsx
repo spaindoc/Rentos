@@ -102,8 +102,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-
-        <div className='flex flex-col gap-7 lg:hidden mt-8 text-base text-flink'>
+        <div className='flex flex-col gap-7 md:hidden mt-10 text-base text-flink'>
           <a href='' className='underline'>
             {t("Footer.links.websiteDevelopment")}
           </a>

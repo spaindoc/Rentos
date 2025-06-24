@@ -1,39 +1,29 @@
+// app/components/Footer.tsx
 "use client";
 
-import Image from "next/image";
 import { useTranslations } from "next-intl";
-import logo from "@/../public/footer_logo.png";
+import { Container, Heading4 } from "../ui";
+import { FooterLogo } from "../ui/footerLogo";
+import InstagramFooterIcon from "../ui/InstagramFooterIcon";
+import { FacebookFooterIcon } from "../ui/FacebookFooterIcon";
+import Link from "next/link";
 
-import {
-  Container,
-  FacebookIcon,
-  Heading4,
-  InstagramIcon,
-  Paragraph,
-} from "../ui";
-import {
-  InstagramGradientIcon,
-  InstagramSimpleIcon,
-} from "@/components/ui/Icons";
-import { FooterLogo } from "@/components/ui/footerLogo";
-import InstagramFooterIcon from "@/components/ui/InstagramFooterIcon";
-import { FacebookFooterIcon } from "@/components/ui/FacebookFooterIcon";
-
-const Footer = () => {
+export default function Footer() {
   const t = useTranslations();
 
   return (
-    <footer className='bg-[#000] py-10'>
+    <footer className='bg-black py-10'>
       <Container>
-        <div className='flex flex-col lg:flex-row items-center 2xl:items-start lg:justify-between h-[324px] 2xl:h-[433px]'>
+        {/** DESKTOP FOOTER — НИЧЕГО НЕ ТРОГАЕМ **/}
+        <div className='hidden md:flex flex-col lg:flex-row items-center 2xl:items-start lg:justify-between h-[324px] 2xl:h-[433px]'>
           <div className='flex flex-col lg:h-full mb-8 lg:mb-0 items-center lg:items-start'>
             <FooterLogo />
-            <a
-              href=''
+            <Link
+              href='#'
               className='hidden lg:block mt-auto w-[300px] text-center underline text-base 2xl:text-[22px] text-flink'
             >
               {t("Footer.links.privacyPolicy")}
-            </a>
+            </Link>
           </div>
 
           <div className='flex flex-row justify-between lg:justify-around w-full lg:gap-16 h-full'>
@@ -44,75 +34,128 @@ const Footer = () => {
               <nav className='flex-1'>
                 <ul className='flex flex-col gap-4 lg:gap-5 text-white text-base 2xl:text-xl uppercase'>
                   <li>
-                    <a href='#about'>{t("Footer.navigationLinks.about")}</a>
+                    <Link href='#about'>
+                      {t("Footer.navigationLinks.about")}
+                    </Link>
                   </li>
                   <li>
-                    <a href='#services'>
+                    <Link href='#services'>
                       {t("Footer.navigationLinks.services")}
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href='#projects'>
+                    <Link href='#projects'>
                       {t("Footer.navigationLinks.projects")}
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href='#news'>{t("Footer.navigationLinks.news")}</a>
+                    <Link href='#news'>{t("Footer.navigationLinks.news")}</Link>
                   </li>
                   <li>
-                    <a href='#contacts'>
+                    <Link href='#contacts'>
                       {t("Footer.navigationLinks.contacts")}
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </nav>
-              <a
-                href=''
+              <Link
+                href='#'
                 className='hidden lg:block mt-auto underline text-base 2xl:text-[22px] text-flink'
               >
                 {t("Footer.links.websiteDevelopment")}
-              </a>
+              </Link>
             </div>
 
             <div className='flex flex-col lg:h-full'>
               <Heading4 className='text-white mb-6 lg:mb-[42px] uppercase'>
                 {t("Footer.contacts")}
               </Heading4>
-              <div className='flex flex-col flex-1'>
-                <div className='flex flex-col gap-[24px] lg:gap-[26px] text-base  text-white mb-6 lg:flex-1'>
-                  <div className={"flex flex-col gap-1"}>
-                    <Paragraph className=''>
-                      {t("Footer.contactInfo.address_1")}
-                    </Paragraph>
-                    <Paragraph className=''>
-                      {t("Footer.contactInfo.address_2")}
-                    </Paragraph>
-                  </div>
-                  {/*<Paragraph>*/}
-                  {/*  {t('Footer.contactInfo.address_1')}*/}
-                  {/*</Paragraph>*/}
-                  <Paragraph>+380 99 116 85 18</Paragraph>
-                  <Paragraph>rentos.ua@gmail.com</Paragraph>
-                </div>
-                <div className='flex justify-start lg:justify-between lg:mt-auto gap-7 lg:gap-0'>
-                  <InstagramFooterIcon />
-                  <FacebookFooterIcon />
-                </div>
+              <div className='flex flex-col flex-1 gap-[24px] lg:gap-[26px] text-base text-white mb-6 lg:flex-1'>
+                <p>{t("Footer.contactInfo.address_1")}</p>
+                <p>{t("Footer.contactInfo.address_2")}</p>
+                <Link href={"tel:+380991168518"} className='text-lg'>
+                  +380 99 116 85 18
+                </Link>
+                <Link href={"mailto:rentos.ua@gmail.com"} className='text-lg'>
+                  rentos.ua@gmail.com
+                </Link>
+              </div>
+              <div className='flex justify-start lg:justify-between lg:mt-auto gap-7 lg:gap-0'>
+                <InstagramFooterIcon />
+                <FacebookFooterIcon />
               </div>
             </div>
           </div>
         </div>
-        <div className='flex flex-col gap-7 md:hidden mt-10 text-base text-flink'>
-          <a href='' className='underline'>
-            {t("Footer.links.websiteDevelopment")}
-          </a>
-          <a href='' className=' underline text-base '>
-            {t("Footer.links.privacyPolicy")}
-          </a>
+
+        {/** MOBILE FOOTER — ХАРДКОД **/}
+        <div className='md:hidden flex flex-col items-center px-4'>
+          {/* Логотип */}
+          <div className='mb-6'>
+            <FooterLogo />
+          </div>
+
+          {/* Навігація | Контакти */}
+          <div className='flex w-full mb-6'>
+            {/* Навігація */}
+            <div className='w-1/2 pr-2'>
+              <h4 className='text-white text-2xl uppercase  font-oswald mb-4'>
+                Навігація
+              </h4>
+              <ul className='space-y-3 text-white font-oswald  uppercase text-lg'>
+                <li>
+                  <Link href='#about'>{t("Footer.navigationLinks.about")}</Link>
+                </li>
+                <li>
+                  <Link href='#services'>
+                    {t("Footer.navigationLinks.services")}
+                  </Link>
+                </li>
+                <li>
+                  <Link href='#projects'>
+                    {t("Footer.navigationLinks.projects")}
+                  </Link>
+                </li>
+                <li>
+                  <Link href='#news'>{t("Footer.navigationLinks.news")}</Link>
+                </li>
+                <li>
+                  <Link href='#contacts'>
+                    {t("Footer.navigationLinks.contacts")}
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Контакти */}
+            <div className='w-1/2 pl-2'>
+              <h4 className='text-white uppercase text-2xl font-oswald mb-4'>
+                Контакти
+              </h4>
+              <ul className='space-y-2 text-white text-base'>
+                <li>м. Рівне</li>
+                <li>вул. Кавказька 9а</li>
+                <li>+380 99 116 85 18</li>
+                <li>rentos.ua@gmail.com</li>
+              </ul>
+              <div className='flex justify-start gap-6 mt-4'>
+                <InstagramFooterIcon />
+                <FacebookFooterIcon />
+              </div>
+            </div>
+          </div>
+
+          {/* Ссылки внизу */}
+          <div className='flex flex-col gap-4 mb-6 items-start text-start w-full mt-10'>
+            <Link href='#' className='underline text-flink'>
+              Розробка сайту
+            </Link>
+            <Link href='#' className='underline text-flink'>
+              Політика конфіденційності
+            </Link>
+          </div>
         </div>
       </Container>
     </footer>
   );
-};
-
-export default Footer;
+}

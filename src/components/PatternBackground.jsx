@@ -92,57 +92,18 @@ export default function PatternBackground() {
       </svg>
 
       {/* Mobile Pattern */}
-      <svg
-        width='182'
-        height='1159'
-        viewBox='0 0 182 1159'
-        fill='none'
-        xmlns='http://www.w3.org/2000/svg'
-        className='absolute inset-0 z-0 pointer-events-none ml-4  h-full  top-0 block md:hidden'
-      >
-        <line
-          opacity='0.5'
-          x1='0.736572'
-          y1='1157.01'
-          x2='0.736572'
-          y2='-34.2732'
-          stroke='url(#paint1_linear_mobile)'
-          strokeOpacity='0.8'
-          strokeWidth='0.5'
-        />
-        <line
-          opacity='0.5'
-          y1='-0.25'
-          x2='1189.15'
-          y2='-0.25'
-          transform='matrix(-0.00198 -0.999998 1 -0.0000456 181.987 1158.59)'
-          stroke='url(#paint0_linear_mobile)'
-          strokeOpacity='0.8'
-          strokeWidth='0.5'
-        />
-        <defs>
-          <linearGradient
-            id='paint0_linear_mobile'
-            x1='1189.15'
-            y1='0.5'
-            x2='0'
-            y2='0.5'
-            gradientUnits='userSpaceOnUse'
-          >
-            <stop offset='0.03' stopColor='#0D0D0D' stopOpacity='1' />
-          </linearGradient>
-          <linearGradient
-            id='paint1_linear_mobile'
-            x1='1.48657'
-            y1='-34.2732'
-            x2='1.48657'
-            y2='1157.01'
-            gradientUnits='userSpaceOnUse'
-          >
-            <stop offset='0.03' stopColor='#0D0D0D' stopOpacity='1' />
-          </linearGradient>
-        </defs>
-      </svg>
+      <div
+        className='absolute inset-0 z-0 pointer-events-none block md:hidden'
+        style={{
+          backgroundImage: `
+            linear-gradient(to bottom, rgba(13,13,13,0.5), rgba(13,13,13,0.5)),
+            linear-gradient(to bottom, rgba(13,13,13,0.5), rgba(13,13,13,0.5))
+          `,
+          backgroundRepeat: "no-repeat, no-repeat",
+          backgroundPosition: "16px 0, 50% 0",
+          backgroundSize: "0.5px 100%, 0.5px 100%",
+        }}
+      />
     </>
   );
 }

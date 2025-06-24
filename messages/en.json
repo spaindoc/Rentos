@@ -77,7 +77,7 @@
     "language": "УКР"
   },
   "hero": {
-    "title": "RENTOS GROUP – YOUR PARTNER IN BUSINESS DEVELOPMENT",
+    "title": "RENTOS GROUP – \nYOUR PARTNER \nIN BUSINESS DEVELOPMENT",
     "subtitle": "We combine experience, reputation and efficiency for the long-term success of our projects",
     "cta_button": "CONTACT US"
   },
@@ -155,7 +155,7 @@
 },
 "projects": {
   "heading": "Projects",
-  "read_more": "Read more",
+  "read_more": "visit the website",
   "read_more_aria": "GO TO THE WEBSITE"    
 },
 

@@ -12,13 +12,13 @@ const CorporateResponsibility = () => {
   return (
     <section className='py-13 2xl:py-16 relative scroll-mt-20' id=''>
       <Container className='bg-white relative z-10 -mt-13 pt-13 2xl:-mt-16 2xl:pt-16'>
-        <div className='flex flex-col lg:flex-row justify-between items-center pb-[42px] pd:mb-16 lg:pb-10 lg:mb-10'>
-          <div className='flex flex-col items-left text-left lg:text-left lg:block'>
+        <div className='flex flex-col lg:flex-row justify-between items-center pb-[42px] pd:mb-16 lg:pb-10 lg:mb-10 w-f'>
+          <div className='flex flex-col items-left text-left lg:text-left lg:block w-full'>
             <Heading2 className='mb-6 md:mb-10  max-w-[300px] lg:max-w-[476px] uppercase leading-10 lg:leading-20 '>
               {t("title")}
             </Heading2>
             <div className='flex flex-col lg:flex-row items-start gap-4 md:gap-6 lg:gap-8'>
-              <div className='flex flex-col gap-4 md:gap-6 w-full max-w-[330px] 2xl:max-w-[380px] text-gray 2xl:mr-18'>
+              <div className='flex flex-col gap-4 md:gap-6 w-full sm:max-w-[330px] 2xl:max-w-[380px] text-gray 2xl:mr-18'>
                 <Paragraph>{t("sub_1.item_1")}</Paragraph>
                 <Paragraph>{t("sub_1.item_2")}</Paragraph>
               </div>
@@ -29,7 +29,7 @@ const CorporateResponsibility = () => {
                   className='w-full  sm:max-w-[450px] xs:max-h-[300px] sm:max-h-[450px] lg:h-full object-cover border-black'
                 />
               </div>
-              <div className='flex flex-col gap-4 md:gap-6 max-w-[330px] 2xl:max-w-[380px] text-gray '>
+              <div className='flex flex-col gap-4 md:gap-6 sm:max-w-[330px] 2xl:max-w-[380px] text-gray '>
                 <Paragraph>{t("sub_2.item_1")}</Paragraph>
                 <Paragraph>{t("sub_2.item_2")}</Paragraph>
               </div>
@@ -46,8 +46,8 @@ const CorporateResponsibility = () => {
       </Container>
       <div className='text-left max-w-[1080px] 2xl:max-w-[1400px] mx-auto px-4 sm:px-0'>
         <PatternBackground />
-        <div className='grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 '>
-          <div className='text-left bg-white relative justify-self-start md:justify-self-auto max-w-[480px]'>
+        <div className='grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 pt-8 sm:pt-0'>
+          <div className='text-left bg-white relative justify-self-start md:justify-self-auto -ml-0.5 sm:-ml-0 max-w-[480px]'>
             <Heading2 className='text-[46px]'>
               {t(`items.item_1.title`)}
             </Heading2>
@@ -57,7 +57,7 @@ const CorporateResponsibility = () => {
             <Paragraph className=''>{t(`items.item_1.subtitle`)}</Paragraph>
           </div>
 
-          <div className='text-left bg-white relative justify-self-end md:justify-self-auto  max-w-[480px]'>
+          <div className='text-left bg-white relative justify-self-end md:justify-self-auto -ml-3 sm:-ml-0 max-w-[480px]'>
             <Heading2 className='text-[46px]'>
               {t(`items.item_2.title`)}
             </Heading2>
@@ -66,7 +66,7 @@ const CorporateResponsibility = () => {
             </Paragraph>
             <Paragraph className=''>{t(`items.item_2.subtitle`)}</Paragraph>
           </div>
-          <div className='text-left bg-white relative col-span-2 lg:col-span-1 mt-12 md:mt-0'>
+          <div className='text-left bg-white relative col-span-2 lg:col-span-1 -ml-0.5 sm:-ml-0 mt-12 md:mt-0'>
             <Heading2 className='text-[46px]'>
               {t(`items.item_3.title`)}
             </Heading2>

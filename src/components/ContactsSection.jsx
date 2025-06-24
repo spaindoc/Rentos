@@ -37,9 +37,9 @@ export default function ContactsSection() {
       </h2>
 
       <div className='flex flex-col gap-8 sm:flex-row justify-between'>
-        <div className='flex flex-col w-[218px] 2xl:w-1/3  2xl:gap-10 justify-between'>
+        <div className='flex flex-col sm:w-[218px] 2xl:w-1/3 gap-6  2xl:gap-10 justify-between'>
           <div className='flex items-center justify-between'>
-            <div className='flex items-center gap-4'>
+            <div className='flex items-center justify-between gap-4'>
               <div className='w-11 h-11 border-2 border-black flex items-center justify-center'>
                 <LocationIcon className='stroke-black w-5 h-5' />
               </div>

@@ -75,7 +75,7 @@ export default function NewsCarousel({ newsItems }) {
                       rel='noopener noreferrer'
                     >
                       <Button
-                        className='absolute -bottom-1 -right-1 px-9 py-3 2xl:px-14 2xl:py-5 bg-black text-[15px] text-white 2xl:text-xl font-oswald focus:outline-none transition-colors duration-200 border-1 border-b-2 border-r-1 border-black hover:bg-[var(--blue)] hover:text-black 2xl:min-w-[156px] uppercase'
+                        className='absolute -bottom-1 -right-1 px-9 py-3 2xl:px-14 2xl:py-5 bg-black text-lg sm:text-[15px] text-white 2xl:text-xl font-oswald focus:outline-none transition-colors duration-200 border-1 border-b-2 border-r-1 border-black hover:bg-[var(--blue)] hover:text-black 2xl:min-w-[156px] uppercase'
                         aria-label={t("read_more_aria", {
                           caption: item.caption[locale],
                         })}

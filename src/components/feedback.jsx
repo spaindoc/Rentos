@@ -150,7 +150,11 @@ export default function Feedback() {
             </p>
           )}
 
-          <Button type='submit' disabled={isSubmitting} className='w-full'>
+          <Button
+            type='submit'
+            disabled={isSubmitting}
+            className='w-full px-0 sm:px-8'
+          >
             {isSubmitting
               ? `${t("Feedback.form.submit")}...`
               : t("Feedback.form.submit")}

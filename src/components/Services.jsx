@@ -1,21 +1,11 @@
-// components/Services.tsx
 "use client";
 
 import { useRef } from "react";
 import { motion, useScroll } from "framer-motion";
-import { useTranslations } from "next-intl";
 import { oswald } from "@/lib/font";
 import Button from "./ui/buttons/MainButton";
 
-export default function Services() {
-  const t = useTranslations("services");
-
-  const items = [
-    { title: t("investments.title"), text: t("investments.text") },
-    { title: t("management.title"), text: t("management.text") },
-    { title: t("development.title"), text: t("development.text") },
-  ];
-
+export default function Services({ data, locale }) {
   const ref = useRef(null);
   useScroll({
     target: ref,
@@ -23,6 +13,9 @@ export default function Services() {
   });
 
   const zIndices = ["z-10", "z-20", "z-30"];
+
+  // Используем данные из props, если есть, иначе fallback пустой массив
+  const items = data?.items || [];
 
   return (
     <section
@@ -41,25 +34,23 @@ export default function Services() {
         <div
           className={`
             sticky
-            top-[calc(92px+20px)]   /* <-- nav-height (72px) + 20px отступ */
-            md:top-40               /* <-- возвращаем ваш desktop-отступ */
+            top-[calc(92px+20px)]
+            md:top-40
             z-40 bg-white md:bg-transparent
-
             w-full mb-5 md:mb-0
             px-4 md:px-0
             md:w-2xs 2xl:w-1/3
-
             h-auto md:h-[320px] 2xl:h-[340px]
           `}
         >
           <h2
             className={`${oswald.className}
-              text-right md:text-left
+              text-right md:text-left uppercase
               md:-translate-x-12 2xl:translate-0 2xl:mr-12
               mb-5 md:mb-15
               text-[32px] md:text-[54px]`}
           >
-            {t("title")}
+            {locale === "en" ? "Services" : "Послуги"}
           </h2>
         </div>
 
@@ -67,42 +58,36 @@ export default function Services() {
         <div ref={ref} className='relative w-full lg:max-w-2xl 2xl:pl-0'>
           {items.map((item, i) => (
             <motion.div
-              key={item.title}
+              key={item.title[locale]}
               className={`
                 bg-white
-                /* mobile: auto-height + 20px снизу */
                 h-auto mb-5 last:mb-0
-                /* desktop: жесткая высота и no-margin-bottom */
                 md:h-[320px] 2xl:h-[340px] md:mb-0
-
                 border border-black
                 w-full md:w-[560px] md:mx-auto
-
                 py-6 md:py-11 px-4
                 flex flex-col justify-between
-
                 sticky
-                top-[143px]    /* 113px заголовок + 30px */
-                md:top-40      /* desktop behavior */
-                ${zIndices[i]}
-
+                top-[143px]
+                md:top-40
+                ${zIndices[i] || ""}
                 ${i > 0 ? "md:mt-15" : ""}
               `}
             >
               <div className='flex justify-between items-center mb-11 md:mb-0'>
                 <h3 className={`${oswald.className} text-2xl 2xl:text-4xl`}>
-                  {item.title}
+                  {item.title[locale]}
                 </h3>
                 <Button
                   className='ml-4 flex-shrink-0'
-                  aria-label={t("contact")}
+                  aria-label={locale === "uk" ? "Зв’язатися" : "Contact"}
                   href={"#contact"}
                 >
-                  {t("contact")}
+                  {locale === "en" ? "Contact" : "Зв’язатися"}
                 </Button>
               </div>
               <p className='text-base font-roboto 2xl:text-lg leading-relaxed text-[var(--gray)]'>
-                {item.text}
+                {item.text[locale]}
               </p>
             </motion.div>
           ))}

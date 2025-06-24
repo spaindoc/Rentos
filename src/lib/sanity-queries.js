@@ -1,7 +1,7 @@
 import { client, urlFor } from "./sanity";
 const getHeroData = async () => {
   const query = `*[_type == "heroSection"][0]{
-    statBlocks[]{ value }
+    statBlocks[]{ value, label{en, uk}, description{en, uk} },
   }`;
   return await client.fetch(query);
 };
@@ -36,7 +36,7 @@ const getNewsData = async () => {
 
   const newsWithUrls = data.map((news) => {
     const formattedDate = news.date
-      ? new Date(news.date).toLocaleDateString("uk-UA") 
+      ? new Date(news.date).toLocaleDateString("uk-UA")
       : null;
 
     return {
@@ -49,4 +49,52 @@ const getNewsData = async () => {
   return newsWithUrls;
 };
 
-export { getHeroData, getProjectsData, getNewsData };
+const getAboutData = async () => {
+  const query = `*[_type == "aboutSection"][0]{
+  title{ en, uk },
+  image,
+  introBlock {
+    text{ en, uk },
+    items[]{ en, uk }
+  },
+  part2{ en, uk },
+  objects{ en, uk }
+}`;
+
+  const data = await client.fetch(query);
+
+  return {
+    ...data,
+    imageUrl: data.image ? urlFor(data.image).url() : null,
+    imageAlt: data.image?.alt || null,
+  };
+};
+
+const getPhilosophyData = async () => {
+  const query = `*[_type == "companyPhilosophy"][0]{
+    block1 { title { en, uk }, subtitle { en, uk } },
+    block2 { title { en, uk }, subtitle { en, uk } },
+    block3 { title { en, uk }, items[] { en, uk } }
+  }`;
+
+  return await client.fetch(query);
+};
+
+const getServicesData = async () => {
+  const query = `*[_type == "services"][0]{
+    items[]{
+      title { en, uk },
+      text { en, uk }
+    }
+  }`;
+  return await client.fetch(query);
+};
+
+export {
+  getHeroData,
+  getAboutData,
+  getPhilosophyData,
+  getProjectsData,
+  getNewsData,
+  getServicesData,
+};

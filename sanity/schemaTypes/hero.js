@@ -31,6 +31,12 @@ export default defineType({
               type: 'localizedString',
               validation: (Rule) => Rule.required(),
             }),
+            defineField({
+              name: 'description',
+              title: 'Повний опис',
+              type: 'localizedText',
+              validation: (Rule) => Rule.required(),
+            }),
           ],
         }),
       ],
@@ -38,8 +44,7 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'statBlocks.0.value',
-      subtitle: 'statBlocks.0.label.uk',
+      title: 'Блок текст + числа',
     },
   },
 })

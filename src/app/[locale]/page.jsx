@@ -9,9 +9,12 @@ import Footer from "@/components/layout/footer";
 import NewsCarousel from "@/components/news-section/NewsCarousel";
 import ContactsSection from "@/components/ContactsSection";
 import {
+  getAboutData,
   getHeroData,
   getNewsData,
+  getPhilosophyData,
   getProjectsData,
+  getServicesData,
 } from "@/lib/sanity-queries";
 import CorporateResponsibility from "@/components/CorporateResponsibility";
 import About from "@/components/about/about";
@@ -44,14 +47,17 @@ export default async function HomePage({ params: { locale } }) {
   const heroData = await getHeroData();
   const projectsData = await getProjectsData();
   const newsData = await getNewsData();
+  const aboutData = await getAboutData();
+  const philosophyData = await getPhilosophyData();
+  const servicesData = await getServicesData();
 
   return (
     <main className='font-roboto'>
       <Navbar />
       <Hero data={heroData} locale={locale} />
-      <About />
-      <Services />
-      {/* Теперь locale — строка */}
+      <About data={aboutData} philosophyData={philosophyData} locale={locale} />
+      <Services data={servicesData} locale={locale} />
+
       <ProjectsCarousel projects={projectsData} locale={locale} />
       <Partners />
       <CorporateResponsibility />

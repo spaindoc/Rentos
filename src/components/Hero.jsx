@@ -37,7 +37,7 @@ function StatBlock({
 
 export default function Hero({ data, locale }) {
   const t = useTranslations("hero");
-  const tStats = useTranslations("stats");
+
 
   const keys = ["years", "visitors", "projects"];
   const suffix = { years: "+", visitors: "+", projects: "" };
@@ -100,8 +100,8 @@ export default function Hero({ data, locale }) {
                 key={key}
                 value={block.value}
                 suffix={suffix[key]}
-                title={tStats(key)}
-                description={tStats(`${key}_desc`)}
+                title={block.label[locale]}
+                description={block.description[locale]}
                 delay={idx * 50}
                 className='
                   last:col-span-2 last:mt-9     

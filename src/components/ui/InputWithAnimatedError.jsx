@@ -1,7 +1,6 @@
 import { AlertCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Input } from "./Input";
-import { cn } from "@/lib/utils";
+import { Input } from ".";
 
 export function InputWithAnimatedError({
   field,

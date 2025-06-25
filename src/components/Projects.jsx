@@ -15,22 +15,18 @@ export default function ProjectsCarousel({ projects, locale }) {
   const getLocalized = (field) => field[currentLocale] ?? field["en"] ?? "";
 
   // Embla
-  const [emblaRef, setEmblaRef] = useState(null);
+
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [emblaRefCallback, emblaApi] = useEmblaCarousel({ loop: true });
 
-  useEffect(() => {
-    setEmblaRef(emblaApi);
+  const handleScrollPrev = useCallback(() => {
+    emblaApi?.scrollPrev();
   }, [emblaApi]);
 
-  const handleScrollPrev = useCallback(() => {
-    emblaRef?.scrollPrev();
-  }, [emblaRef]);
-
   const handleScrollNext = useCallback(() => {
-    emblaRef?.scrollNext();
-  }, [emblaRef]);
+    emblaApi?.scrollNext();
+  }, [emblaApi]);
 
   const handleSelect = useCallback((api) => {
     const prev = api.previousScrollSnap();
@@ -40,15 +36,24 @@ export default function ProjectsCarousel({ projects, locale }) {
   }, []);
 
   useEffect(() => {
-    if (!emblaRef) return;
-    handleSelect(emblaRef);
-    emblaRef.on("select", handleSelect);
-    emblaRef.on("reInit", handleSelect);
-    return () => {
-      emblaRef.off("select", handleSelect);
-      emblaRef.off("reInit", handleSelect);
+    if (!emblaApi) return;
+
+    const handleSelect = () => {
+      const prev = emblaApi.previousScrollSnap();
+      const curr = emblaApi.selectedScrollSnap();
+      setDirection(curr > prev ? 1 : curr < prev ? -1 : 0);
+      setSelectedIndex(curr);
     };
-  }, [emblaRef, handleSelect]);
+
+    handleSelect();
+    emblaApi.on("select", handleSelect);
+    emblaApi.on("reInit", handleSelect);
+
+    return () => {
+      emblaApi?.off("select", handleSelect);
+      emblaApi?.off("reInit", handleSelect);
+    };
+  }, [emblaApi]);
 
   if (!projects || projects.length === 0) return null;
 

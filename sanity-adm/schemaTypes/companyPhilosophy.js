@@ -2,12 +2,12 @@ import {defineType, defineField} from 'sanity'
 
 export default defineType({
   name: 'companyPhilosophy',
-  title: 'Company Philosophy',
+  title: 'Філософія компанії (блок під «про нас»)',
   type: 'document',
   fields: [
     defineField({
       name: 'block1',
-      title: 'Block 1',
+      title: 'Блок 1',
       type: 'object',
       fields: [
         defineField({

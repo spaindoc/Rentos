@@ -3,7 +3,7 @@ import {defineType, defineField} from 'sanity'
 
 export default defineType({
   name: 'aboutSection',
-  title: 'About Section',
+  title: 'Про нас',
   type: 'document',
   fields: [
     // Заголовок
@@ -17,7 +17,7 @@ export default defineType({
     // Изображение с ALT
     defineField({
       name: 'image',
-      title: 'Картинка секции',
+      title: 'Зображення секції',
       type: 'image',
       options: {hotspot: true},
       fields: [
@@ -44,7 +44,7 @@ export default defineType({
         }),
         defineField({
           name: 'items',
-          title: 'Пункты списка',
+          title: 'Пункти списку',
           type: 'array',
           of: [{type: 'localizedString', name: 'item', title: 'Пункт'}],
           validation: (Rule) => Rule.required().min(1),

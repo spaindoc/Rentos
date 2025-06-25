@@ -8,6 +8,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import GlobeIcon from "../ui/GlobeIcon";
 import { oswald } from "@/lib/font";
+import { FB_LINK, INSTAGRAM_LINK } from "@/config/site";
 
 export default function Navbar() {
   const t = useTranslations("nav");
@@ -40,7 +41,7 @@ export default function Navbar() {
     <nav
       className={`
         bg-white px-4 z-50 transition-all duration-300
-        fixed top-0 left-0 right-0 py-
+        fixed top-0 left-0 right-0 
       `}
     >
       <div className='2xl:max-w-[1400px] mx-auto max-w-[1080px] 2xl:px-0 2xl:py-10 py-4 flex items-center justify-between 2xl:justify-center relative'>
@@ -54,19 +55,19 @@ export default function Navbar() {
             alt='Logo'
             width={100}
             height={100}
-            className='w-[84px] h-[84px]'
+            className='w-[84px] h-[84px] antialiased'
           />
         </Link>
 
         {/* Desktop nav */}
-        <div className='hidden md:flex items-center justify-center flex-1 2xl:max-w-[486px] 2xl:w-full 2xl:pl-12 md:space-x-2 '>
+        <div className='hidden md:flex items-center justify-center flex-1 2xl:max-w-[486px] 2xl:w-full 2xl:pl-12 md:space-x-2 2xl:space-x-4 '>
           {navigationItems.map((item) => (
             <Link
               key={item.key}
               href={item.href}
               className='
                 text-[15px] 2xl:text-base  text-black uppercase
-                2xl:px-1 2xl:py-1
+                2xl:px-1 2xl:py-1   whitespace-nowrap
                 outline outline-transparent outline-offset-2
                 transition-all duration-200 tracking-tight
                 hover:outline-black
@@ -104,7 +105,7 @@ export default function Navbar() {
         {/* Mobile burger toggle */}
         <button
           onClick={() => setIsMobileMenuOpen((v) => !v)}
-          className='xl:hidden text-black focus:outline-none'
+          className='md:hidden text-black focus:outline-none'
         >
           {isMobileMenuOpen ? (
             <svg
@@ -139,7 +140,13 @@ export default function Navbar() {
           >
             <div className='flex items-center justify-between px-4 py-7'>
               <Link href='/' className='flex items-center'>
-                <Image src='/logo.png' alt='Logo' width={60} height={60} />
+                <Image
+                  src='/black-logo.svg'
+                  alt='Logo'
+                  width={60}
+                  height={60}
+                  className='antialiased'
+                />
               </Link>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -228,7 +235,7 @@ export default function Navbar() {
 
             <div className='flex justify-between max-w-56 px-4 py-6'>
               <Link
-                href='https://instagram.com/yourprofile'
+                href={INSTAGRAM_LINK}
                 target='_blank'
                 rel='noopener noreferrer'
               >
@@ -239,11 +246,7 @@ export default function Navbar() {
                   height={44}
                 />
               </Link>
-              <Link
-                href='https://facebook.com/yourpage'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
+              <Link href={FB_LINK} target='_blank' rel='noopener noreferrer'>
                 <Image
                   src='/facebook.svg'
                   alt='Facebook'

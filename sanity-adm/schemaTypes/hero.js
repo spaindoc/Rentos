@@ -44,7 +44,7 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'Блок текст + числа',
+      title: 'title.uk',
     },
   },
 })

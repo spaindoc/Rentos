@@ -24,19 +24,19 @@ export default function Services({ data, locale }) {
     >
       {/* Фоновое размытие */}
       <div
-        className='absolute inset-0 bg-cover bg-center filter blur-sm pointer-events-none'
-        style={{ backgroundImage: "url('/services.webp')" }}
+        className={`
+    absolute inset-0 bg-cover bg-center filter blur-sm pointer-events-none
+    bg-[url('/mobile-bg-services.png')] md:bg-[url('/services.webp')]
+  `}
         aria-hidden='true'
       />
-
-      <div className='relative py-8 2xl:py-16 max-w-[1400px] mx-auto flex flex-col lg:flex-row md:justify-center md:gap-7 2xl:gap-0 2xl:justify-start w-full'>
+      <div className='relative py-8 2xl:py-16 max-w-[1080px] 2xl:max-w-[1400px] mx-auto flex flex-col lg:flex-row md:justify-center md:gap-7 2xl:gap-0 2xl:justify-start w-full'>
         {/* Заголовок секции */}
         <div
           className={`
             sticky
             top-[calc(92px+20px)]
             md:top-40
-            z-40 bg-white md:bg-transparent
             w-full mb-5 md:mb-0
             px-4 md:px-0
             md:w-2xs 2xl:w-1/3
@@ -55,7 +55,7 @@ export default function Services({ data, locale }) {
         </div>
 
         {/* Колонка карточек */}
-        <div ref={ref} className='relative w-full lg:max-w-2xl 2xl:pl-0'>
+        <div ref={ref} className='relative w-full - lg:max-w-2xl 2xl:pl-0'>
           {items.map((item, i) => (
             <motion.div
               key={item.title[locale]}
@@ -64,7 +64,7 @@ export default function Services({ data, locale }) {
                 h-auto mb-5 last:mb-0
                 md:h-[320px] 2xl:h-[340px] md:mb-0
                 border border-black
-                w-full md:w-[560px] md:mx-auto
+                w-full md:w-[560px] 2xl:ml-8
                 py-6 md:py-11 px-4
                 flex flex-col justify-between
                 sticky

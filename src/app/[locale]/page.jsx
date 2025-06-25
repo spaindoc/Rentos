@@ -4,7 +4,7 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import ProjectsCarousel from "@/components/Projects";
 import Feedback from "@/components/feedback";
-import Footer from "@/components/layout/footer";
+
 import NewsCarousel from "@/components/news-section/NewsCarousel";
 import ContactsSection from "@/components/ContactsSection";
 import {

@@ -5,6 +5,8 @@ import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { getMessages } from "next-intl/server";
 import ScrollToTop from "@/components/ui/buttons/ScrollToTop";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/footer";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -36,7 +38,9 @@ export default async function LocaleLayout({ children, params }) {
     <html lang={locale}>
       <body className={`${roboto.variable} ${oswald.variable} antialiased`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
+          <Navbar />
           {children}
+          <Footer />
           <ScrollToTop />
         </NextIntlClientProvider>
       </body>

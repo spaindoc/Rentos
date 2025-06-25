@@ -38,7 +38,7 @@ const Partners = () => {
   );
 
   return (
-    <Section className='bg-light-blue scroll-mt-20' id='partners'>
+    <section className='bg-light-blue pt-23 scroll-mt-20' id='partners'>
       <Container>
         <div className='flex flex-col items-start gap-4 lg:gap-8'>
           <Heading2 className='mr-10 md:mr-0 text-black md:w-1/3 pl-2 2xl:pl-9 ml-auto md:mx-auto text-left mb-8 '>
@@ -48,12 +48,12 @@ const Partners = () => {
             <Slider
               items={partnerImages}
               renderItem={renderPartner}
-              itemClassName=' max-w-[158px] lg:max-w-[220px] flex-none basis-1/4 h-[138px] lg:w-[220px] lg:h-[200px] relative cursor-pointer'
+              itemClassName=' max-w-[165px]  flex-none basis-1/4 h-[138px]  relative cursor-pointer'
             />
           </div>
         </div>
       </Container>
-    </Section>
+    </section>
   );
 };
 

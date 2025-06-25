@@ -1,4 +1,3 @@
-// app/[locale]/page.jsx
 import Partners from "@/components/partners";
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/Hero";
@@ -19,7 +18,10 @@ import {
 import CorporateResponsibility from "@/components/CorporateResponsibility";
 import About from "@/components/about/about";
 
-export async function generateMetadata({ params: { locale } }) {
+// ✅ generateMetadata — с await для params
+export async function generateMetadata(props) {
+  const { locale } = await props.params;
+
   return {
     title:
       locale === "uk"
@@ -43,7 +45,10 @@ export async function generateMetadata({ params: { locale } }) {
   };
 }
 
-export default async function HomePage({ params: { locale } }) {
+// ✅ HomePage — с await для params
+export default async function HomePage(props) {
+  const { locale } = await props.params;
+
   const heroData = await getHeroData();
   const projectsData = await getProjectsData();
   const newsData = await getNewsData();
@@ -53,18 +58,15 @@ export default async function HomePage({ params: { locale } }) {
 
   return (
     <main className='font-roboto'>
-      <Navbar />
       <Hero data={heroData} locale={locale} />
       <About data={aboutData} philosophyData={philosophyData} locale={locale} />
       <Services data={servicesData} locale={locale} />
-
       <ProjectsCarousel projects={projectsData} locale={locale} />
       <Partners />
       <CorporateResponsibility />
       <NewsCarousel newsItems={newsData} locale={locale} />
       <ContactsSection />
       <Feedback />
-      <Footer />
     </main>
   );
 }

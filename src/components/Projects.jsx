@@ -14,16 +14,15 @@ export default function ProjectsCarousel({ projects, locale }) {
   const currentLocale = locale.split("-")[0];
   const getLocalized = (field) => field[currentLocale] ?? field["en"] ?? "";
 
+  // Embla
   const [emblaRef, setEmblaRef] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [direction, setDirection] = useState(0);
-  const [emblaRefCallback, emblaApiInstance] = useEmblaCarousel({
-    loop: true,
-  });
+  const [emblaRefCallback, emblaApi] = useEmblaCarousel({ loop: true });
 
   useEffect(() => {
-    setEmblaRef(emblaApiInstance);
-  }, [emblaApiInstance]);
+    setEmblaRef(emblaApi);
+  }, [emblaApi]);
 
   const handleScrollPrev = useCallback(() => {
     emblaRef?.scrollPrev();
@@ -34,10 +33,10 @@ export default function ProjectsCarousel({ projects, locale }) {
   }, [emblaRef]);
 
   const handleSelect = useCallback((api) => {
-    const previous = api.previousScrollSnap();
-    const current = api.selectedScrollSnap();
-    setDirection(current > previous ? 1 : current < previous ? -1 : 0);
-    setSelectedIndex(current);
+    const prev = api.previousScrollSnap();
+    const curr = api.selectedScrollSnap();
+    setDirection(curr > prev ? 1 : curr < prev ? -1 : 0);
+    setSelectedIndex(curr);
   }, []);
 
   useEffect(() => {
@@ -53,12 +52,16 @@ export default function ProjectsCarousel({ projects, locale }) {
 
   if (!projects || projects.length === 0) return null;
 
-  const active = projects[selectedIndex];
-  const next = projects[selectedIndex + 1];
+  // Оборачиваем индекс по модулю, чтобы next всегда существовал
+  const len = projects.length;
+  const idx = ((selectedIndex % len) + len) % len;
+  const active = projects[idx];
+  const next = projects[(idx + 1) % len];
+
   const { _id: id, name, description, imageUrl, link } = active;
   const transition = { duration: 1.2, ease: "easeInOut" };
 
-  // Варианты анимации
+  // Варианты анимаций
   const mobileSlideVariants = {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
@@ -78,7 +81,7 @@ export default function ProjectsCarousel({ projects, locale }) {
   return (
     <section
       id='projects'
-      className='py-16  max-w-[1080px] 2xl:max-w-[1400px] mx-auto px-2 sm:px-0  scroll-mt-20'
+      className='py-16 max-w-[1080px] 2xl:max-w-[1400px] mx-auto px-2 sm:px-0 scroll-mt-20'
     >
       {/* Mobile header */}
       <div className='flex justify-between px-4 mb-6 lg:hidden'>
@@ -118,7 +121,7 @@ export default function ProjectsCarousel({ projects, locale }) {
       <div className='md:hidden mt-8 px-4 flex flex-col gap-4 relative'>
         <AnimatePresence mode='wait'>
           <motion.div
-            key={id + "-mobile"}
+            key={`${id}-mobile`}
             variants={mobileSlideVariants}
             initial='initial'
             animate='animate'
@@ -168,7 +171,7 @@ export default function ProjectsCarousel({ projects, locale }) {
           {/* Active Slide */}
           <AnimatePresence mode='popLayout' custom={direction}>
             <motion.div
-              key={id + "-active-slide-wrapper"}
+              key={`${id}-active-slide-wrapper`}
               variants={slideVariants}
               initial='initial'
               animate='animate'
@@ -177,14 +180,13 @@ export default function ProjectsCarousel({ projects, locale }) {
               transition={transition}
               className='relative flex-1 max-w-5xl'
             >
-              {/* Title & button */}
+              {/* Title & Button с правым отступом */}
               <motion.div
-                key={`active-title-block-${id}`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ ...transition, duration: 0.6 }}
-                className='absolute top-0 right-0 2xl:right-40 inline-flex items-center border-2 border-black font-oswald bg-white z-10'
+                className='absolute top-0 right-6 lg:right-20 2xl:right-40 inline-flex items-center border-2 border-black font-oswald bg-white z-10'
               >
                 <motion.h3
                   transition={transition}
@@ -212,13 +214,13 @@ export default function ProjectsCarousel({ projects, locale }) {
 
               <div className='overflow-hidden'>
                 <div className='flex gap-6 items-end'>
-                  {/* Image */}
+                  {/* Изображение */}
                   <motion.div
                     layoutId={`project-image-${id}`}
                     layout
                     transition={transition}
                     className='relative flex-shrink-0 w-[341px] h-[352px] 2xl:w-[479px] 2xl:h-[480px] overflow-hidden border-2 border-black'
-                    style={{ willChange: "transform, width, hight" }}
+                    style={{ willChange: "transform, width, height" }}
                   >
                     <Image
                       src={imageUrl || "/placeholder.svg"}
@@ -227,7 +229,7 @@ export default function ProjectsCarousel({ projects, locale }) {
                       className='object-cover'
                     />
                   </motion.div>
-                  {/* Description */}
+                  {/* Описание */}
                   <motion.div
                     variants={textVariants}
                     initial='initial'
@@ -246,7 +248,7 @@ export default function ProjectsCarousel({ projects, locale }) {
             </motion.div>
           </AnimatePresence>
 
-          {/* Навигация */}
+          {/* Навигация стрелками */}
           <div className='flex gap-4 md:gap-10 mb-8 absolute top-0 right-0'>
             <ArrowLeftButton
               onClick={handleScrollPrev}
@@ -260,49 +262,47 @@ export default function ProjectsCarousel({ projects, locale }) {
             />
           </div>
 
-          {/* Next preview */}
-          {next && (
-            <div className='flex-shrink-0 flex flex-col items-center h-full lg:items-end gap-29'>
-              <div className='relative flex flex-col items-end w-full min-w-[382px]'>
-                <AnimatePresence mode='wait' custom={direction}>
-                  <motion.div
-                    key={`next-title-block-${next._id}`}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ ...transition, duration: 0.6 }}
-                    className='absolute top-0 left-2 2xl:-left-15 inline-flex items-center border-2 border-black font-oswald bg-white z-10'
-                  >
-                    <motion.h3
-                      transition={transition}
-                      className='text-2xl px-16 py-2 uppercase text-center min-w-[260px]'
-                    >
-                      {getLocalized(next.name)}
-                    </motion.h3>
-                  </motion.div>
-                </AnimatePresence>
-
-                <AnimatePresence mode='popLayout' custom={direction}>
-                  <motion.div
-                    key={`next-image-wrapper-${next._id}`}
-                    layoutId={`project-image-${next._id}`}
-                    layout
+          {/* Next Preview без проверки next && */}
+          <div className='flex-shrink-0 flex flex-col items-center h-full lg:items-end gap-29'>
+            <div className='relative flex flex-col items-end w-full min-w-[382px]'>
+              <AnimatePresence mode='wait' custom={direction}>
+                <motion.div
+                  key={`next-title-block-${next._id}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ ...transition, duration: 0.6 }}
+                  className='absolute top-0 left-2 2xl:-left-15 inline-flex items-center border-2 border-black font-oswald bg-white z-10'
+                >
+                  <motion.h3
                     transition={transition}
-                    className='relative w-full max-w-[266px] 2xl:max-w-[420px] h-[225px]  2xl:h-[280px] overflow-hidden border-2 border-black cursor-pointer'
-                    onClick={handleScrollNext}
-                    style={{ willChange: "transform, width, height" }}
+                    className='text-2xl px-16 py-2 uppercase text-center min-w-[260px]'
                   >
-                    <Image
-                      src={next.imageUrl || "/placeholder.svg"}
-                      alt={getLocalized(next.name)}
-                      fill
-                      className='object-cover'
-                    />
-                  </motion.div>
-                </AnimatePresence>
-              </div>
+                    {getLocalized(next.name)}
+                  </motion.h3>
+                </motion.div>
+              </AnimatePresence>
+
+              <AnimatePresence mode='popLayout' custom={direction}>
+                <motion.div
+                  key={`next-image-wrapper-${next._id}`}
+                  layoutId={`project-image-${next._id}`}
+                  layout
+                  transition={transition}
+                  className='relative w-full max-w-[266px] 2xl:max-w-[420px] h-[225px] 2xl:h-[280px] overflow-hidden border-2 border-black cursor-pointer'
+                  onClick={handleScrollNext}
+                  style={{ willChange: "transform, width, height" }}
+                >
+                  <Image
+                    src={next.imageUrl || "/placeholder.svg"}
+                    alt={getLocalized(next.name)}
+                    fill
+                    className='object-cover'
+                  />
+                </motion.div>
+              </AnimatePresence>
             </div>
-          )}
+          </div>
         </div>
       </LayoutGroup>
     </section>

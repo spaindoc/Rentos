@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "@/../public/footer_logo.png";
+import Logo from "@/../public/black-logo.svg";
 
 export const FooterLogo = () => {
   return (
@@ -10,7 +10,7 @@ export const FooterLogo = () => {
       className='flex items-center justify-center group w-full'
     >
       <Image
-        className=' w-full max-w-[195px] h-[160px]  2xl:w-[260px] 2xl:h-[212px]'
+        className=' w-full max-w-[195px] h-[160px]  '
         src={Logo}
         alt='Footer Logo'
       />

@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { InstagramSimpleIcon, InstagramGradientIcon } from "./Icons";
+import { INSTAGRAM_LINK } from "@/config/site";
 
 export default function InstagramLink() {
   return (
     <Link
-      href='https://www.instagram.com/yourpage'
+      href={INSTAGRAM_LINK}
       target='_blank'
       rel='noopener noreferrer'
       className='group

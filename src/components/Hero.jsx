@@ -38,7 +38,6 @@ function StatBlock({
 export default function Hero({ data, locale }) {
   const t = useTranslations("hero");
 
-
   const keys = ["years", "visitors", "projects"];
   const suffix = { years: "+", visitors: "+", projects: "" };
   const blocks = data?.statBlocks || [];
@@ -63,7 +62,9 @@ export default function Hero({ data, locale }) {
             absolute left-1/2 right-0 bottom-0
 
             md:static md:inline-block
+            
           '
+              href='#contacts'
             >
               {t("cta_button")}
             </Button>
@@ -86,6 +87,7 @@ export default function Hero({ data, locale }) {
           fill
           className='object-cover'
           priority
+          sizes='(min-width: 1536px) 1400px, (min-width: 768px) 1080px,  100vw'
         />
       </div>
 

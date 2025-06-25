@@ -81,7 +81,7 @@ export default function Services({ data, locale }) {
                 <Button
                   className='ml-4 flex-shrink-0'
                   aria-label={locale === "uk" ? "Зв’язатися" : "Contact"}
-                  href={"#contact"}
+                  href={"#contacts"}
                 >
                   {locale === "en" ? "Contact" : "Зв’язатися"}
                 </Button>

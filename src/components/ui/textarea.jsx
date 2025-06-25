@@ -1,27 +1,40 @@
-// ui/Textarea.jsx
 "use client";
+
 import { forwardRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { AlertCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export const Textarea = forwardRef(
-  ({ className, placeholder, onChange, ...props }, ref) => {
-    const [focused, setFocused] = useState(false);
+export const TextareaWithAnimatedError = forwardRef(
+  (
+    {
+      className,
+      placeholder,
+      error,
+      message,
+      value,
+      onChange,
+      onBlur,
+      ...props
+    },
+    ref
+  ) => {
     const [hasText, setHasText] = useState(false);
 
     const handleChange = (e) => {
-      const value = e.target.value;
-      setHasText(value.trim() !== "");
-      onChange?.(e);
+      const v = e.target.value;
+      setHasText(v.trim() !== "");
+      onChange(e);
     };
 
     const showPlaceholder = !hasText;
 
     return (
-      <div className='relative w-full mb-0'>
+      <div className='relative w-full mb-3'>
         {showPlaceholder && (
           <div
             className={cn(
-              "pointer-events-none absolute left-4 top-1/3",
+              "pointer-events-none absolute left-4 top-5",
               "text-gray text-base md:text-lg leading-tight"
             )}
           >
@@ -32,23 +45,36 @@ export const Textarea = forwardRef(
         <textarea
           {...props}
           ref={ref}
-          onFocus={() => setFocused(true)}
-          onBlur={() => setFocused(false)}
+          value={value}
           onChange={handleChange}
+          onBlur={onBlur}
           className={cn(
-            "w-full max-w-full min-w-0 box-border",
-            "border-2 border-black  text-black",
-            "bg-white text-left resize-none focus:outline-none",
-            "text-base md:text-lg leading-tight",
-            // Меняем padding только по флагу hasText, не по фокусу
+            "w-full box-border border-2 text-black resize-none focus:outline-none bg-white text-base md:text-lg leading-tight px-4",
             hasText ? "pt-6" : "pt-[52px] lg:pt-[65px]",
-            "px-4 min-h-[160px] overflow-y-auto",
-            "transition-all duration-200 ease-in-out",
+            error ? "border-red-600" : "border-black",
             className
           )}
         />
+
+        {error && (
+          <>
+            <AlertCircle className='absolute right-3 top-4 text-red-600 w-5 h-5' />
+            <AnimatePresence>
+              <motion.div
+                initial={{ opacity: 0, y: 5 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 5 }}
+                transition={{ duration: 0.2 }}
+                className='absolute right-10 top-4 z-50 bg-red-600 text-white text-xs px-2 py-1 rounded whitespace-nowrap'
+              >
+                {message}
+              </motion.div>
+            </AnimatePresence>
+          </>
+        )}
       </div>
     );
   }
 );
-Textarea.displayName = "Textarea";
+
+TextareaWithAnimatedError.displayName = "TextareaWithAnimatedError";

@@ -47,7 +47,7 @@ export const Heading4 = forwardRef(({ children, className, ...props }, ref) => (
   <h4
     ref={ref}
     className={cn(
-      "text-[22px] sm:text-2xl 2xl:text-[34px] text-white font-oswald uppercase ",
+      "text-[22px] sm:text-[25.5px] 2xl:text-[34px] text-white font-oswald uppercase ",
       className
     )}
     {...props}

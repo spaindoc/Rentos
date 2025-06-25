@@ -25,7 +25,7 @@ const getProjectsData = async () => {
 };
 
 const getNewsData = async () => {
-  const query = `*[_type == "newsItem"]{
+  const query = `*[_type == "newsItem"] | order(date desc){
     _id,
     caption{en, uk},
     image,

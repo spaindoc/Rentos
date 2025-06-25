@@ -1,26 +1,28 @@
 // app/components/Footer.tsx
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Container, Heading4 } from "../ui";
 import { FooterLogo } from "../ui/footerLogo";
 import InstagramFooterIcon from "../ui/InstagramFooterIcon";
 import { FacebookFooterIcon } from "../ui/FacebookFooterIcon";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 export default function Footer() {
   const t = useTranslations();
+  const locale = useLocale();
 
   return (
-    <footer className='bg-black py-10'>
+    <footer className='bg-black py-10 md:py-20'>
       <Container>
         {/** DESKTOP FOOTER — НИЧЕГО НЕ ТРОГАЕМ **/}
         <div className='hidden md:flex flex-col lg:flex-row items-center 2xl:items-start lg:justify-between h-[324px] 2xl:h-[433px]'>
           <div className='flex flex-col lg:h-full mb-8 lg:mb-0 items-center lg:items-start'>
             <FooterLogo />
             <Link
-              href='#'
-              className='hidden lg:block mt-auto w-[300px] text-center underline text-base 2xl:text-[22px] text-flink'
+              href='/privacy-policy'
+              locale={locale}
+              className='hidden lg:block mt-auto w-[300px] text-center underline text-base 2xl:text-lg text-flink'
             >
               {t("Footer.links.privacyPolicy")}
             </Link>
@@ -32,7 +34,7 @@ export default function Footer() {
                 {t("Footer.navigation")}
               </Heading4>
               <nav className='flex-1'>
-                <ul className='flex flex-col gap-4 lg:gap-5 text-white text-base 2xl:text-xl uppercase'>
+                <ul className='flex flex-col gap-4 lg:gap-5 text-white text-[15px] 2xl:text-xl uppercase'>
                   <li>
                     <Link href='#about'>
                       {t("Footer.navigationLinks.about")}
@@ -60,7 +62,7 @@ export default function Footer() {
               </nav>
               <Link
                 href='#'
-                className='hidden lg:block mt-auto underline text-base 2xl:text-[22px] text-flink'
+                className='hidden lg:block mt-auto underline text-base 2xl:text-lg text-flink'
               >
                 {t("Footer.links.websiteDevelopment")}
               </Link>
@@ -71,12 +73,22 @@ export default function Footer() {
                 {t("Footer.contacts")}
               </Heading4>
               <div className='flex flex-col flex-1 gap-[24px] lg:gap-[26px] text-base text-white mb-6 lg:flex-1'>
-                <p>{t("Footer.contactInfo.address_1")}</p>
-                <p>{t("Footer.contactInfo.address_2")}</p>
-                <Link href={"tel:+380991168518"} className='text-lg'>
+                <p className='text-[16.5px] 2xl:text-lg'>
+                  {t("Footer.contactInfo.address_1")}
+                </p>
+                <p className='text-[16.5px] 2xl:text-lg'>
+                  {t("Footer.contactInfo.address_2")}
+                </p>
+                <Link
+                  href={"tel:+380991168518"}
+                  className='text-[16.5px] 2xl:text-lg'
+                >
                   +380 99 116 85 18
                 </Link>
-                <Link href={"mailto:rentos.ua@gmail.com"} className='text-lg'>
+                <Link
+                  href={"mailto:rentos.ua@gmail.com"}
+                  className='text-[16.5px] 2xl:text-lg'
+                >
                   rentos.ua@gmail.com
                 </Link>
               </div>
@@ -146,11 +158,15 @@ export default function Footer() {
           </div>
 
           {/* Ссылки внизу */}
-          <div className='flex flex-col gap-4 mb-6 items-start text-start w-full mt-10'>
+          <div className='flex flex-col gap-4 mb-6 items-start text-start w-full mt-10 '>
             <Link href='#' className='underline text-flink'>
               Розробка сайту
             </Link>
-            <Link href='#' className='underline text-flink'>
+            <Link
+              href='/privacy-policy'
+              locale={locale}
+              className='underline text-flink'
+            >
               Політика конфіденційності
             </Link>
           </div>

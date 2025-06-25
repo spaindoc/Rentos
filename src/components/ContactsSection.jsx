@@ -13,6 +13,8 @@ import {
   MailIcon,
   PhoneIcon,
 } from "./ui/Icons";
+
+import { FB_LINK, INSTAGRAM_LINK } from "@/config/site";
 import InstagramLink from "./ui/InstagramLink";
 
 export default function ContactsSection() {
@@ -50,7 +52,7 @@ export default function ContactsSection() {
               </p>
             </div>
             <Link
-              href='https://www.instagram.com/yourpage'
+              href={INSTAGRAM_LINK}
               target='_blank'
               rel='noopener noreferrer'
               className='flex-shrink-0'
@@ -89,7 +91,7 @@ export default function ContactsSection() {
               </Link>
             </div>
             <Link
-              href='https://www.facebook.com/yourpage'
+              href={FB_LINK}
               target='_blank'
               rel='noopener noreferrer'
               className='flex-shrink-0 bg-[#3D5A98] lg:hidden'
@@ -102,7 +104,7 @@ export default function ContactsSection() {
           {/* Иконки Facebook + Instagram на десктопе */}
           <div className='hidden lg:flex items-center gap-15 mt-4'>
             <Link
-              href='https://www.facebook.com/yourpage'
+              href={FB_LINK}
               target='_blank'
               rel='noopener noreferrer'
               className='

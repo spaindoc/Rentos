@@ -45,9 +45,12 @@ export default function Navbar() {
     >
       <div className='2xl:max-w-[1400px] mx-auto max-w-[1080px] 2xl:px-0 2xl:py-10 py-4 flex items-center justify-between 2xl:justify-center relative'>
         {/* Logo */}
-        <Link href='/' className='flex-1 w-1/3 items-center 2xl:absolute 2xl:left-0'>
+        <Link
+          href='/'
+          className='flex-1 w-1/3 items-center 2xl:absolute 2xl:left-0 cursor-default'
+        >
           <Image
-            src='/logo.svg'
+            src='/main-logo.svg'
             alt='Logo'
             width={100}
             height={100}
@@ -56,14 +59,14 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop nav */}
-        <div className='hidden md:flex items-center justify-center flex-1 2xl:max-w-[486px] 2xl:w-full 2xl:pl-12 2xl:space-x-2'>
+        <div className='hidden md:flex items-center justify-center flex-1 2xl:max-w-[486px] 2xl:w-full 2xl:pl-12 md:space-x-2 '>
           {navigationItems.map((item) => (
             <Link
               key={item.key}
               href={item.href}
               className='
                 text-[15px] 2xl:text-base  text-black uppercase
-                px-1 py-1
+                2xl:px-1 2xl:py-1
                 outline outline-transparent outline-offset-2
                 transition-all duration-200 tracking-tight
                 hover:outline-black

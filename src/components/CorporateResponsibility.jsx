@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import img from "@/../public/about.jpg";
 import PatternBackground from "./PatternBackground";
+import AnimatedNumber from "./ui/AnimatedNumber";
 
 const CorporateResponsibility = () => {
   const t = useTranslations("corporateResponsibility");
@@ -49,31 +50,55 @@ const CorporateResponsibility = () => {
         <div className='grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 pt-8 sm:pt-0'>
           <div className='text-left bg-white relative justify-self-start md:justify-self-auto -ml-0.5 sm:-ml-0 max-w-[480px]'>
             <Heading2 className='text-[46px]'>
-              {t(`items.item_1.title`)}
+              <AnimatedNumber
+                value={parseFloat(t(`items.item_1.title`).replace(",", "."))}
+                locales='en-US' // ✅ заставляем отображать дробь через точку
+                format={{
+                  useGrouping: false,
+                  minimumFractionDigits: 0,
+                  maximumFractionDigits: 1,
+                }}
+              />
             </Heading2>
-            <Paragraph className='mb-2 2xl:mb-6'>
+            <Paragraph className='-mt-2 2xl:mb-6'>
               {t(`items.item_1.title_after`)}
             </Paragraph>
-            <Paragraph className=''>{t(`items.item_1.subtitle`)}</Paragraph>
+            <Paragraph className='mt-4'>{t(`items.item_1.subtitle`)}</Paragraph>
           </div>
 
           <div className='text-left bg-white relative justify-self-end md:justify-self-auto -ml-3 sm:-ml-0 max-w-[480px]'>
             <Heading2 className='text-[46px]'>
-              {t(`items.item_2.title`)}
+              <AnimatedNumber
+                value={parseFloat(t(`items.item_2.title`).replace(/\s/g, ""))} // удаляем пробелы
+                locales='uk-UA'
+                format={{
+                  useGrouping: true,
+                  minimumFractionDigits: 0,
+                  maximumFractionDigits: 0,
+                }}
+              />
             </Heading2>
-            <Paragraph className='mb-2 2xl:mb-6'>
+            <Paragraph className='-mb-2 2xl:mb-6'>
               {t(`items.item_2.title_after`)}
             </Paragraph>
-            <Paragraph className=''>{t(`items.item_2.subtitle`)}</Paragraph>
+            <Paragraph className='mt-4'>{t(`items.item_2.subtitle`)}</Paragraph>
           </div>
-          <div className='text-left bg-white relative col-span-2 lg:col-span-1 -ml-0.5 sm:-ml-0 mt-12 md:mt-0'>
+          <div className='text-left bg-white relative col-span-2 lg:col-span-1 -ml-0.5 sm:-ml-0 2xl:ml-3 mt-12 md:mt-0'>
             <Heading2 className='text-[46px]'>
-              {t(`items.item_3.title`)}
+              <AnimatedNumber
+                value={parseFloat(t(`items.item_3.title`).replace(",", "."))}
+                locales='en-US'
+                format={{
+                  useGrouping: false,
+                  minimumFractionDigits: 1,
+                  maximumFractionDigits: 1,
+                }}
+              />
             </Heading2>
-            <Paragraph className='mb-2 2xl:mb-6'>
+            <Paragraph className='-mb-2 2xl:mb-6'>
               {t(`items.item_3.title_after`)}
             </Paragraph>
-            <Paragraph className=''>{t(`items.item_3.subtitle`)}</Paragraph>
+            <Paragraph className='mt-4'>{t(`items.item_3.subtitle`)}</Paragraph>
           </div>
         </div>
       </div>

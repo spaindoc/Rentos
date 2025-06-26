@@ -70,7 +70,7 @@ const CorporateResponsibility = ({ data, locale }) => {
             <Paragraph className='-mt-2 2xl:mb-6'>
               {stats.item1.suffix[locale]}
             </Paragraph>
-            <Paragraph className='mt-4'>
+            <Paragraph className='mt-4 md:min-h-22'>
               {stats.item1.description[locale]}
             </Paragraph>
           </div>
@@ -91,7 +91,7 @@ const CorporateResponsibility = ({ data, locale }) => {
             <Paragraph className='-mt-2 2xl:mb-6'>
               {stats.item2.suffix[locale]}
             </Paragraph>
-            <Paragraph className='mt-4'>
+            <Paragraph className='mt-4 md:min-h-22'>
               {stats.item2.description[locale]}
             </Paragraph>
           </div>
@@ -112,7 +112,7 @@ const CorporateResponsibility = ({ data, locale }) => {
             <Paragraph className='-mt-2 2xl:mb-6'>
               {stats.item3.suffix[locale]}
             </Paragraph>
-            <Paragraph className='mt-4'>
+            <Paragraph className='mt-4 md:min-h-22'>
               {stats.item3.description[locale]}
             </Paragraph>
           </div>

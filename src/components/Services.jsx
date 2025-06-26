@@ -7,33 +7,32 @@ import Button from "./ui/buttons/MainButton";
 
 export default function Services({ data, locale }) {
   const ref = useRef(null);
-  useScroll({ target: ref, offset: ["start end", "end start"] });
+  useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
 
   const items = data?.items || [];
-
-  // Константи для «ступінчастого» стікання карток
-  const CARD_HEADER_HEIGHT = 80; // висота шапки картки
-  const CARD_OVERLAP_OFFSET = 10; // скільки перекривати карти одна одну
-  const BASE_STICKY_TOP = 80; // відступ першої картки від верху
+  const CARD_HEADER_HEIGHT = 120; // px
 
   return (
     <section
       id='services'
       className='relative scroll-mt-10 bg-no-repeat bg-cover md:bg-center'
     >
-      {/* Фоновий блюр */}
+      {/* фон */}
       <div
-        className="
+        className={`
           absolute inset-0 bg-cover bg-center filter blur-sm pointer-events-none
           bg-[url('/mobile-bg-services.png')] md:bg-[url('/services.webp')]
-        "
+        `}
         aria-hidden='true'
       />
 
       <div className='relative py-8 2xl:py-16 max-w-[1080px] 2xl:max-w-[1400px] mx-auto flex flex-col lg:flex-row md:justify-center md:gap-7 2xl:gap-0 2xl:justify-start w-full'>
-        {/* Заголовок секції */}
+        {/* Заголовок */}
         <div
-          className='
+          className={`
             sticky
             top-[calc(92px+20px)]
             md:top-40
@@ -41,7 +40,7 @@ export default function Services({ data, locale }) {
             px-4 md:px-0
             md:w-2xs 2xl:w-1/3
             h-auto md:h-[320px] 2xl:h-[340px]
-          '
+          `}
         >
           <h2
             className={`
@@ -56,55 +55,47 @@ export default function Services({ data, locale }) {
           </h2>
         </div>
 
-        {/* Колонка карток */}
+        {/* Колонка карточек */}
         <div
           ref={ref}
           className='relative w-full lg:max-w-2xl 2xl:pl-0 pb-[120px]'
         >
-          {items.map((item, i) => {
-            const stickyTop =
-              BASE_STICKY_TOP + i * (CARD_HEADER_HEIGHT - CARD_OVERLAP_OFFSET);
-            const marginTop =
-              i > 0 ? -(CARD_HEADER_HEIGHT - CARD_OVERLAP_OFFSET) : 0;
-
-            return (
-              <motion.div
-                key={item.title[locale]}
-                className='
-                  bg-white border border-black
-                  w-full md:w-[560px] 2xl:ml-8
-                  py-6 md:py-11 px-4
-                  flex flex-col justify-between
-                  sticky
-                '
-                style={{
-                  top: stickyTop, // індивідуальний верхній відступ
-                  marginTop, // перекриття попередньої картки
-                  zIndex: 10 + i, // 10, 11, 12…
-                }}
-              >
-                <div className='flex justify-between items-center mb-11 md:mb-0'>
-                  <h3 className={`${oswald.className} text-2xl 2xl:text-4xl`}>
-                    {item.title[locale]}
-                  </h3>
-                  <Button
-                    className='ml-4 flex-shrink-0'
-                    aria-label={locale === "uk" ? "Звʼязатися" : "Contact"}
-                    href='#contacts'
-                  >
-                    {locale === "en" ? "Contact" : "Звʼязатися"}
-                  </Button>
-                </div>
-
-                <p className='text-base font-roboto 2xl:text-lg leading-relaxed text-[var(--gray)]'>
-                  {item.text[locale]}
-                </p>
-              </motion.div>
-            );
-          })}
-
-          {/* Пустий блок-«прокладка» для коректного скролу останньої картки */}
-          <div className='h-[200px] md:h-[300px]' />
+          {items.map((item, i) => (
+            <motion.div
+              key={item.title[locale]}
+              className={`
+               bg-white
+                h-auto mb-5 last:mb-0
+                md:h-[320px] 2xl:h-[340px] md:mb-0
+                border border-black
+                w-full md:w-[560px] 2xl:ml-8
+                py-6 md:py-11 px-4
+                flex flex-col justify-between
+                ${i > 0 ? "mt-4 md:mt-6" : ""}
+                md:sticky
+              `}
+              style={{
+                top: 180 + i * CARD_HEADER_HEIGHT,
+                zIndex: 10 + i * 10,
+              }}
+            >
+              <div className='flex justify-between items-center mb-11 md:mb-0'>
+                <h3 className={`${oswald.className} text-2xl 2xl:text-4xl`}>
+                  {item.title[locale]}
+                </h3>
+                <Button
+                  className='ml-4 flex-shrink-0'
+                  aria-label={locale === "uk" ? "Зв'язатися" : "Contact"}
+                  href='#contacts'
+                >
+                  {locale === "en" ? "Contact" : "Зв'язатися"}
+                </Button>
+              </div>
+              <p className='text-base font-roboto 2xl:text-lg leading-relaxed text-[var(--gray)]'>
+                {item.text[locale]}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

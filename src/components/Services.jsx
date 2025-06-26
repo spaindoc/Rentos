@@ -13,8 +13,6 @@ export default function Services({ data, locale }) {
   });
 
   const zIndices = ["z-10", "z-20", "z-30"];
-
-  // Используем данные из props, если есть, иначе fallback пустой массив
   const items = data?.items || [];
 
   return (
@@ -25,11 +23,12 @@ export default function Services({ data, locale }) {
       {/* Фоновое размытие */}
       <div
         className={`
-    absolute inset-0 bg-cover bg-center filter blur-sm pointer-events-none
-    bg-[url('/mobile-bg-services.png')] md:bg-[url('/services.webp')]
-  `}
+          absolute inset-0 bg-cover bg-center filter blur-sm pointer-events-none
+          bg-[url('/mobile-bg-services.png')] md:bg-[url('/services.webp')]
+        `}
         aria-hidden='true'
       />
+
       <div className='relative py-8 2xl:py-16 max-w-[1080px] 2xl:max-w-[1400px] mx-auto flex flex-col lg:flex-row md:justify-center md:gap-7 2xl:gap-0 2xl:justify-start w-full'>
         {/* Заголовок секции */}
         <div
@@ -55,7 +54,7 @@ export default function Services({ data, locale }) {
         </div>
 
         {/* Колонка карточек */}
-        <div ref={ref} className='relative w-full - lg:max-w-2xl 2xl:pl-0'>
+        <div ref={ref} className='relative w-full lg:max-w-2xl 2xl:pl-0'>
           {items.map((item, i) => (
             <motion.div
               key={item.title[locale]}

@@ -1,60 +1,35 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Container, Heading2, Slider, Section } from "./ui";
+import { Container, Heading2, Slider } from "./ui";
 import Image from "next/image";
 
-// партнери тут
-const partnerImages = [
-  "/icons/partner_1.png",
-  "/icons/partner_2.png",
-  "/icons/partner_3.png",
-  "/icons/partner_4.png",
-  "/icons/partner_5.png",
-  "/icons/partner_6.png",
-  "/icons/partner_7.png",
-  "/icons/partner_8.png",
-  "/icons/partner_9.png",
-  "/icons/partner_10.png",
-  "/icons/partner_11.png",
-  "/icons/partner_12.png",
-  "/icons/partner_13.png",
-  "/icons/partner_14.png",
-  "/icons/partner_15.png",
-  "/icons/partner_16.png",
-  "/icons/partner_17.png",
-];
-
-const Partners = () => {
+export default function Partners({ data }) {
   const t = useTranslations();
 
-  const renderPartner = (partner, index) => (
-    <Image
-      src={partner}
-      alt={`Partner ${index + 1}`}
-      fill
-      className='object-contain '
-    />
-  );
-
   return (
-    <section className='bg-light-blue pt-23 scroll-mt-20' id='partners'>
+    <section id='partners' className='bg-light-blue pt-10 md:pt-23 scroll-mt-20'>
       <Container>
         <div className='flex flex-col items-start gap-4 lg:gap-8'>
-          <Heading2 className='mr-10 md:mr-0 text-black md:w-1/3 pl-2 2xl:pl-9 ml-auto md:mx-auto text-left mb-8 '>
+          <Heading2 className='mr-0  text-black w-1/2 md:w-1/3  2xl:pl-9 ml-auto md:mx-auto text-left mb-8'>
             {t("Partners.title")}
           </Heading2>
           <div className='flex-1 overflow-hidden flex justify-center items-center w-full'>
             <Slider
-              items={partnerImages}
-              renderItem={renderPartner}
-              itemClassName=' max-w-[165px]  flex-none basis-1/4 h-[138px]  relative cursor-pointer'
+              items={data.images}
+              renderItem={(partner, index) => (
+                <Image
+                  src={partner.imageUrl}
+                  alt={partner.alt || `Partner ${index + 1}`}
+                  fill
+                  className='object-contain'
+                />
+              )}
+              itemClassName='max-w-[165px] flex-none basis-1/4 h-[138px] relative cursor-pointer'
             />
           </div>
         </div>
       </Container>
     </section>
   );
-};
-
-export default Partners;
+}

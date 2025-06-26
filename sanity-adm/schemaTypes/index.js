@@ -6,6 +6,8 @@ import localizedText from './localizedText'
 import aboutSection from './aboutSection'
 import companyPhilosophy from './companyPhilosophy'
 import services from './services'
+import partnersSection from './partnersSection'
+import corporateResponsibility from './corporateResponsibility'
 
 export const schemaTypes = [
   heroSection,
@@ -16,4 +18,6 @@ export const schemaTypes = [
   newsItem,
   localizedString,
   localizedText,
+  partnersSection,
+  corporateResponsibility,
 ]

@@ -7,6 +7,7 @@ const nextConfig = withNextIntl({
   images: {
     domains: ["cdn.sanity.io"],
   },
+  
 });
 
 export default withNextIntl(nextConfig);

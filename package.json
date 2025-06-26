@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@number-flow/react": "^0.5.10",
+    "@portabletext/react": "^3.2.1",
     "@react-google-maps/api": "^2.20.6",
     "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/client": "^7.6.0",

@@ -34,7 +34,7 @@ export default function ContactsSection() {
   return (
     <section className='py-10 2xl:py-16 px-4 lg:px-0 max-w-[1080px] 2xl:max-w-[1400px] mx-auto'>
       {/* Заголовок */}
-      <h2 className='text-[32px] text-right lg:text-left lg:text-[54px] font-oswald uppercase mb-12'>
+      <h2 className='text-[32px] md:text-right lg:text-left lg:text-[54px]  w-1/2 md:w-1/3 ml-auto md:mx-auto font-oswald uppercase mb-6 md:mb-20'>
         {t("contactsTitle")}
       </h2>
 

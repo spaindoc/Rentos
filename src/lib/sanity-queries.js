@@ -90,6 +90,53 @@ const getServicesData = async () => {
   return await client.fetch(query);
 };
 
+const getPartnersData = () => {
+  const query = `*[_type == "partnersSection"][0]{
+    title,
+    images[]{
+      alt,
+      "imageUrl": asset->url
+    }
+  }`;
+  return client.fetch(query);
+};
+
+const getCorporateResponsibilityData = () => {
+  const query = `*[_type == "corporateResponsibility"][0]{
+    title,                              
+    "imageUrl": image.asset->url,
+    "imageAlt": image.alt,
+    subSections {                       
+      sub1 {
+        item1,                         
+        item2
+      },
+      sub2 {
+        item1,
+        item2
+      }
+    },
+    stats {                            
+      item1 {
+        value,                       
+        suffix,                       
+        description                   
+      },
+      item2 {
+        value,
+        suffix,
+        description
+      },
+      item3 {
+        value,
+        suffix,
+        description
+      }
+    }
+  }`;
+  return client.fetch(query);
+};
+
 export {
   getHeroData,
   getAboutData,
@@ -97,4 +144,6 @@ export {
   getProjectsData,
   getNewsData,
   getServicesData,
+  getPartnersData,
+  getCorporateResponsibilityData,
 };

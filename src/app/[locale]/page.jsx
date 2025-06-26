@@ -9,16 +9,18 @@ import NewsCarousel from "@/components/news-section/NewsCarousel";
 import ContactsSection from "@/components/ContactsSection";
 import {
   getAboutData,
+  getCorporateResponsibilityData,
   getHeroData,
   getNewsData,
+  getPartnersData,
   getPhilosophyData,
   getProjectsData,
   getServicesData,
 } from "@/lib/sanity-queries";
 import CorporateResponsibility from "@/components/CorporateResponsibility";
 import About from "@/components/about/about";
+import { get } from "react-hook-form";
 
-// ✅ generateMetadata — с await для params
 export async function generateMetadata(props) {
   const { locale } = await props.params;
 
@@ -55,6 +57,8 @@ export default async function HomePage(props) {
   const aboutData = await getAboutData();
   const philosophyData = await getPhilosophyData();
   const servicesData = await getServicesData();
+  const partnersData = await getPartnersData();
+  const corporateData = await getCorporateResponsibilityData();
 
   return (
     <main className='font-roboto'>
@@ -62,8 +66,8 @@ export default async function HomePage(props) {
       <About data={aboutData} philosophyData={philosophyData} locale={locale} />
       <Services data={servicesData} locale={locale} />
       <ProjectsCarousel projects={projectsData} locale={locale} />
-      <Partners />
-      <CorporateResponsibility />
+      <Partners data={partnersData} />
+      <CorporateResponsibility data={corporateData} locale={locale} />
       <NewsCarousel newsItems={newsData} locale={locale} />
       <ContactsSection />
       <Feedback />

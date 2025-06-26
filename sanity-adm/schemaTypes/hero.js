@@ -44,7 +44,18 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'title.uk',
+      blocks: 'statBlocks',
+    },
+    prepare({blocks}) {
+      const count = blocks?.length || 0
+      const first = blocks?.[0]
+      const label = first?.label?.uk || 'Без назви'
+      const value = first?.value || '?'
+
+      return {
+        title: `Hero секція – ${count} блок(и)`,
+        subtitle: `${value} — ${label}`,
+      }
     },
   },
 })

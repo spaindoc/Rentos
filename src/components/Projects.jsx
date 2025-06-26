@@ -28,12 +28,27 @@ export default function ProjectsCarousel({ projects, locale }) {
     emblaApi?.scrollNext();
   }, [emblaApi]);
 
-  const handleSelect = useCallback((api) => {
-    const prev = api.previousScrollSnap();
-    const curr = api.selectedScrollSnap();
-    setDirection(curr > prev ? 1 : curr < prev ? -1 : 0);
-    setSelectedIndex(curr);
-  }, []);
+  const handleSelect = useCallback(
+    (api) => {
+      const prev = api.previousScrollSnap();
+      const curr = api.selectedScrollSnap();
+      const len = projects.length;
+
+      // Calculate direction, accounting for looping
+      let dir = 0;
+      if (curr === 0 && prev === len - 1) {
+        dir = 1; // looped right
+      } else if (curr === len - 1 && prev === 0) {
+        dir = -1; // looped left
+      } else {
+        dir = curr > prev ? 1 : curr < prev ? -1 : 0;
+      }
+
+      setDirection(dir);
+      setSelectedIndex(curr);
+    },
+    [projects.length]
+  );
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -73,14 +88,19 @@ export default function ProjectsCarousel({ projects, locale }) {
     exit: { opacity: 0 },
   };
   const slideVariants = {
-    initial: (dir) => ({ x: dir === 1 ? "100%" : "-100%" }),
-    animate: { x: "0%" },
-    exit: (dir) => ({ x: dir === 1 ? "-100%" : "100%" }),
+    initial: (dir) => ({ x: dir === 1 ? "100%" : "-100%", opacity: 0 }),
+    animate: { x: "0%", opacity: 1 },
+    exit: (dir) => ({ x: dir === 1 ? "-100%" : "100%", opacity: 0 }),
   };
   const textVariants = {
     initial: (dir) => ({ x: dir === 1 ? 50 : -50, opacity: 0 }),
     animate: { x: 0, opacity: 1 },
     exit: (dir) => ({ x: dir === 1 ? -50 : 50, opacity: 0 }),
+  };
+  const nextImageVariants = {
+    initial: (dir) => ({ y: dir === 1 ? 40 : -40, opacity: 0 }),
+    animate: { y: 0, opacity: 1 },
+    exit: (dir) => ({ y: dir === 1 ? -40 : 40, opacity: 0 }),
   };
 
   return (
@@ -213,8 +233,6 @@ export default function ProjectsCarousel({ projects, locale }) {
                 <div className='flex gap-6 items-end'>
                   {/* Изображение */}
                   <motion.div
-                    layoutId={`project-image-${id}`}
-                    layout
                     transition={transition}
                     className='relative flex-shrink-0 w-[341px] h-[352px] 2xl:w-[479px] 2xl:h-[480px] overflow-hidden border-2 border-black'
                     style={{ willChange: "transform, width, height" }}
@@ -247,11 +265,7 @@ export default function ProjectsCarousel({ projects, locale }) {
 
           {/* Навигация стрелками */}
           <div className='flex gap-4 md:gap-10 mb-8 absolute top-0 right-0'>
-            <ArrowLeftButton
-              onClick={handleScrollPrev}
-              className='w-13 h-13'
-              aria-label={t("prevProject")}
-            />
+            <ArrowLeftButton onClick={handleScrollPrev} className='w-13 h-13' />
             <ArrowRightButton
               onClick={handleScrollNext}
               className='w-13 h-13'
@@ -261,12 +275,14 @@ export default function ProjectsCarousel({ projects, locale }) {
           {/* Next Preview без проверки next && */}
           <div className='flex-shrink-0 flex flex-col items-center h-full lg:items-end gap-29'>
             <div className='relative flex flex-col items-end w-full min-w-[382px]'>
-              <AnimatePresence mode='wait' custom={direction}>
+              <AnimatePresence mode='popLayout' custom={direction}>
                 <motion.div
-                  key={`next-title-block-${next._id}`}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
+                  key={`next-title-block-${next._id}-${selectedIndex}`}
+                  variants={nextImageVariants}
+                  initial='initial'
+                  animate='animate'
+                  exit='exit'
+                  custom={direction}
                   transition={{ ...transition, duration: 0.6 }}
                   className='absolute top-0 left-2 2xl:-left-15 inline-flex items-center border-2 border-black font-oswald bg-white z-10'
                 >
@@ -281,9 +297,12 @@ export default function ProjectsCarousel({ projects, locale }) {
 
               <AnimatePresence mode='popLayout' custom={direction}>
                 <motion.div
-                  key={`next-image-wrapper-${next._id}`}
-                  layoutId={`project-image-${next._id}`}
-                  layout
+                  key={`next-image-wrapper-${next._id}-${selectedIndex}`}
+                  variants={nextImageVariants}
+                  initial='initial'
+                  animate='animate'
+                  exit='exit'
+                  custom={direction}
                   transition={transition}
                   className='relative w-full max-w-[266px] 2xl:max-w-[420px] h-[225px] 2xl:h-[280px] overflow-hidden border-2 border-black cursor-pointer'
                   onClick={handleScrollNext}

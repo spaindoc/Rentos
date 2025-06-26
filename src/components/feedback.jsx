@@ -111,8 +111,10 @@ export default function Feedback() {
               control={control}
               rules={{
                 required: true,
-                validate: (v) =>
-                  /^\+ \d+$/.test(v) || t("Feedback.messages.phoneDigitsOnly"),
+                pattern: {
+                  value: /^\+?\d+$/,
+                  message: t("Feedback.messages.phoneDigitsOnly"),
+                },
               }}
               render={({ field }) => (
                 <InputWithAnimatedError

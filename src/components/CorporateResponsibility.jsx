@@ -78,7 +78,7 @@ const CorporateResponsibility = () => {
                 }}
               />
             </Heading2>
-            <Paragraph className='-mb-2 2xl:mb-6'>
+            <Paragraph className='-mt-2 2xl:mb-6'>
               {t(`items.item_2.title_after`)}
             </Paragraph>
             <Paragraph className='mt-4'>{t(`items.item_2.subtitle`)}</Paragraph>
@@ -95,7 +95,7 @@ const CorporateResponsibility = () => {
                 }}
               />
             </Heading2>
-            <Paragraph className='-mb-2 2xl:mb-6'>
+            <Paragraph className='-mt-2 2xl:mb-6'>
               {t(`items.item_3.title_after`)}
             </Paragraph>
             <Paragraph className='mt-4'>{t(`items.item_3.subtitle`)}</Paragraph>

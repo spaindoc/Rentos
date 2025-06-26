@@ -72,13 +72,12 @@ export default function Footer() {
               <Heading4 className='text-white mb-6 lg:mb-[42px] uppercase'>
                 {t("Footer.contacts")}
               </Heading4>
-              <div className='flex flex-col flex-1 gap-[24px] lg:gap-[26px] text-base text-white mb-6 lg:flex-1'>
+              <div className='flex flex-col flex-1 gap-[24px] lg:gap-5 text-base text-white mb-6 lg:flex-1'>
                 <p className='text-[16.5px] 2xl:text-lg'>
-                  {t("Footer.contactInfo.address_1")}
-                </p>
-                <p className='text-[16.5px] 2xl:text-lg'>
+                  {t("Footer.contactInfo.address_1")} <br />
                   {t("Footer.contactInfo.address_2")}
                 </p>
+
                 <Link
                   href={"tel:+380991168518"}
                   className='text-[16.5px] 2xl:text-lg'

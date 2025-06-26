@@ -9,11 +9,11 @@ import services from './services'
 
 export const schemaTypes = [
   heroSection,
+  aboutSection,
+  companyPhilosophy,
+  services,
   project,
   newsItem,
   localizedString,
   localizedText,
-  aboutSection,
-  companyPhilosophy,
-  services,
 ]

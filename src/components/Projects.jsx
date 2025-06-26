@@ -92,16 +92,8 @@ export default function ProjectsCarousel({ projects, locale }) {
       <div className='flex justify-between px-4 mb-6 lg:hidden'>
         <h2 className='text-[32px] font-oswald uppercase'>{t("heading")}</h2>
         <div className='flex gap-2'>
-          <ArrowLeftButton
-            onClick={handleScrollPrev}
-            className='w-11 h-11'
-            aria-label={t("prevProject")}
-          />
-          <ArrowRightButton
-            onClick={handleScrollNext}
-            className='w-11 h-11'
-            aria-label={t("nextProject")}
-          />
+          <ArrowLeftButton onClick={handleScrollPrev} className='w-11 h-11' />
+          <ArrowRightButton onClick={handleScrollNext} className='w-11 h-11' />
         </div>
       </div>
 
@@ -263,7 +255,6 @@ export default function ProjectsCarousel({ projects, locale }) {
             <ArrowRightButton
               onClick={handleScrollNext}
               className='w-13 h-13'
-              aria-label={t("nextProject")}
             />
           </div>
 

@@ -17,9 +17,13 @@ export default function Button({
 
     bg-[var(--black)] text-white
     hover:bg-[var(--blue)] hover:text-[var(--black)]
+    active:bg-[var(--blue)] active:text-[var(--black)]
+
     transition-colors duration-200 ease-in-out cursor-pointer
 
-    border-2 border-transparent hover:border-[var(--black)]
+    border-2 border-transparent
+    hover:border-[var(--black)] active:border-[var(--black)]
+
     ${fullWidth ? "w-full px-0 sm:px-8" : ""}
     ${className}
   `

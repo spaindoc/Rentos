@@ -25,7 +25,7 @@ const About_temp = ({ data, locale }) => {
             {data?.title?.[locale]}
           </Heading2>
 
-          <div className='flex flex-col md:mt-11 lg:flex-row gap-8 lg:gap-12'>
+          <div className='flex flex-col mt-11 lg:flex-row gap-8 lg:gap-12'>
             <div className='flex-1 flex flex-col gap-4'>
               <Paragraph>{data?.introBlock?.text?.[locale]}</Paragraph>
               <ul className='list-disc pl-5 text-base md:text-[16.5px] 2xl:text-lg font-roboto space-y-1'>

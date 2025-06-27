@@ -47,10 +47,11 @@ export default function Services({ data, locale }) {
           <h2
             className={`
               ${oswald.className}
-              text-right md:text-left uppercase
+              text-left  uppercase
               md:-translate-x-12 2xl:translate-0 2xl:mr-12
               mb-8 md:mb-15
               text-[32px] md:text-[54px]
+              w-1/2 ml-auto
             `}
           >
             {locale === "en" ? "Services" : "Послуги"}

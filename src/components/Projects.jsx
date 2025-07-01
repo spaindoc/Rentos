@@ -28,28 +28,6 @@ export default function ProjectsCarousel({ projects, locale }) {
     emblaApi?.scrollNext();
   }, [emblaApi]);
 
-  const handleSelect = useCallback(
-    (api) => {
-      const prev = api.previousScrollSnap();
-      const curr = api.selectedScrollSnap();
-      const len = projects.length;
-
-      // Calculate direction, accounting for looping
-      let dir = 0;
-      if (curr === 0 && prev === len - 1) {
-        dir = 1; // looped right
-      } else if (curr === len - 1 && prev === 0) {
-        dir = -1; // looped left
-      } else {
-        dir = curr > prev ? 1 : curr < prev ? -1 : 0;
-      }
-
-      setDirection(dir);
-      setSelectedIndex(curr);
-    },
-    [projects.length]
-  );
-
   useEffect(() => {
     if (!emblaApi) return;
 
@@ -75,11 +53,12 @@ export default function ProjectsCarousel({ projects, locale }) {
   // Оборачиваем индекс по модулю, чтобы next всегда существовал
   const len = projects.length;
   const idx = ((selectedIndex % len) + len) % len;
+  const nextIdx = idx + direction;
   const active = projects[idx];
   const next = projects[(idx + 1) % len];
 
   const { _id: id, name, description, imageUrl, link } = active;
-  const transition = { duration: 1.2, ease: "easeInOut" };
+  const transition = { duration: 1, ease: "easeInOut" };
 
   // Варианты анимаций
   const mobileSlideVariants = {
@@ -88,19 +67,14 @@ export default function ProjectsCarousel({ projects, locale }) {
     exit: { opacity: 0 },
   };
   const slideVariants = {
-    initial: (dir) => ({ x: dir === 1 ? "100%" : "-100%", opacity: 0 }),
+    initial: (dir) => ({ x: dir === 1 ? "100%" : "0%", opacity: 0 }),
     animate: { x: "0%", opacity: 1 },
-    exit: (dir) => ({ x: dir === 1 ? "-100%" : "100%", opacity: 0 }),
+    exit: (dir) => ({ x: dir === 1 ? "-50%" : "50%", opacity: 0 }),
   };
   const textVariants = {
-    initial: (dir) => ({ x: dir === 1 ? 50 : -50, opacity: 0 }),
+    initial: (dir) => ({ x: dir === 1 ? 50 : 0, opacity: 0 }),
     animate: { x: 0, opacity: 1 },
     exit: (dir) => ({ x: dir === 1 ? -50 : 50, opacity: 0 }),
-  };
-  const nextImageVariants = {
-    initial: (dir) => ({ y: dir === 1 ? 40 : -40, opacity: 0 }),
-    animate: { y: 0, opacity: 1 },
-    exit: (dir) => ({ y: dir === 1 ? -40 : 40, opacity: 0 }),
   };
 
   return (
@@ -116,12 +90,10 @@ export default function ProjectsCarousel({ projects, locale }) {
           <ArrowRightButton onClick={handleScrollNext} className='w-11 h-11' />
         </div>
       </div>
-
       {/* Desktop header */}
       <h2 className='hidden lg:block text-[54px] w-1/3 mx-auto font-oswald pl-2 2xl:pl-10 mb-12 uppercase'>
         {t("heading")}
       </h2>
-
       {/* Embla viewport */}
       <div className='embla__viewport overflow-hidden' ref={emblaRefCallback}>
         <div className='embla__container flex'>
@@ -133,7 +105,6 @@ export default function ProjectsCarousel({ projects, locale }) {
           ))}
         </div>
       </div>
-
       {/* Mobile slides */}
       <div className='md:hidden mt-8 px-4 flex flex-col gap-4 relative'>
         <AnimatePresence mode='wait'>
@@ -181,14 +152,13 @@ export default function ProjectsCarousel({ projects, locale }) {
           </motion.div>
         </AnimatePresence>
       </div>
-
       {/* Desktop slides */}
       <LayoutGroup>
         <div className='hidden lg:flex flex-col lg:flex-row items-end justify-between mt-8 relative'>
           {/* Active Slide */}
           <AnimatePresence mode='popLayout' custom={direction}>
             <motion.div
-              key={`${id}-active-slide-wrapper`}
+              key={`${id}-active-slide-wrapper-${selectedIndex}-${direction}`}
               variants={slideVariants}
               initial='initial'
               animate='animate'
@@ -233,9 +203,28 @@ export default function ProjectsCarousel({ projects, locale }) {
                 <div className='flex gap-6 items-end'>
                   {/* Изображение */}
                   <motion.div
+                    key={`current-image-wrapper-${next._id}-${selectedIndex}`}
+                    layout
                     transition={transition}
+                    initial={{
+                      opacity: 0,
+                      x: direction === 1 ? "150%" : "-30%",
+                      y: "0%",
+                      scale: direction === 1 ? 0.8 : 1,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      x: "0%",
+                      y: "0%",
+                      scale: 1,
+                    }}
+                    exit={{
+                      opacity: 0,
+                      x: direction === 1 ? "-30%" : "100%",
+                      y: direction === 1 ? "10%" : "100%",
+                      scale: 0.4,
+                    }}
                     className='relative flex-shrink-0 w-[341px] h-[352px] 2xl:w-[479px] 2xl:h-[480px] overflow-hidden border-2 border-black'
-                    style={{ willChange: "transform, width, height" }}
                   >
                     <Image
                       src={imageUrl || "/placeholder.svg"}
@@ -275,14 +264,9 @@ export default function ProjectsCarousel({ projects, locale }) {
           {/* Next Preview без проверки next && */}
           <div className='flex-shrink-0 flex flex-col items-center h-full lg:items-end gap-29'>
             <div className='relative flex flex-col items-end w-full min-w-[382px]'>
-              <AnimatePresence mode='popLayout' custom={direction}>
+              <AnimatePresence mode='wait' custom={direction}>
                 <motion.div
-                  key={`next-title-block-${next._id}-${selectedIndex}`}
-                  variants={nextImageVariants}
-                  initial='initial'
-                  animate='animate'
-                  exit='exit'
-                  custom={direction}
+                  key={`next-title-block-${next._id}`}
                   transition={{ ...transition, duration: 0.6 }}
                   className='absolute top-0 left-2 2xl:-left-15 inline-flex items-center border-2 border-black font-oswald bg-white z-10'
                 >
@@ -297,16 +281,28 @@ export default function ProjectsCarousel({ projects, locale }) {
 
               <AnimatePresence mode='popLayout' custom={direction}>
                 <motion.div
-                  key={`next-image-wrapper-${next._id}-${selectedIndex}`}
-                  variants={nextImageVariants}
-                  initial='initial'
-                  animate='animate'
-                  exit='exit'
-                  custom={direction}
+                  key={`next-image-wrapper-${next._id}`}
+                  initial={{
+                    opacity: 0,
+                    x: direction === 1 ? "50%" : "-50%",
+                    y: direction === 1 ? "50%" : "-50%",
+                    scale: 0.5,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    x: "0%",
+                    y: "0%",
+                    scale: 1,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    x: direction === 1 ? "-150%" : "100%",
+                    y: direction === 1 ? "-30%" : "50%",
+                    scale: direction === 1 ? 1.6 : 0,
+                  }}
                   transition={transition}
-                  className='relative w-full max-w-[266px] 2xl:max-w-[420px] h-[225px] 2xl:h-[280px] overflow-hidden border-2 border-black cursor-pointer'
+                  className='relative w-[266px] 2xl:w-[420px] h-[225px] 2xl:h-[280px] overflow-hidden border-2 border-black cursor-pointer'
                   onClick={handleScrollNext}
-                  style={{ willChange: "transform, width, height" }}
                 >
                   <Image
                     src={next.imageUrl || "/placeholder.svg"}

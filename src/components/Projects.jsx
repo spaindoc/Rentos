@@ -186,7 +186,13 @@ export default function ProjectsCarousel({ projects, locale }) {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ ...transition, delay: 0.6 }}
-                  className='px-9 py-3 bg-black text-white text-base font-oswald uppercase tracking-wider'
+                  className='px-9 py-3 bg-black text-white text-base font-oswald uppercase tracking-wider  hover:bg-[var(--blue)] hover:text-[var(--black)]
+    active:bg-[var(--blue)] active:text-[var(--black)]
+
+    transition-colors duration-200 ease-in-out cursor-pointer
+
+    border-l-2
+    hover:border-[var(--black)] active:border-[var(--black)]'
                 >
                   <Link
                     href={link}

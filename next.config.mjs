@@ -1,7 +1,7 @@
-// next.config.js
+// next.config.js (or .next.config.mjs if you’re using ESM syntax)
 import createNextIntlPlugin from "next-intl/plugin";
 
-// Здесь указываем все ваши локали и дефолтную
+// локали
 const withNextIntl = createNextIntlPlugin({
   locales: ["uk", "en"],
   defaultLocale: "uk",
@@ -10,7 +10,9 @@ const withNextIntl = createNextIntlPlugin({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: ["cdn.sanity.io"],
+    // <-- simple option:
+    domains: ["cdn.sanity.io"],
+
   },
 };
 

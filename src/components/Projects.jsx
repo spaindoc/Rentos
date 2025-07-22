@@ -14,10 +14,10 @@ export default function ProjectsCarousel({ projects, locale }) {
   const currentLocale = locale.split("-")[0];
   const getLocalized = (field) => field[currentLocale] ?? field["en"] ?? "";
 
-  // Embla
-
+  // Embla + свайп
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [touchStartX, setTouchStartX] = useState(null);
   const [emblaRefCallback, emblaApi] = useEmblaCarousel({ loop: true });
 
   const handleScrollPrev = useCallback(() => {
@@ -27,6 +27,25 @@ export default function ProjectsCarousel({ projects, locale }) {
   const handleScrollNext = useCallback(() => {
     emblaApi?.scrollNext();
   }, [emblaApi]);
+
+  const onTouchStart = (e) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const onTouchEnd = (e) => {
+    if (touchStartX === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diffX = touchStartX - touchEndX;
+    const threshold = 50; // минимум пикселей для срабатывания свайпа
+
+    if (diffX > threshold) {
+      handleScrollNext();
+    } else if (diffX < -threshold) {
+      handleScrollPrev();
+    }
+
+    setTouchStartX(null);
+  };
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -43,24 +62,22 @@ export default function ProjectsCarousel({ projects, locale }) {
     emblaApi.on("reInit", handleSelect);
 
     return () => {
-      emblaApi?.off("select", handleSelect);
-      emblaApi?.off("reInit", handleSelect);
+      emblaApi.off("select", handleSelect);
+      emblaApi.off("reInit", handleSelect);
     };
   }, [emblaApi]);
 
   if (!projects || projects.length === 0) return null;
 
-  // Оборачиваем индекс по модулю, чтобы next всегда существовал
+  // Оборачиваем индекс по модулю
   const len = projects.length;
   const idx = ((selectedIndex % len) + len) % len;
-  const nextIdx = idx + direction;
   const active = projects[idx];
   const next = projects[(idx + 1) % len];
-
   const { _id: id, name, description, imageUrl, link } = active;
   const transition = { duration: 1, ease: "easeInOut" };
 
-  // Варианты анимаций
+  // Анимации
   const mobileSlideVariants = {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
@@ -90,11 +107,13 @@ export default function ProjectsCarousel({ projects, locale }) {
           <ArrowRightButton onClick={handleScrollNext} className='w-11 h-11' />
         </div>
       </div>
+
       {/* Desktop header */}
       <h2 className='hidden lg:block text-[54px] w-1/3 mx-auto font-oswald pl-2 2xl:pl-10 mb-12 uppercase'>
         {t("heading")}
       </h2>
-      {/* Embla viewport */}
+
+      {/* Embla viewport (скрыт на мобилке) */}
       <div className='embla__viewport overflow-hidden' ref={emblaRefCallback}>
         <div className='embla__container flex'>
           {projects.map((proj) => (
@@ -105,8 +124,13 @@ export default function ProjectsCarousel({ projects, locale }) {
           ))}
         </div>
       </div>
-      {/* Mobile slides */}
-      <div className='md:hidden mt-8 px-4 flex flex-col gap-4 relative'>
+
+      {/* Mobile slides с поддержкой свайпа */}
+      <div
+        className='md:hidden mt-8 px-4 flex flex-col gap-4 relative'
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
+      >
         <AnimatePresence mode='wait'>
           <motion.div
             key={`${id}-mobile`}
@@ -131,7 +155,7 @@ export default function ProjectsCarousel({ projects, locale }) {
                 fill
                 className='object-cover'
               />
-              <motion.div className='absolute -bottom-8 -right-[2px] px-[10px] py-4 bg-black text-white text-xl font-oswald uppercase tracking-wider'>
+              <motion.div className='absolute -bottom-8 -right-[2px] px-[10px] py-4 bg-black text-white text-xl font-oswald uppercase tracking-wider hover:bg-[var(--blue)] hover:text-[var(--black)] transition-colors duration-200 ease-in-out cursor-pointer border-2 border-transparent hover:border-[var(--black)] active:border-[var(--black)]'>
                 <Link
                   href={link}
                   target='_blank'
@@ -152,6 +176,7 @@ export default function ProjectsCarousel({ projects, locale }) {
           </motion.div>
         </AnimatePresence>
       </div>
+
       {/* Desktop slides */}
       <LayoutGroup>
         <div className='hidden lg:flex flex-col lg:flex-row items-end justify-between mt-8 relative'>
@@ -167,7 +192,7 @@ export default function ProjectsCarousel({ projects, locale }) {
               transition={transition}
               className='relative flex-1 max-w-5xl'
             >
-              {/* Title & Button с правым отступом */}
+              {/* Title & Button */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -209,7 +234,7 @@ export default function ProjectsCarousel({ projects, locale }) {
                 <div className='flex gap-6 items-end'>
                   {/* Изображение */}
                   <motion.div
-                    key={`current-image-wrapper-${next._id}-${selectedIndex}`}
+                    key={`current-image-wrapper-${id}-${selectedIndex}`}
                     layout
                     transition={transition}
                     initial={{
@@ -239,6 +264,7 @@ export default function ProjectsCarousel({ projects, locale }) {
                       className='object-cover'
                     />
                   </motion.div>
+
                   {/* Описание */}
                   <motion.div
                     variants={textVariants}
@@ -258,7 +284,7 @@ export default function ProjectsCarousel({ projects, locale }) {
             </motion.div>
           </AnimatePresence>
 
-          {/* Навигация стрелками */}
+          {/* Navigation arrows */}
           <div className='flex gap-4 md:gap-10 mb-8 absolute top-0 right-0'>
             <ArrowLeftButton onClick={handleScrollPrev} className='w-13 h-13' />
             <ArrowRightButton
@@ -267,7 +293,7 @@ export default function ProjectsCarousel({ projects, locale }) {
             />
           </div>
 
-          {/* Next Preview без проверки next && */}
+          {/* Next preview */}
           <div className='flex-shrink-0 flex flex-col items-center h-full lg:items-end gap-29'>
             <div className='relative flex flex-col items-end w-full min-w-[382px]'>
               <AnimatePresence mode='wait' custom={direction}>
